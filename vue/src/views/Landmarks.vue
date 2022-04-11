@@ -1,15 +1,15 @@
 <template>
   <div> 
-      <landmarks-details />
+      <landmarks-overview />
   </div>
 </template>
 
 <script>
-import LandmarksDetails from "../components/LandmarksDetails.vue"
+import LandmarksOverview from "../components/LandmarksOverview.vue"
 export default {
     name: 'Landmarks',
     components: {
-        LandmarksDetails
+        LandmarksOverview
     }
 }
 </script>

@@ -1,11 +1,13 @@
 <template>
   <div>
-      <p> HEY </p>
     <table>
       <tbody>
+      
         <tr v-for="(landmark, index) in landmarks" v-bind:key="index">
           <td>{{ landmark.landmarkId }}</td>
-          <td>{{ landmark.landmarkName }}</td>
+          <td>
+            <router-link v-bind:to="{name: 'Landmark', params: { name: landmark.landmarkName}}" >{{ landmark.landmarkName }}</router-link>
+            </td>
           <td>{{ landmark.zipcode }}</td>
           <td>{{ landmark.description }}</td>
         </tr>
@@ -17,11 +19,22 @@
 <script>
 import landmarksService from "../services/LandmarksService.js";
 export default {
-  name: "LandmarksDetails",
+  name: "LandmarksOverview",
 
   computed: {
     landmarks() {
       return this.$store.state.landmarks;
+    },
+    searchLandmark(){
+      let filteredLandmarks = this.landmarks;
+      if(this.filter.landmarkName != ""){
+        filteredLandmarks =filteredLandmarks.filter(  (landmark) => 
+        landmark.landmarkName.toLowerCase().includes(this.filter.landmarkName.toLowerCase())
+            
+          )
+      }
+          return filteredLandmarks;
+      
     },
   },
 

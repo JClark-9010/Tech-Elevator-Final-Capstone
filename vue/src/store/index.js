@@ -18,6 +18,7 @@ if (currentToken != null) {
 
 export default new Vuex.Store({
   state: {
+    activeLandmark: "",
     token: currentToken || '',
     user: currentUser || {},
 
@@ -44,6 +45,9 @@ export default new Vuex.Store({
 
     REPLACE_LANDMARKS(state, landmarks) {
       state.landmarks = landmarks;
+    },
+    SET_ACTIVE_LANDMARK(state, landmarkName){
+      state.activeLandmark = landmarkName;
     }
   }
 })

@@ -8,12 +8,13 @@ export default {
     return axios.get(path)
   },
 
-  getLandmark(landmarkId) {
-    return axios.get(path +'/' + landmarkId)
+  getLandmark(landmarkName) {
+    return axios.get(path +'/' + landmarkName)
   },
 
   addLandmark(landmark) {
     return axios.post(path, landmark)
-  }
+  },
+
 
 }
