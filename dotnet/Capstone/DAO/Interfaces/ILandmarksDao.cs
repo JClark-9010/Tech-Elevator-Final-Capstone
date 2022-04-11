@@ -7,8 +7,10 @@ namespace Capstone.DAO.Interfaces
 {
     public interface ILandmarksDao
     {
-        Landmark GetLandmark(string landmarkName);
+        Landmark GetLandmark(int landmarkId);
         List<Landmark> GetLandmarks();
+
+        Landmark AddLandmark(Landmark landmark);
 
     }
 }

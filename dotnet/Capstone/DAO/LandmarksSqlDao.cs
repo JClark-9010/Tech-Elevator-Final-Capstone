@@ -58,7 +58,7 @@ namespace Capstone.DAO
 
 
         }
-        public Landmark GetLandmark(string landmarkName)
+        public Landmark GetLandmark(int landmarkId)
         {
             Landmark landmark = null;
 
@@ -68,8 +68,8 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT landmark_id, landmark_name, zipcode, description FROM landmarks WHERE landmark_name = @landmarkName", conn);
-                    cmd.Parameters.AddWithValue("@landmarkName", landmarkName);
+                    SqlCommand cmd = new SqlCommand("SELECT landmark_id, landmark_name, zipcode, description FROM landmarks WHERE landmark_id = @landmarkId", conn);
+                    cmd.Parameters.AddWithValue("@landmarkId", landmarkId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     if (reader.Read())
@@ -85,6 +85,40 @@ namespace Capstone.DAO
 
             return landmark;
         }
+
+
+        public Landmark AddLandmark(Landmark landmark)
+        {
+            Landmark addedlandmark = null;
+
+           
+       
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+
+
+                SqlCommand cmd = new SqlCommand("INSERT INTO landmarks (landmark_name, zipcode, description) VALUES (@landmark_name, @zipcode, @description)", conn);
+                cmd.Parameters.AddWithValue("@landmark_name", landmark.LandmarkName);
+                cmd.Parameters.AddWithValue("@zipcode", landmark.Zipcode);
+                cmd.Parameters.AddWithValue("@description", landmark.Description);
+                int count = cmd.ExecuteNonQuery();
+                if (count > 0)
+                {
+                    addedlandmark = landmark;
+                }
+
+                return addedlandmark;
+
+
+
+
+            }
+
+        }
+
     }
 }
 
