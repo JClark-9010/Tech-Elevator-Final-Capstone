@@ -19,7 +19,9 @@ if (currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+
+    landmarks: [],
   },
 
   mutations: {
@@ -38,6 +40,10 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+
+    REPLACE_LANDMARKS(state, landmarks) {
+      state.landmarks = landmarks;
     }
   }
 })
