@@ -13,7 +13,7 @@ export default {
   },
 
   addLandmark(landmark) {
-    return axios.post(path, landmark)
+    return axios.post(path + '/addLandmark', landmark)
   },
 
 
