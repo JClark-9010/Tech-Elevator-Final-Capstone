@@ -1,13 +1,14 @@
 <template>
   <div>
-<add-Landmark/>
+    <h1>hey</h1>
+    <add-landmark/>
   </div>
 </template>
 
 <script>
 import AddLandmark from "../components/AddLandmark.vue";
 export default {
-    name: 'AddLandmark',
+    
     components: {AddLandmark},
 
 

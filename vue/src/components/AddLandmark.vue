@@ -1,8 +1,6 @@
 <template>
   <div>
-  
-
-    <form v-on:submit.prevent="onSubmit" v-if="isFormShown">
+    <form v-on:submit.prevent="onSubmit">
       <div>
         <label for="name">Name: </label>
         <input
@@ -36,15 +34,9 @@
           v-model="newLandmark.description"
         />
       </div>
-      
 
-      <input type="submit" class="btn btn-success" />
-      <input
-        type="button"
-        v-on:click.prevent="resetForm"
-        class="btn btn-success"
-        value="Cancel"
-      />
+      <input type="submit" />
+      <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>
   </div>
 </template>
@@ -53,15 +45,13 @@
 import landmarksService from "../services/LandmarksService.js";
 
 export default {
-    name: "AddLandmark",
-    data() {
-        return{
-            newLandmark: {
-            
-            },
-        }
-    },
-    methods: {
+  name: "add-landmark",
+  data() {
+    return {
+      newLandmark: {},
+    };
+  },
+  methods: {
     onSubmit() {
       this.$store.commit("ADD_LANDMARK", this.newLandmark);
 
@@ -72,7 +62,6 @@ export default {
           this.$router.push({ name: "landmarks" });
         })
         .catch((error) => {
-         
           if (error.response) {
             console.log("HTTP Response Code: ", error.response.data.status);
             console.log("Description: ", error.response.data.title);
@@ -86,7 +75,7 @@ export default {
 
     resetForm() {
       this.newLandmark = {};
-     
     },
-} }
+  },
+};
 </script>

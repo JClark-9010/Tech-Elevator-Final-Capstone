@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Landmarks from '../views/Landmarks.vue'
 import Landmark from '../views/Landmark.vue'
+import AddLandmarkView from '../views/AddLandmarkView.vue'
 
 Vue.use(Router)
 
@@ -74,9 +75,9 @@ const router = new Router({
     {
       path: '/addLandmark',
       name: 'addLandmark',
-      component: Landmark,
+      component: AddLandmarkView,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     }
   ]
