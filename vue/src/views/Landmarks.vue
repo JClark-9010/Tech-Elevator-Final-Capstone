@@ -1,6 +1,7 @@
 <template>
   <div> 
       <landmarks-overview />
+      
   </div>
 </template>
 
