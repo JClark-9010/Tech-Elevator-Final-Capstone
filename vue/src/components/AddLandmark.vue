@@ -9,7 +9,7 @@
           id="name"
           name="name"
           class="form-control"
-          v-model="newLandmark.landmarkName"
+          v-model="landmark.landmarkName"
         />
       </div>
 
@@ -20,18 +20,18 @@
           id="zipcode"
           name="zipcode"
           class="form-control"
-          v-model="newLandmark.zipcode"
+          v-model.number="landmark.zipcode"
         />
       </div>
       <div>
-        <label for="type">Description: </label>
+        <label for="description">Description: </label>
         <input
           required
           type="textarea"
           id="description"
-          name="type"
+          name="description"
           class="form-control"
-          v-model="newLandmark.description"
+          v-model="landmark.description"
         />
       </div>
 
@@ -48,18 +48,19 @@ export default {
   name: "add-landmark",
   data() {
     return {
-      newLandmark: {},
+      landmark: {},
     };
   },
   methods: {
     onSubmit() {
-      this.$store.commit("ADD_LANDMARK", this.newLandmark);
+      
+      this.$store.commit("ADD_LANDMARK", this.landmark);
 
       landmarksService
-        .addLandmark(this.newLandmark)
+        .addLandmark(this.landmark)
         .then((response) => {
           console.log("promise was success", response);
-          this.$router.push({ name: "landmarks" });
+          this.$router.push({name: "Landmarks"});
         })
         .catch((error) => {
           if (error.response) {
@@ -74,8 +75,10 @@ export default {
     },
 
     resetForm() {
-      this.newLandmark = {};
+      this.landmark = {};
     },
+
+    created() {}
   },
 };
 </script>
