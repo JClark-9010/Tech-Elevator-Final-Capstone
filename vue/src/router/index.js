@@ -65,10 +65,18 @@ const router = new Router({
     },
     {
       path: '/landmarks/:landmarkId',
-      name: 'Landmark',
+      name: 'landmark',
       component: Landmark,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: '/addLandmark',
+      name: 'addLandmark',
+      component: Landmark,
+      meta: {
+        requiresAuth: true
       }
     }
   ]

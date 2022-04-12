@@ -53,5 +53,8 @@ export default new Vuex.Store({
     SET_CURRENT_LANDMARK(state, data){
       state.landmark = data;
     },
+    ADD_LANDMARK(state,landmark){
+      state.landmarks.push(landmark);
+    },
   }
 })
