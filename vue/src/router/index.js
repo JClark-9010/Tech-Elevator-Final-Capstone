@@ -77,7 +77,7 @@ const router = new Router({
       name: 'addLandmark',
       component: AddLandmarkView,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]
