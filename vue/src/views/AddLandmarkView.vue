@@ -1,14 +1,14 @@
 <template>
   <div>
-<add-Landmark/>
-<h1>Hello</h1>
+    <h1>hey</h1>
+    <add-landmark/>
   </div>
 </template>
 
 <script>
 import AddLandmark from "../components/AddLandmark.vue";
 export default {
-    name: 'AddLandmark',
+    
     components: {AddLandmark},
 
 
@@ -17,4 +17,4 @@ export default {
 
 <style>
 
-</style>
+</style> 
