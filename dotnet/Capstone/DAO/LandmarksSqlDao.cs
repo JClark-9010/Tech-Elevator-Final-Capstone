@@ -91,14 +91,9 @@ namespace Capstone.DAO
         {
             Landmark addedlandmark = null;
 
-           
-       
-
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-
-
 
                 SqlCommand cmd = new SqlCommand("INSERT INTO landmarks (landmark_name, zipcode, description) VALUES (@landmark_name, @zipcode, @description)", conn);
                 cmd.Parameters.AddWithValue("@landmark_name", landmark.LandmarkName);
@@ -111,14 +106,8 @@ namespace Capstone.DAO
                 }
 
                 return addedlandmark;
-
-
-
-
             }
-
         }
-
     }
 }
 
