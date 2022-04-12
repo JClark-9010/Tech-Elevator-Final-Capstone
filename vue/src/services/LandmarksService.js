@@ -8,8 +8,8 @@ export default {
     return axios.get(path)
   },
 
-  getLandmark(landmarkName) {
-    return axios.get(path +'/' + landmarkName)
+  getLandmark(landmarkId) {
+    return axios.get(path +'/' + landmarkId)
   },
 
   addLandmark(landmark) {

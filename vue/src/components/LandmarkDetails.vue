@@ -1,35 +1,38 @@
 <template>
-   <div>
-       <h1>Hey</h1>
-       <table>
-      <tbody>
-       
-        <tr>
-            <td>
-                {{name}}
-            </td>
-        </tr>
-       
-      </tbody>
-    </table> </div>
+  <div>
+    <h1>Quiet, Patrick.</h1>
+    <h1>{{ landmark.landmarkName }}</h1>
+    <h3>{{landmark.description}}</h3>
+  </div>
 </template>
 
 <script>
-export default {
-  name: "LandmarkDetail",
-  
+import landmarksService from "../services/LandmarksService";
 
-   
+export default {
+  name: "landmark-detail",
+
+  methods: {
+    retrieveLandmark() {
+      landmarksService
+        .getLandmark(this.$route.params.landmarkId)
+        .then((response) => {
+          this.$store.commit("SET_CURRENT_LANDMARK", response.data);
+        });
+    },
+  },
 
   created() {
-    let landmarks = this.$store.state.landmarks;
-    this.landmark = landmarks.find((landmark) => {
-      return landmark.name == this.landmarkName;
-    });
+    this.retrieveLandmark();
+  },
+
+  computed: {
+    landmark() {
+      return this.$store.state.landmark;
+    },
   },
 };
 </script>
 
 <style>
-
 </style>
