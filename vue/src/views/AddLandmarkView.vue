@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>hey</h1>
+    
     <add-landmark/>
   </div>
 </template>
