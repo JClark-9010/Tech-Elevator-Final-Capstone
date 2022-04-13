@@ -87,7 +87,7 @@ const router = new Router({
       name: 'nearMe',
       component: NearMe,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
       }
     },
   ]

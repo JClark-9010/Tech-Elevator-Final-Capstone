@@ -1,5 +1,7 @@
 <template>
-  <div><Nearby /></div>
+  <div><Nearby />
+  <h1>hey</h1>
+  </div>
 </template>
 
 <script>

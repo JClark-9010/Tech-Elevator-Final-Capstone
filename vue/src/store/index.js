@@ -23,6 +23,8 @@ export default new Vuex.Store({
 
     landmarks: [],
 
+    distances: [],
+
   },
 
   mutations: {
