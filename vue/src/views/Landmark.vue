@@ -1,15 +1,17 @@
 <template>
   <div>
     <landmark-details v-bind:name="landmarkName"/>
+    <add-landmark/>
   </div>
 </template>
 
 <script>
 import LandmarkDetails from "../components/LandmarkDetails.vue";
+import AddLandmark from "../components/AddLandmark.vue";
 export default {
     name: "Landmark",
 
-    components: { LandmarkDetails },
+    components: { LandmarkDetails, AddLandmark },
 
     computed: {
         product() {
