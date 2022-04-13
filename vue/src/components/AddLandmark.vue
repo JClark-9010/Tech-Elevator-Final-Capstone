@@ -20,7 +20,7 @@
           id="lat"
           name="lat"
           class="form-control"
-          v-model="landmark.lat"
+          v-model="landmark.landmarkLat"
         />
       </div>
       <div>
@@ -30,7 +30,7 @@
           id="lng"
           name="lng"
           class="form-control"
-          v-model="landmark.lng"
+          v-model="landmark.landmarkLng"
         />
       </div>
       <div>

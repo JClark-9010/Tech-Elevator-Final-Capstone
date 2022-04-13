@@ -8,6 +8,7 @@ import store from '../store/index'
 import Landmarks from '../views/Landmarks.vue'
 import Landmark from '../views/Landmark.vue'
 import AddLandmarkView from '../views/AddLandmarkView.vue'
+import NearMe from '../views/NearMe.vue'
 
 
 Vue.use(Router)
@@ -81,7 +82,14 @@ const router = new Router({
         requiresAuth: true
       }
     },
-   
+    {
+      path: '/nearMe',
+      name: 'nearMe',
+      component: NearMe,
+      meta: {
+        requiresAuth: true
+      }
+    },
   ]
 })
 
