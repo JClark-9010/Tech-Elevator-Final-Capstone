@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Eat shit</h1>
     <h1>{{ landmark.landmarkName }}</h1>
     <h3>{{landmark.description}}</h3>
   </div>

@@ -9,7 +9,8 @@ namespace Capstone.Models
     {
         public int LandmarkId { get; set; }
         public string LandmarkName { get; set; }
-        public int Zipcode { get; set; }
+        public string LandmarkLat { get; set; }
+        public string LandmarkLng { get; set; }
         public string Description { get; set; } 
 
     }

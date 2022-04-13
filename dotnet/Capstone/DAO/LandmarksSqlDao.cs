@@ -15,19 +15,6 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
-        private Landmark GetLandmarkFromReader(SqlDataReader reader)
-        {
-            Landmark l = new Landmark()
-            {
-                LandmarkId = Convert.ToInt32(reader["landmark_id"]),
-                LandmarkName = Convert.ToString(reader["landmark_name"]),
-                Zipcode = Convert.ToInt32(reader["zipcode"]),
-                Description = Convert.ToString(reader["description"]),
-
-            };
-
-            return l;
-        }
         public List<Landmark> GetLandmarks()
         {
             List<Landmark> landmarks = new List<Landmark>();
@@ -68,7 +55,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT landmark_id, landmark_name, zipcode, description FROM landmarks WHERE landmark_id = @landmarkId", conn);
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM landmarks WHERE landmark_id = @landmarkId", conn);
                     cmd.Parameters.AddWithValue("@landmarkId", landmarkId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -95,9 +82,10 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO landmarks (landmark_name, zipcode, description) VALUES (@landmark_name, @zipcode, @description)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO landmarks (landmark_name, landmark_lat, landmark_lng, description) VALUES (@landmark_name, @landmark_lat, @landmark_lng, @description)", conn);
                 cmd.Parameters.AddWithValue("@landmark_name", landmark.LandmarkName);
-                cmd.Parameters.AddWithValue("@zipcode", landmark.Zipcode);
+                cmd.Parameters.AddWithValue("@landmark_lat", landmark.LandmarkLat);
+                cmd.Parameters.AddWithValue("@landmark_lng", landmark.LandmarkLng);
                 cmd.Parameters.AddWithValue("@description", landmark.Description);
                 int count = cmd.ExecuteNonQuery();
                 if (count > 0)
@@ -107,6 +95,20 @@ namespace Capstone.DAO
 
                 return addedlandmark;
             }
+        }
+        private Landmark GetLandmarkFromReader(SqlDataReader reader)
+        {
+            Landmark l = new Landmark()
+            {
+                LandmarkId = Convert.ToInt32(reader["landmark_id"]),
+                LandmarkName = Convert.ToString(reader["landmark_name"]),
+                LandmarkLat = Convert.ToString(reader["landmark_lat"]),
+                LandmarkLng = Convert.ToString(reader["landmark_lng"]),
+                Description = Convert.ToString(reader["description"]),
+
+            };
+
+            return l;
         }
     }
 }

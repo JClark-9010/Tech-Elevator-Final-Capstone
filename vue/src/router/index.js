@@ -81,11 +81,7 @@ const router = new Router({
         requiresAuth: true
       }
     },
-<<<<<<< HEAD
-    
-=======
    
->>>>>>> 9965ed16172a5d07fca4f3168a2913d25f08068b
   ]
 })
 
