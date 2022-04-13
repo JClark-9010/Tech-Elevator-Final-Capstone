@@ -9,6 +9,7 @@ import Landmarks from '../views/Landmarks.vue'
 import Landmark from '../views/Landmark.vue'
 import AddLandmarkView from '../views/AddLandmarkView.vue'
 
+
 Vue.use(Router)
 
 /**
@@ -79,7 +80,8 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+    
   ]
 })
 
