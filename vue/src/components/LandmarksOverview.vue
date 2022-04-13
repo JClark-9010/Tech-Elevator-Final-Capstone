@@ -6,8 +6,13 @@
           <td v-on:click="viewLandmarkDetails(landmark.landmarkId)">
             {{ landmark.landmarkName }}
           </td>
+<<<<<<< HEAD
           <td>{{ landmark.landmarkLat}}</td>
           <td>{{ landmark.landmarkLng}}</td>
+=======
+          <td>{{ landmark.landmarkLat }}</td>
+          <td>{{ landmark.landmarkLng }}</td>
+>>>>>>> cc4ab4cf6a8435dbd2385ac1a9a11736e5b457af
           <td>{{ landmark.description }}</td>
         </tr>
       </tbody>
