@@ -1,19 +1,9 @@
 <template>
-<<<<<<< HEAD
-
   <div>
-   
-    <Map />
-    </div>
-=======
-  <div>
-    <Map />
-    <div>
-
-    </div>
-
-  </div>
->>>>>>> 519abc9b693c065aa1e95019c16283c291108c91
+    <Map />    
+ </div>
+  
+ 
 </template>
 
 <script>

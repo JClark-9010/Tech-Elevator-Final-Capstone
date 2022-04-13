@@ -16,9 +16,23 @@
             style="width:640px; height:360px; margin: 32px auto;"
             ref="mapRef"
             @dragend="handleDrag"
-        ></GmapMap>
+        >
+            <gmap-marker
+            :position="{lat:40.19191,lng:83,}"
+            :clickable="true"
+            :draggable="false"
+            ></gmap-marker>
+        
+        
+        </GmapMap>
+        
+
+
+
+
     </div>
 </template>
+
 <script>
     export default {
         data() {
@@ -28,7 +42,10 @@
                     lat: 0,
                     lng: 0
                 },
-                zoom: 7
+                zoom: 7,
+                lat: [],
+                lng:[],
+                
             }
         },
         created() {
@@ -47,7 +64,13 @@
             if(localStorage.zoom) {
                 this.zoom = parseInt(localStorage.zoom);
             }
+
+            
+
         },
+        
+        
+        
         mounted() {
             // add the map to a data object
             this.$refs.mapRef.$mapPromise.then(map => this.map = map);
@@ -63,6 +86,7 @@
                 localStorage.center = JSON.stringify(center);
                 localStorage.zoom = zoom;
             }
+            
         },
         computed: {
             mapCoordinates() {
