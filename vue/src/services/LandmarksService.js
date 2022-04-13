@@ -16,9 +16,4 @@ export default {
     return axios.post(path, landmark)
   },
 
-  // landmarksNearMe(userLat, userLng) {
-  //   // take users coordinates and return all landmarks within 20 miles
-
-  //   return axios.get(path, )
-  // }
 }

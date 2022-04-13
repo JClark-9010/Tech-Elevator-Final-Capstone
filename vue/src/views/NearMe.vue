@@ -1,6 +1,7 @@
 <template>
-  <div><Nearby />
-  <h1>hey</h1>
+  <div>
+    <h1>Hey guys, we're getting there.</h1>
+    <Nearby />
   </div>
 </template>
 
@@ -9,9 +10,9 @@ import Nearby from "../components/Nearby.vue";
 
 export default {
   components: {
-    Nearby
-  }
-}
+    Nearby,
+  },
+};
 </script>
 
 <style>

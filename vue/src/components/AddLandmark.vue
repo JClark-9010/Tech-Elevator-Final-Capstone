@@ -63,14 +63,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      
       this.$store.commit("ADD_LANDMARK", this.landmark);
 
       landmarksService
         .addLandmark(this.landmark)
         .then((response) => {
           console.log("promise was success", response);
-          this.$router.push({name: "Landmarks"});
+          this.$router.push({ name: "Landmarks" });
         })
         .catch((error) => {
           if (error.response) {
@@ -88,7 +87,7 @@ export default {
       this.landmark = {};
     },
 
-    created() {}
+    created() {},
   },
 };
 </script>

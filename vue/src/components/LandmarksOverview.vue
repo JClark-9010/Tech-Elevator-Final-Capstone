@@ -29,8 +29,6 @@ export default {
       return this.$store.state.landmarks;
     },
   },
-        //40.19191 N, 83,9000 W
-
   created() {
     landmarksService.getLandmarks().then((response) => {
       this.$store.commit("REPLACE_LANDMARKS", response.data);
