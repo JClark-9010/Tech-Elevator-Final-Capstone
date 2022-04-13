@@ -14,13 +14,23 @@
       </div>
 
       <div>
-        <label for="zipcode"> Zipcode: </label>
+        <label for="lat"> Latitude: </label>
         <input
-          type="number"
-          id="zipcode"
-          name="zipcode"
+          type="text"
+          id="lat"
+          name="lat"
           class="form-control"
-          v-model.number="landmark.zipcode"
+          v-model="landmark.lat"
+        />
+      </div>
+      <div>
+        <label for="lng"> Longitude: </label>
+        <input
+          type="text"
+          id="lng"
+          name="lng"
+          class="form-control"
+          v-model="landmark.lng"
         />
       </div>
       <div>
