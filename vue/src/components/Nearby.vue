@@ -1,5 +1,9 @@
 <template>
-  <div><Map /></div>
+  <div>
+    
+    <Map/>
+  
+  </div>
 </template>
 
 <script>
@@ -8,8 +12,18 @@ import Map from "../components/Map.vue";
 
 export default {
   name: "nearby",
+  data(){
+    
+  },
   components: {
     Map,
+  },
+  methods: {
+    getDistance(){
+      this.userCoordinates.lat
+    }
+
+
   },
   computed: {
     landmarks() {
@@ -21,6 +35,9 @@ export default {
       this.$store.commit("REPLACE_LANDMARKS", response.data);
     });
   },
+  
+      
+  
 };
 </script>
 
