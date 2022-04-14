@@ -19,6 +19,8 @@ namespace Capstone.Controllers
             itineraryDAO = _itineraryDAO;
         }
 
+
+        //CREATE A NEW ITINERARY
         [HttpPost("add")]
         public IActionResult AddItinerary(Itinerary itinerary)
         {
@@ -33,6 +35,8 @@ namespace Capstone.Controllers
             }
         }
 
+
+        //DELETE ENTIRE ITINERARY
         [HttpDelete("delete/{itineraryId}")]
         public IActionResult DeleteItinerary(int itineraryId)
         {
@@ -61,6 +65,8 @@ namespace Capstone.Controllers
             }
         }
 
+
+        //GET ITINERARY
         [HttpGet("fetch/{id}")]
         public IActionResult GetItineraries(int id)
         {
@@ -74,6 +80,8 @@ namespace Capstone.Controllers
 
         }
 
+
+        //GET ITINERARY DETAILS (LANDMARK DATA)
         [HttpGet("fetch/details/{userId}")]
         public IActionResult ItineraryDetails(int userId)
         {
@@ -85,6 +93,20 @@ namespace Capstone.Controllers
                 return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
             }
 
+        }
+
+        [HttpPut("addlandmark")]
+        public IActionResult AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId)
+        {
+            bool result = itineraryDAO.AddLandmarkToItinerary(itineraryId, landmarkId, userId);
+            if (result == true)
+            {
+                return Ok("itinerary added successfully");
+            }
+            else
+            {
+                return BadRequest("There was a problem adding that to your itinerary.");
+            }
         }
     }
 }

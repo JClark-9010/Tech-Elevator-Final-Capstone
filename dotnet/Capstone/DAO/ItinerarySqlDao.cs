@@ -25,6 +25,7 @@ namespace Capstone.DAO
 
         public string sqlGetItineraryDetails = "SELECT * FROM landmarks JOIN itineraries_landmarks_user ON itineraries_landmarks_user.landmark_id = landmarks.landmark_id WHERE itineraries_landmarks_user.user_id = @userId";
 
+        public string sqlAddLandmarkToItinerary = "INSERT INTO itineraries_landmarks_user (itinerary_id, landmark_id, user_id) VALUES (@itineraryId, @landmarkId, @userId)";
 
         public List<Itinerary> RetrieveItineraries(int userId)
         {
@@ -145,5 +146,25 @@ namespace Capstone.DAO
             return i;
         }
 
+        public bool AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddLandmarkToItinerary, conn);
+                    cmd.Parameters.AddWithValue("@itineraryId", itineraryId);
+                    cmd.Parameters.AddWithValue("@landmarkId", landmarkId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
