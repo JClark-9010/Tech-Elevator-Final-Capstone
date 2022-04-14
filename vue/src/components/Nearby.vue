@@ -1,7 +1,12 @@
 <template>
   <div>
     <Map /> 
-     <table>
+    <div id="closest">
+
+      <h4>The Closest Landmark to You is..</h4>
+        <h3>{{closest(landmarks, userCoordinates)}}</h3>
+    </div>
+     <!-- <table>
       <tbody>
         <tr v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
           <td >
@@ -10,8 +15,7 @@
           <td>{{distance( userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng)}}</td>
         </tr>
       </tbody>
-    <h3>{{closest(landmarks, userCoordinates)}}</h3>   
-    </table>
+    </table> -->
     
  </div>
   
@@ -36,7 +40,7 @@ export default {
         lat: 0,
         lng: 0,
       },
-     
+      
     };
   },
   
@@ -55,10 +59,14 @@ export default {
     
   },
   methods:{
+    viewLandmarkDetails(landmarkId) {
+      this.$router.push(`/landmarks/${landmarkId}`);
+    },
+    
     closest(landmarks, userCoordinates){
       let nearLandmark = 0;
        landmarks.forEach(  (landmark) => {
-        if (this.distance(userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng) < 6){
+        if (this.distance(userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng) < 6.3){
           nearLandmark = landmark;
         }
       });
@@ -108,4 +116,9 @@ export default {
 </script>
 
 <style>
+
+#closest{
+  text-align: center;
+}
+
 </style>

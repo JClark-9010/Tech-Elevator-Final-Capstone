@@ -1,18 +1,16 @@
 <template>
   <div>
-    <table>
-      <tbody>
-        <tr v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
-          <td v-on:click="viewLandmarkDetails(landmark.landmarkId)">
+    
+        <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
+          <h4>
             {{ landmark.landmarkName }}
-          </td>
+          </h4>
           <!-- <td>{{ landmark.landmarkLat }}</td>
           <td>{{ landmark.landmarkLng }}</td> -->
-          <td>{{ landmark.description }}</td>
-         <!--placeholder--> <td><img v-bind:src="landmark.landmarkImage" alt=""></td>
-        </tr>
-      </tbody>
-    </table>
+          <p>{{ landmark.description }}</p>
+          <img v-bind:src="landmark.landmarkImage" alt="">
+        </div>
+      
   </div>
 </template>
 
@@ -42,12 +40,28 @@ export default {
 </script>
 
 <style>
-tr{
+#landmarkCard{
   border-style: solid;
   border-color: black;
   padding-left: 20px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows:1fr 1fr;
+  grid-template-areas: 
+  "h4 img"
+  "para img";
+}
+h4{
+  grid-area: h4;
+  text-align: center;
+  padding-top: 40px;
+}
+p{
+  grid-area: para;
 }
 img{
-  max-width: 200px;
+  max-width: 100px;
+  grid-area: img;
 }
 </style>
