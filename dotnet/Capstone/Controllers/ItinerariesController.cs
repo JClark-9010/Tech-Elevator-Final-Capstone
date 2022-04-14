@@ -33,17 +33,17 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpDelete("delete/{id}")]
-        public IActionResult DeleteItinerary(int id)
+        [HttpDelete("delete/{itineraryId}")]
+        public IActionResult DeleteItinerary(int itineraryId)
         {
-            bool result = itineraryDAO.DeleteItinerary(id);
+            bool result = itineraryDAO.DeleteItinerary(itineraryId);
             if (result == true)
             {
-                return Ok("itinerary deleted successfully");
+                return Ok("Itinerary deleted successfully");
             }
             else
             {
-                return BadRequest("There was a problem deleting  that from your itinerary.");
+                return BadRequest("There was a problem deleting that from your itinerary.");
             }
         }
 
@@ -72,10 +72,19 @@ namespace Capstone.Controllers
                 return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
             }
 
-
-
-
-
         }
+
+        //[HttpGet("fetch/{userId}/{itineraryId}")]
+        //public IActionResult GetItineraryDetails(int userId, int itineraryId)
+        //{
+        //    List<Landmark> result = itineraryDAO.RetrieveItineraryDetails(userId, itineraryId);
+        //    try
+        //    { return Ok(result); }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
+        //    }
+
+        //}
     }
 }

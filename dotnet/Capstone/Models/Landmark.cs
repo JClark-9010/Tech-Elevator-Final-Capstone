@@ -11,7 +11,8 @@ namespace Capstone.Models
         public string LandmarkName { get; set; }
         public string LandmarkLat { get; set; }
         public string LandmarkLng { get; set; }
-        public string Description { get; set; } 
+        public string Description { get; set; }
+        public string LandmarkImage { get; set; }
 
     }
 }
