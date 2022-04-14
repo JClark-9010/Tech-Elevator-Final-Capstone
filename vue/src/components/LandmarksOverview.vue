@@ -16,9 +16,11 @@
 </template>
 
 <script>
+
 import landmarksService from "../services/LandmarksService.js";
 export default {
   name: "LandmarksOverview",
+  
   methods: {
     viewLandmarkDetails(landmarkId) {
       this.$router.push(`/landmarks/${landmarkId}`);
@@ -33,6 +35,7 @@ export default {
     landmarksService.getLandmarks().then((response) => {
       this.$store.commit("REPLACE_LANDMARKS", response.data);
     });
+    
   },
 };
 </script>
