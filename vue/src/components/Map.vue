@@ -31,7 +31,12 @@
       @dragend="handleDrag"
     >
       <gmap-marker
-        :position="{ lat: 40.19191, lng: 83 }"
+        :key="index"
+        v-for="(landmark, index) in landmarks"
+        :position="{
+          lat: parseFloat(landmark.landmarkLat),
+          lng: parseFloat(landmark.landmarkLng),
+        }"
         :clickable="true"
         :draggable="false"
       ></gmap-marker>
@@ -99,6 +104,9 @@ export default {
         lat: this.map.getCenter().lat().toFixed(4),
         lng: this.map.getCenter().lng().toFixed(4),
       };
+    },
+    landmarks() {
+      return this.$store.state.landmarks;
     },
   },
 };
