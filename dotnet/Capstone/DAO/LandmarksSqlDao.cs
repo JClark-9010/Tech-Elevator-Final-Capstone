@@ -82,11 +82,12 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand("INSERT INTO landmarks (landmark_name, landmark_lat, landmark_lng, description) VALUES (@landmark_name, @landmark_lat, @landmark_lng, @description)", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO landmarks (landmark_name, landmark_lat, landmark_lng, description, landmark_image) VALUES (@landmark_name, @landmark_lat, @landmark_lng, @description, @landmark_image)", conn);
                 cmd.Parameters.AddWithValue("@landmark_name", landmark.LandmarkName);
                 cmd.Parameters.AddWithValue("@landmark_lat", landmark.LandmarkLat);
                 cmd.Parameters.AddWithValue("@landmark_lng", landmark.LandmarkLng);
                 cmd.Parameters.AddWithValue("@description", landmark.Description);
+                cmd.Parameters.AddWithValue("@landmark_image", landmark.LandmarkImage);
                 int count = cmd.ExecuteNonQuery();
                 if (count > 0)
                 {
@@ -105,6 +106,7 @@ namespace Capstone.DAO
                 LandmarkLat = Convert.ToString(reader["landmark_lat"]),
                 LandmarkLng = Convert.ToString(reader["landmark_lng"]),
                 Description = Convert.ToString(reader["description"]),
+                LandmarkImage = Convert.ToString(reader["landmark_image"]),
 
             };
 

@@ -2,10 +2,11 @@
   <div class="loading" v-if="isLoading">
     <img src="../assets/ping_pong_loader.gif" />
   </div>
-  <div v-else>
-    <h1>I'm going to screw this up</h1>
-    <h2>{{ landmark.landmarkName }}</h2>
-    <h4>{{ landmark.description }}</h4>
+  <div id="details" v-else>
+    
+    <h2 id="name">{{ landmark.landmarkName }}</h2>
+    <h4 id="description">{{ landmark.description }}</h4>
+    <img v-bind:src="landmark.landmarkImage" alt="">
   </div>
 </template>
 
@@ -43,4 +44,27 @@ export default {
 </script>
 
 <style>
+#details{
+  display: grid;
+  grid-template-rows: 1fr 9fr ;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 
+  "name name"
+  "img description" ;
+  
+}
+img{
+  max-width: 500px;
+  grid-area: img;
+  padding: 15px;
+}
+#name{
+  padding-left: 50px;
+  grid-area: name;
+}
+#description{
+  grid-area: description;
+  padding: 15px;
+}
+
 </style>

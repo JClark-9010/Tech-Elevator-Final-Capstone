@@ -6,9 +6,10 @@
           <td v-on:click="viewLandmarkDetails(landmark.landmarkId)">
             {{ landmark.landmarkName }}
           </td>
-          <td>{{ landmark.landmarkLat }}</td>
-          <td>{{ landmark.landmarkLng }}</td>
+          <!-- <td>{{ landmark.landmarkLat }}</td>
+          <td>{{ landmark.landmarkLng }}</td> -->
           <td>{{ landmark.description }}</td>
+         <!--placeholder--> <td><img v-bind:src="landmark.landmarkImage" alt=""></td>
         </tr>
       </tbody>
     </table>
@@ -41,4 +42,12 @@ export default {
 </script>
 
 <style>
+tr{
+  border-style: solid;
+  border-color: black;
+  padding-left: 20px;
+}
+img{
+  max-width: 200px;
+}
 </style>

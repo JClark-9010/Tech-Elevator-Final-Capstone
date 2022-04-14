@@ -2,14 +2,14 @@
   <div>
     <div
       style="
-        max-width: 800px;
+        max-width: 100px;
         margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: space-between;
       "
     >
-      <div>
+      <!-- <div>
         <h1>Your coordinates:</h1>
         <p>
           {{ userCoordinates.lat }} Latitude,
@@ -21,12 +21,12 @@
         <p>
           {{ mapCoordinates.lat }} Latitude, {{ mapCoordinates.lng }} Longitude
         </p>
-      </div>
+      </div> -->
     </div>
     <GmapMap
       :center="userCoordinates"
       :zoom="zoom"
-      style="width: 640px; height: 360px; margin: 32px auto"
+      style="width: 450px; height: 250px; margin: 32px auto"
       ref="mapRef"
       @dragend="handleDrag"
     >
