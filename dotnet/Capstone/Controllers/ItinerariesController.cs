@@ -74,17 +74,17 @@ namespace Capstone.Controllers
 
         }
 
-        //[HttpGet("fetch/{userId}/{itineraryId}")]
-        //public IActionResult GetItineraryDetails(int userId, int itineraryId)
-        //{
-        //    List<Landmark> result = itineraryDAO.RetrieveItineraryDetails(userId, itineraryId);
-        //    try
-        //    { return Ok(result); }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
-        //    }
+        [HttpGet("fetch/details/{userId}")]
+        public IActionResult ItineraryDetails(int userId)
+        {
+            List<ItineraryDetails> result = itineraryDAO.GetItineraryDetails(userId);
+            try
+            { return Ok(result); }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
+            }
 
-        //}
+        }
     }
 }
