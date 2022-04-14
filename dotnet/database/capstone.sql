@@ -33,6 +33,19 @@ CREATE TABLE landmarks (
 	CONSTRAINT PK_landmark PRIMARY KEY (landmark_id)
 )
 
+CREATE TABLE itineraries (
+	itinerary_id int IDENTITY(1,1) NOT NULL,
+	user_id int REFERENCES users (user_id),
+	itinerary_name varchar(50) NOT NULL
+	CONSTRAINT PK_itinerary PRIMARY KEY (itinerary_id)
+)
+
+CREATE TABLE itineraries_landmarks (
+	itinerary_id int REFERENCES itineraries (itinerary_id),
+	landmark_id int REFERENCES landmarks (landmark_id),
+	PRIMARY KEY (itinerary_id, landmark_id)
+)
+
 
 
 --populate default data
@@ -47,5 +60,11 @@ INSERT INTO landmarks (landmark_name, landmark_lat, landmark_lng, description) V
 INSERT INTO landmarks (landmark_name, landmark_lat, landmark_lng, description) VALUES('Columbus Museum of Art', '39.9641','-82.9879', 'The Columbus Museum of Art is an art museum in downtown Columbus, Ohio. Formed in 1878 as the Columbus Gallery of Fine Arts, it was the first art museum to register its charter with the state of Ohio.');
 INSERT INTO landmarks (landmark_name, landmark_lat, landmark_lng, description) VALUES ('Field of Corn', '39.9598','-83.0070', 'Field of Corn is a publicly funded art installation in the city of Dublin, Ohio. The installation consists of 109 concrete ears of corn positioned in rows and standing upright in a grassy field. At one end of the field are two rows of Osage-orange trees, one pre-existing and the other planted for the project.');
 INSERT INTO landmarks (landmark_name, landmark_lat, landmark_lng, description) VALUES ('Center of Science and Industry (COSI)', '40.0850','-83.1235', 'The Center of Science and Industry has been a Columbus institution for decades, inspiring adults and children about the wonders of science in our world. Hands-on exhibits throughout COSI educate about outer space, energy, cultural progress, and even an expansive dinosaur gallery in partnership with the American Museum of Natural History.');
-GO
 
+INSERT INTO itineraries (itinerary_name, user_id) VALUES ('test-itineary 1', 1)
+INSERT INTO itineraries (itinerary_name, user_id) VALUES ('test-itineary 2', 1)
+INSERT INTO itineraries (itinerary_name, user_id) VALUES ('test-itineary 3', 1)
+INSERT INTO itineraries (itinerary_name, user_id) VALUES ('test-itineary 4', 1)
+
+
+GO
