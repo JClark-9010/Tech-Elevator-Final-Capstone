@@ -3,7 +3,7 @@
     <img src="../assets/ping_pong_loader.gif" />
   </div>
   <div v-else>
-    <h1>Patrick, please don't screw this up</h1>
+    <h1>I'm going to screw this up</h1>
     <h2>{{ landmark.landmarkName }}</h2>
     <h4>{{ landmark.description }}</h4>
   </div>
@@ -11,6 +11,7 @@
 
 <script>
 import landmarksService from "../services/LandmarksService";
+
 
 export default {
   name: "landmark-detail",

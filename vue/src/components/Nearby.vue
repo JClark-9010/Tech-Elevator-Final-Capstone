@@ -30,6 +30,7 @@ export default {
     landmarks() {
       return this.$store.state.landmarks;
     },
+    
     distance(lat1, lng1, lat2, lng2) {
       const R = 3958.8;
       let dLat = this.deg2rad(lat2 - lat1);

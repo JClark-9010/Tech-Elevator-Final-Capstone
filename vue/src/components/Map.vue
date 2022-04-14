@@ -31,7 +31,7 @@
       @dragend="handleDrag"
     >
       <gmap-marker
-        :position="{ lat: 40.19191, lng: 83 }"
+        :position="{ lat: 40.19191, lng: -83 }"
         :clickable="true"
         :draggable="false"
       ></gmap-marker>
