@@ -12,4 +12,17 @@ namespace Capstone.Models
         public string ItineraryName { get; set; }
      
     }
+    public class ItineraryDetails
+    {
+        public int LandmarkId { get; set; }
+        public string LandmarkName { get; set; }
+        public string LandmarkLat { get; set; }
+        public string LandmarkLng { get; set; }
+        public string Description { get; set; }
+        public string LandmarkImage { get; set; }
+        public int ItineraryId { get; set; }
+        public int LandmarkIdDetail { get; set; }
+        public int UserId { get; set; }
+
+    }
 }

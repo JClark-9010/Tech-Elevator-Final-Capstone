@@ -12,8 +12,7 @@ namespace Capstone.DAO.Interfaces
         bool AddItinerary(Itinerary itinerary);
         bool DeleteItinerary(int itineraryId);
         bool EditItinerary(Itinerary itinerary);
-
-        //List<Landmark> RetrieveItineraryDetails(int userId, int itineraryId);
+        List<ItineraryDetails> GetItineraryDetails(int userId);
 
     }
 }

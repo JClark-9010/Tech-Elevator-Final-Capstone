@@ -23,8 +23,8 @@ namespace Capstone.DAO
 
         public string sqlEditItinerary = "UPDATE itineraries SET itinerary_name = @name, starting_address = @address, locations = @locations WHERE id = @id";
 
-        public string sqlGetItineraryDetails = "SELECT * FROM landmarks JOIN itineraries_landmarks ON landmarks.landmark_id = itineraries_landmarks.landmark_id" +
-                                                  "JOIN itineraries ON itineraries.itinerary_id = itineraries_landmarks.itinerary_id WHERE itineraries.user_id = 1";
+        public string sqlGetItineraryDetails = "SELECT * FROM landmarks JOIN itineraries_landmarks_user ON itineraries_landmarks_user.landmark_id = landmarks.landmark_id WHERE itineraries_landmarks_user.user_id = @userId";
+
 
         public List<Itinerary> RetrieveItineraries(int userId)
         {
@@ -114,34 +114,36 @@ namespace Capstone.DAO
             return true;
         }
 
-        //public List<Landmark> RetrieveItineraryDetails(int userId, int itineraryId)
-        //{
-        //    List<Landmark> landmarks = new List<Landmark>();
+        public List<ItineraryDetails> GetItineraryDetails(int userId)
+        {
+            List<ItineraryDetails> i = new List<ItineraryDetails>();
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
-        //    using (SqlConnection conn = new SqlConnection(connectionString))
-        //    {
-        //        conn.Open();
+                SqlCommand cmd = new SqlCommand(sqlGetItineraryDetails, conn);
+                cmd.Parameters.AddWithValue("@userId", userId);
 
-        //        SqlCommand cmd = new SqlCommand(sqlGetItineraryDetails, conn);
-        //        cmd.Parameters.AddWithValue("@userId", userId);
-        //        cmd.Parameters.AddWithValue("@itineraryId", itineraryId);
 
-        //        SqlDataReader reader = cmd.ExecuteReader();
+                SqlDataReader reader = cmd.ExecuteReader();
 
-        //        while (reader.Read())
-        //        {
-        //            Landmark landmark = new Landmark();
-        //            landmark.LandmarkId = Convert.ToInt32(reader["landmark_id"]);
-        //            landmark.LandmarkName = Convert.ToString(reader["landmark_name"]);
-        //            landmark.LandmarkLat = Convert.ToString(reader["landmark_lat"]);
-        //            landmark.LandmarkLng = Convert.ToString(reader["landmark_lng"]);
-        //            landmark.Description = Convert.ToString(reader["description"]);
-        //            landmark.LandmarkImage = Convert.ToString(reader["landmark_image"]);
+                ItineraryDetails details = new ItineraryDetails();
+                while (reader.Read())
+                {
+                    details.LandmarkId = Convert.ToInt32(reader["landmark_id"]);
+                    details.LandmarkName = Convert.ToString(reader["landmark_name"]);
+                    details.LandmarkLat = Convert.ToString(reader["landmark_lat"]);
+                    details.LandmarkLng = Convert.ToString(reader["landmark_lng"]);
+                    details.Description = Convert.ToString(reader["description"]);
+                    details.LandmarkImage = Convert.ToString(reader["landmark_image"]);
+                    details.ItineraryId = Convert.ToInt32(reader["itinerary_id"]);
+                    details.LandmarkIdDetail = Convert.ToInt32(reader["landmark_id"]);
+                    details.UserId = Convert.ToInt32(reader["user_id"]);
+                    i.Add(details);
+                }
+            }
+            return i;
+        }
 
-        //            landmarks.Add(landmark);
-        //        }
-        //    }
-        //    return landmarks;
-        //}
     }
 }
