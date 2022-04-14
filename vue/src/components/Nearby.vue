@@ -4,10 +4,10 @@
      <table>
       <tbody>
         <tr v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
-          <td v-on:click="viewLandmarkDetails(landmark.landmarkId)">
+          <td >
             {{ landmark.landmarkName }}
           </td>
-          <td>{{landmark.landmarkLng}}</td>
+          <td>{{distance(40, -83, 45, -80)}}</td>
         </tr>
       </tbody>
     </table>
@@ -51,6 +51,8 @@ export default {
       return d
     },
     
+  },
+  methods:{
     distance(lat1, lng1, lat2, lng2) {
       const R = 3958.8;
       let dLat = this.deg2rad(lat2 - lat1);
@@ -68,6 +70,7 @@ export default {
     deg2rad(deg) {
       return deg * (Math.PI / 180);
     },
+
   },
   created() {
     landmarksService.getLandmarks().then((response) => {
