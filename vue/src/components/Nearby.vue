@@ -7,7 +7,7 @@
           <td >
             {{ landmark.landmarkName }}
           </td>
-          <td>{{distance(40, -83, 45, -80)}}</td>
+          <td>{{distance(40, -83, landmark.landmarkLat, landmark.landmarkLng)}}</td>
         </tr>
       </tbody>
     </table>
