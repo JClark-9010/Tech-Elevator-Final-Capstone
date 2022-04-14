@@ -1,6 +1,17 @@
 <template>
   <div>
     <Map />    
+     <table>
+      <tbody>
+        <tr v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
+          <td v-on:click="viewLandmarkDetails(landmark.landmarkId)">
+            {{ landmark.landmarkName }}
+          </td>
+          <td>{{landmark.landmarkLng}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
  </div>
   
  
@@ -17,6 +28,8 @@ import Map from "../components/Map.vue";
 export default {
   name: "nearby",
 
+  
+
   components: {
     Map,
   },
@@ -29,6 +42,13 @@ export default {
   computed: {
     landmarks() {
       return this.$store.state.landmarks;
+    },
+    closest(landmarks){
+      let d = landmarks.forEach(  (landmark) => {
+        return  this.distance(40, -80, landmark.landmarkLat, landmark.landmarkLng)
+      });
+      
+      return d
     },
     
     distance(lat1, lng1, lat2, lng2) {
