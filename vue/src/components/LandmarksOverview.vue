@@ -9,7 +9,7 @@
           <td>{{ landmark.landmarkLng }}</td> -->
           <p>{{ landmark.description }}</p>
           <img id="image" v-bind:src="landmark.landmarkImage" alt="">
-          <button>Placeholder</button>
+          <button v-if="checkItinerary">Add Landmark to Itinerary</button>
         </div>
       
   </div>
@@ -30,6 +30,9 @@ export default {
     landmarks() {
       return this.$store.state.landmarks;
     },
+    checkItinerary() {
+      return this.$store.state.inItinerary;
+    }
   },
   created() {
     landmarksService.getLandmarks().then((response) => {
@@ -75,7 +78,6 @@ p{
 }
 button{
   background-color: #4CAF50; /* Green */
-  width: 100px;
   height: 50px;
   justify-content: center;
   grid-area: button;

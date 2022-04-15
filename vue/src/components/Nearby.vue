@@ -8,7 +8,7 @@
         <p>placed at 8:51pm 4/14/2011</p>
         <p>how long did it take you to find this</p>
     </div>
-     <!-- <table>
+     <table>
       <tbody>
         <tr v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
           <td >
@@ -17,7 +17,7 @@
           <td>{{distance( userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng)}}</td>
         </tr>
       </tbody>
-    </table> -->
+    </table>
     
  </div>
   
@@ -68,7 +68,7 @@ export default {
     closest(landmarks, userCoordinates){
       let nearLandmark = 0;
        landmarks.forEach(  (landmark) => {
-        if (this.distance(userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng) < 6.3){
+        if (this.distance(userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng) < 10){
           nearLandmark = landmark;
         }
       });

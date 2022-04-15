@@ -29,7 +29,7 @@ export default {
   grid-template-rows: 50px auto;
   grid-template-columns: 1fr 2fr;
   grid-template-areas: 
-  "title title"
+  "title landmarks"
   "nearMe landmarks"
   ;
  padding-top: 10px;
@@ -51,7 +51,7 @@ export default {
 }
 h2{
   grid-area: title;
-  
+  padding-left: 10px;
 }
 
 </style>

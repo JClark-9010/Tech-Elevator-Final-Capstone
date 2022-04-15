@@ -3,13 +3,13 @@
     <header>
       <h1>Tech Elevator City Tours</h1>
     <div id="nav">
-      <router-link id="home" v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> &nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'landmarks' }">Landmarks</router-link> &nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'admin'">Add Landmark</router-link>
-      <router-link v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'user'">Suggest Landmark</router-link> &nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'nearMe'}" v-if="$store.state.user.role == 'user'">Landmarks Near Me</router-link> &nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'itinerary'}">Itinerary</router-link>
+      <router-link id="bar" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link id="bar" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
+      <!-- <router-link id="bar" v-bind:to="{ name: 'landmarks' }">Landmarks</router-link>  -->
+      <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'admin'">Add Landmark</router-link>
+      <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'user'">Suggest Landmark</router-link> 
+      <router-link id="bar" v-bind:to="{ name: 'nearMe'}" >Landmarks Near Me</router-link> 
+      <router-link id="bar" v-bind:to="{ name: 'itinerary'}" v-if="$store.state.user.role == 'user'">Itinerary</router-link>
 
     </div>
     </header>
@@ -37,11 +37,23 @@ h1{
   text-shadow: 1px 1px gray;
 }
 #nav{
-  border: black;
-  border-style: solid;
+  
+  
 
 }
-
+#bar{
+  color: black;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: black;
+  border-style: solid;
+  margin-right: 10px;
+  background-color: rgb(12, 204, 211);
+  border-width: .5px;
+  border-radius: 4px ;
+  text-align: center;
+  box-shadow: 1.5px 1.5px 1.5px gray;
+}
 
 
 

@@ -47,24 +47,33 @@ export default {
 #details{
   display: grid;
   grid-template-rows: 1fr 9fr ;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
   grid-template-areas: 
   "name name"
   "img description" ;
+  
   
 }
 img{
   max-width: 500px;
   grid-area: img;
-  padding: 15px;
+  padding-left: 40px;
 }
 #name{
-  padding-left: 50px;
+  padding-left: 40px;
   grid-area: name;
+  justify-content: center;
 }
 #description{
   grid-area: description;
-  padding: 15px;
+  margin-bottom: 200px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 7px;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  background-color: whitesmoke;
 }
 
 </style>

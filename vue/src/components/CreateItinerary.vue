@@ -15,10 +15,7 @@
       <input type="submit" />
       <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>
-
-
-
-
+    <h2 v-if="itineraryCreated"> Add some landmarks to your itinerary</h2>
     <landmarks-overview v-if="itineraryCreated" />
   </div>
 
@@ -37,13 +34,15 @@ export default {
       itinerary: {
         userId: this.$store.state.user.userId,
       },
-      itineraryCreated: false,
+      
     };
   },
+  
   methods: {
     onSubmit() {
       this.$store.commit("ADD_ITINERARY", this.itinerary, this.userId);
-
+      this.itineraryCreated=true;
+      this.$store.state.inItinerary=true;
       itineraryService
         .addItinerary(this.itinerary, this.userId)
         .then((response) => {
@@ -58,7 +57,6 @@ export default {
             console.log("Network Error");
           }
         });
-
       this.resetForm();
     },
 
@@ -68,5 +66,6 @@ export default {
 
     created() {},
   },
+  
 };
 </script>
