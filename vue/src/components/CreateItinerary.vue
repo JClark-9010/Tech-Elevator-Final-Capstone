@@ -15,7 +15,8 @@
       <input type="submit" />
       <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>
-    <h2 v-if="itineraryCreated"> Add some landmarks to your itinerary</h2>
+    <h1 v-if="successfullyAdded">Landmark added to your itinerary!</h1>
+    <h2 v-if="itineraryCreated">Add some landmarks to your itinerary</h2>
     <landmarks-overview v-if="itineraryCreated" />
   </div>
 </template>
@@ -29,23 +30,25 @@ export default {
   components: { LandmarksOverview },
   data() {
     return {
+      successfullyAdded: false,
+      itineraryCreated: false,
       itinerary: {
         userId: this.$store.state.user.userId,
+        itineraryId: this.$store.state.itineraries.itineraryId,
       },
-      
     };
   },
-  
+
   methods: {
     onSubmit() {
       this.$store.commit("ADD_ITINERARY", this.itinerary, this.userId);
-      this.itineraryCreated=true;
-      this.$store.state.inItinerary=true;
+      this.itineraryCreated = true;
+      
+      this.$store.state.inItinerary = true;
       itineraryService
         .addItinerary(this.itinerary, this.userId)
         .then((response) => {
           console.log("promise was success", response);
-          this.$router.push({ name: "itinerary" });
         })
         .catch((error) => {
           if (error.response) {
@@ -57,13 +60,19 @@ export default {
         });
       this.resetForm();
     },
-
-    resetForm() {
-      this.itinerary = {};
-    },
-
-    created() {},
   },
-  
+
+  resetForm() {
+    this.itinerary = {};
+    itineraryService.getItinerary(this.itinerary).then((response) => {
+      this.$store.commit("REPLACE_ITINERARIES", response.data);
+    });
+  },
+
+  created() {
+    itineraryService.getItineraries().then((response) => {
+      this.$store.commit("REPLACE_ITINERARIES", response.data);
+    })
+  },
 };
 </script>

@@ -64,5 +64,8 @@ export default new Vuex.Store({
     ADD_ITINERARY(state, itinerary, userId){
       state.itineraries.push(itinerary, userId);
     },
+    ADD_LANDMARK_TO_ITINERARY(state, itineraryId, landmarkId, userId){
+      state.itineraryDetails.push(itineraryId, landmarkId, userId)
+    }
   }
 })

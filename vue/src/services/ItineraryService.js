@@ -8,6 +8,10 @@ export default {
     return axios.get(path + '/fetch/' + itineraryId)
   },
 
+  getItineraries() {
+    return axios.get(path + '/fetch/')
+  },
+
   getItineraryDetails(itineraryId) {
     return axios.get(path + '/fetch/details/' + itineraryId)
   },
