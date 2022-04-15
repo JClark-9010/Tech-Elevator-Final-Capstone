@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form v-on:submit.prevent="onSubmit">
+    <form id="addForm" v-on:submit.prevent="onSubmit">
       <div>
         <label for="name">Name: </label>
         <input
@@ -38,7 +38,7 @@
         <input
           required
           type="textarea"
-          id="description"
+          id="addDescription"
           name="description"
           class="form-control"
           v-model="landmark.description"
@@ -49,7 +49,7 @@
         <input
           required
           type="textarea"
-          id="image"
+          id="addImage"
           name="image"
           class="form-control"
           v-model="landmark.landmarkImage"
@@ -60,7 +60,7 @@
     </form>
   </div>
 </template>
-
+:c
 <script>
 import landmarksService from "../services/LandmarksService.js";
 
@@ -79,7 +79,7 @@ export default {
         .addLandmark(this.landmark)
         .then((response) => {
           console.log("promise was success", response);
-          this.$router.push({ name: "Landmarks" });
+          this.$router.push({ name: "nearMe" });
         })
         .catch((error) => {
           if (error.response) {
@@ -91,13 +91,24 @@ export default {
         });
 
       this.resetForm();
+     
     },
 
     resetForm() {
       this.landmark = {};
     },
+    
 
     created() {},
   },
+  
 };
 </script>
+
+<style>
+#addForm{
+  margin-right: 200px;
+  margin-left: 20px;
+}
+
+</style>

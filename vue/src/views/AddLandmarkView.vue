@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Hi, Awel. Your computer sucks.</h1>
+    <h3>Submit New Landmark</h3>
     <add-landmark />
   </div>
 </template>
@@ -13,4 +13,7 @@ export default {
 </script>
 
 <style>
+h3{
+  padding-left: 10px;
+}
 </style> 
