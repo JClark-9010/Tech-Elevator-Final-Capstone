@@ -16,23 +16,28 @@
       <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>
 
+
+
+
     <landmarks-overview v-if="itineraryCreated" />
   </div>
+
+
 </template>
 
 <script>
 import itineraryService from "../services/ItineraryService.js";
-import LandmarksOverview from '../components/LandmarksOverview.vue'
+import LandmarksOverview from "../components/LandmarksOverview.vue";
 
 export default {
   name: "create-itinerary",
-  components: {LandmarksOverview},
+  components: { LandmarksOverview },
   data() {
     return {
       itinerary: {
         userId: this.$store.state.user.userId,
       },
-       itineraryCreated: false,
+      itineraryCreated: false,
     };
   },
   methods: {
