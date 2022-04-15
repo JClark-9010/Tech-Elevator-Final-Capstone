@@ -2,13 +2,14 @@
   <div>
     
         <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
-          <h4>
+          <h5>
             {{ landmark.landmarkName }}
-          </h4>
+          </h5>
           <!-- <td>{{ landmark.landmarkLat }}</td>
           <td>{{ landmark.landmarkLng }}</td> -->
           <p>{{ landmark.description }}</p>
-          <img v-bind:src="landmark.landmarkImage" alt="">
+          <img id="image" v-bind:src="landmark.landmarkImage" alt="">
+          <button>Placeholder</button>
         </div>
       
   </div>
@@ -46,22 +47,37 @@ export default {
   padding-left: 20px;
   border-radius: 20px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows:1fr 1fr;
+  grid-template-columns: 200px auto;
+  grid-template-rows:100px 135px 100px;
   grid-template-areas: 
-  "h4 img"
-  "para img";
+  "h5 img"
+  "para img"
+  "button img";
+  box-shadow: 3px 3px gray;
+  margin: 20px;
+  background-color: whitesmoke;
 }
-h4{
-  grid-area: h4;
-  text-align: center;
+h5{
+  grid-area: h5;
+  justify-content: center;
+  align-items: center;
   padding-top: 40px;
 }
 p{
   grid-area: para;
+  font-size: 10px;
 }
-img{
-  max-width: 100px;
+#image{
+  max-height: 275px;
   grid-area: img;
+  padding-left: 100px;
+  padding-top: 50px;
+}
+button{
+  background-color: #4CAF50; /* Green */
+  width: 100px;
+  height: 50px;
+  justify-content: center;
+  grid-area: button;
 }
 </style>
