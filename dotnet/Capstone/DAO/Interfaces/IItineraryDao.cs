@@ -16,6 +16,9 @@ namespace Capstone.DAO.Interfaces
         bool AddLandmarkToItinerary(ItineraryDetails i);
         Itinerary GetItinerary(int itineraryId);
 
+        List<Itinerary> GetItineraries();
+       
+
     }
 }
 
