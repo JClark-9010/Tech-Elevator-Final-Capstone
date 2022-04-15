@@ -15,20 +15,24 @@
       <input type="submit" />
       <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>
+
+    <landmarks-overview v-if="itineraryCreated" />
   </div>
 </template>
 
 <script>
 import itineraryService from "../services/ItineraryService.js";
+import LandmarksOverview from '../components/LandmarksOverview.vue'
 
 export default {
   name: "create-itinerary",
+  components: {LandmarksOverview},
   data() {
     return {
       itinerary: {
-          userId: this.$store.state.user.userId
+        userId: this.$store.state.user.userId,
       },
-      
+       itineraryCreated: false,
     };
   },
   methods: {
@@ -39,7 +43,7 @@ export default {
         .addItinerary(this.itinerary, this.userId)
         .then((response) => {
           console.log("promise was success", response);
-          this.$router.push({ name: "Home" });
+          this.$router.push({ name: "itinerary" });
         })
         .catch((error) => {
           if (error.response) {
