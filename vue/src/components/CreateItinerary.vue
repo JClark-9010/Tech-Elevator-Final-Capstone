@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="createItinerary">
     <form v-on:submit.prevent="onSubmit">
       <div>
         <label for="name">Name: </label>
@@ -67,3 +67,15 @@ export default {
   
 };
 </script>
+
+<style>
+  #createItinerary{
+    margin-left: 20px;
+    
+  }
+  #createItinerary{
+    margin-right: 300px;
+  }
+
+ 
+</style>
