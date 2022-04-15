@@ -31,8 +31,10 @@ header{
   padding-left: 10px;
  
 }
+
 h1{
-  font-family:Arial, Helvetica, sans-serif
+  font-family:Arial, Helvetica, sans-serif;
+  text-shadow: 1px 1px gray;
 }
 #nav{
   border: black;

@@ -5,6 +5,8 @@
 
       <h4>The Closest Landmark to You is..</h4>
         <h3>{{closest(landmarks, userCoordinates)}}</h3>
+        <p>placed at 8:51pm 4/14/2011</p>
+        <p>how long did it take you to find this</p>
     </div>
      <!-- <table>
       <tbody>

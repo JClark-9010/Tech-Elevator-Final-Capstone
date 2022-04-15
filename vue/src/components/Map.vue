@@ -26,7 +26,8 @@
     <GmapMap
       :center="userCoordinates"
       :zoom="zoom"
-      style="width: 400px; height: 450px; margin: 32px auto"
+      style="width: 400px; height: 450px; margin: 32px auto; border-style: solid;
+  border-color: black; box-shadow: 2px 2px gray;"
       ref="mapRef"
       @dragend="handleDrag"
     >
@@ -111,3 +112,7 @@ export default {
   },
 };
 </script>
+
+<style>
+
+</style>
