@@ -46,7 +46,6 @@ export default {
     onSubmit() {
       this.$store.commit("ADD_ITINERARY", this.itinerary, this.userId);
       this.itineraryCreated = true;
-      
       this.$store.state.inItinerary = true;
       itineraryService
         .addItinerary(this.itinerary, this.userId)
@@ -68,6 +67,9 @@ export default {
   resetForm() {
     this.itinerary = {};
     itineraryService.getItinerary(this.itinerary).then((response) => {
+      this.$store.commit("SET_CURRENT_ITINERARY", response.data);
+    });
+    itineraryService.getItineraries().then((response) => {
       this.$store.commit("REPLACE_ITINERARIES", response.data);
     });
   },
