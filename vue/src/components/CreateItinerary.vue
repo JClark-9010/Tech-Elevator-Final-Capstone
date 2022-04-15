@@ -17,6 +17,7 @@
     </form>
     <h2 v-if="itineraryCreated"> Add some landmarks to your itinerary</h2>
     <landmarks-overview v-if="itineraryCreated" />
+    
   </div>
 
 

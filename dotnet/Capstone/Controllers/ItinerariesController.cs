@@ -107,5 +107,14 @@ namespace Capstone.Controllers
                 return BadRequest("There was a problem adding that to your itinerary.");
             }
         }
+
+        [HttpGet("fetch")]
+        public ActionResult<Itinerary> GetItineraries()
+        {
+            List <Itinerary> itineraries = itineraryDAO.GetItineraries();
+            
+                return Ok(itineraries);
+            
+        }
     }
 }
