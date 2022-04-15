@@ -121,6 +121,10 @@ export default {
 
 #closest{
   text-align: center;
+  border: solid;
+  border-radius: 10px;
+  background-color: whitesmoke;
 }
+
 
 </style>

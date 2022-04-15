@@ -59,8 +59,8 @@ export default {
   padding-left: 20px;
   border-radius: 20px;
   display: grid;
-  grid-template-columns: 200px auto;
-  grid-template-rows:100px 135px 100px;
+  grid-template-columns: 255px auto;
+  grid-template-rows:100px 150px 100px;
   grid-template-areas: 
   "h5 img"
   "para img"
@@ -68,6 +68,10 @@ export default {
   box-shadow: 3px 3px gray;
   margin: 20px;
   background-color: whitesmoke;
+}
+#landmarkCard:hover{
+  background-color: white;
+  box-shadow: 5px 5px 5px 5px gray;
 }
 h5{
   grid-area: h5;
@@ -77,7 +81,8 @@ h5{
 }
 p{
   grid-area: para;
-  font-size: 10px;
+  font-size: 12px;
+  
 }
 #image{
   max-height: 275px;
@@ -86,9 +91,18 @@ p{
   padding-top: 50px;
 }
 button{
-  background-color: #4CAF50; /* Green */
+  background-color: rgb(12, 204, 211);
   height: 50px;
   justify-content: center;
   grid-area: button;
+  border:black;
+  border-radius: 5px;
+  
+  
+  
+  
+}
+button:hover{
+  box-shadow: 2px 2px 2px 2px gray;
 }
 </style>
