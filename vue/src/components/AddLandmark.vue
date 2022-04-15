@@ -44,7 +44,17 @@
           v-model="landmark.description"
         />
       </div>
-
+      <div>
+        <label for="image">Image: </label>
+        <input
+          required
+          type="textarea"
+          id="image"
+          name="image"
+          class="form-control"
+          v-model="landmark.landmarkImage"
+        />
+      </div>
       <input type="submit" />
       <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>

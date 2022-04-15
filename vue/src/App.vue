@@ -8,7 +8,9 @@
       <router-link v-bind:to="{ name: 'landmarks' }">Landmarks</router-link> &nbsp;|&nbsp;
       <router-link v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'admin'">Add Landmark</router-link>
       <router-link v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'user'">Suggest Landmark</router-link> &nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'nearMe'}" v-if="$store.state.user.role == 'user'">Landmarks Near Me</router-link>
+      <router-link v-bind:to="{ name: 'nearMe'}" v-if="$store.state.user.role == 'user'">Landmarks Near Me</router-link> &nbsp;|&nbsp;
+      <router-link v-bind:to="{ name: 'itinerary'}">Itinerary</router-link>
+
     </div>
     </header>
     <router-view />

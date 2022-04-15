@@ -21,9 +21,11 @@ namespace Capstone.DAO
 
         public string sqlDeleteItinerary = "DELETE FROM itineraries WHERE itinerary_id = @itineraryId";
 
-        public string sqlEditItinerary = "UPDATE itineraries SET itinerary_name = @name, starting_address = @address, locations = @locations WHERE id = @id";
+        public string sqlDeleteLandmarkFromItinerary = "DELETE FROM itineraries_landmarks_user WHERE landmark_id = @landmarkId AND itinerary_id = @itineraryId";
 
-        public string sqlGetItineraryDetails = "SELECT * FROM landmarks JOIN itineraries_landmarks_user ON itineraries_landmarks_user.landmark_id = landmarks.landmark_id WHERE itineraries_landmarks_user.user_id = @userId";
+        public string sqlGetItineraryDetails = "SELECT landmark_name, landmark_lat, landmark_lng, description, landmark_image, itineraries_landmarks_user.itinerary_id," +
+                                               " itineraries_landmarks_user.landmark_id, itineraries_landmarks_user.user_id FROM landmarks JOIN itineraries_landmarks_user" +
+                                               " ON itineraries_landmarks_user.landmark_id = landmarks.landmark_id WHERE itineraries_landmarks_user.itinerary_id = @itineraryId";
 
         public string sqlAddLandmarkToItinerary = "INSERT INTO itineraries_landmarks_user (itinerary_id, landmark_id, user_id) VALUES (@itineraryId, @landmarkId, @userId)";
 
@@ -66,7 +68,7 @@ namespace Capstone.DAO
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
@@ -86,14 +88,14 @@ namespace Capstone.DAO
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
 
-        public bool EditItinerary(Itinerary itinerary)
+        public bool DeleteLandmarkFromItinerary(ItineraryDetails i)
         {
             try
             {
@@ -101,21 +103,20 @@ namespace Capstone.DAO
                 {
 
                     conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlEditItinerary, conn);
-                    cmd.Parameters.AddWithValue("@id", itinerary.ItineraryId);
-                    cmd.Parameters.AddWithValue("@name", itinerary.ItineraryName);
-
+                    SqlCommand cmd = new SqlCommand(sqlDeleteLandmarkFromItinerary, conn);
+                    cmd.Parameters.AddWithValue("@landmarkId", i.LandmarkId);
+                    cmd.Parameters.AddWithValue("@itineraryId", i.ItineraryId);
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
             return true;
         }
 
-        public List<ItineraryDetails> GetItineraryDetails(int userId)
+        public List<ItineraryDetails> GetItineraryDetails(int itineraryId)
         {
             List<ItineraryDetails> i = new List<ItineraryDetails>();
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -123,22 +124,19 @@ namespace Capstone.DAO
                 conn.Open();
 
                 SqlCommand cmd = new SqlCommand(sqlGetItineraryDetails, conn);
-                cmd.Parameters.AddWithValue("@userId", userId);
-
-
+                cmd.Parameters.AddWithValue("@itineraryId", itineraryId);
                 SqlDataReader reader = cmd.ExecuteReader();
 
-                ItineraryDetails details = new ItineraryDetails();
                 while (reader.Read())
                 {
-                    details.LandmarkId = Convert.ToInt32(reader["landmark_id"]);
+                    ItineraryDetails details = new ItineraryDetails();
                     details.LandmarkName = Convert.ToString(reader["landmark_name"]);
                     details.LandmarkLat = Convert.ToString(reader["landmark_lat"]);
                     details.LandmarkLng = Convert.ToString(reader["landmark_lng"]);
                     details.Description = Convert.ToString(reader["description"]);
                     details.LandmarkImage = Convert.ToString(reader["landmark_image"]);
                     details.ItineraryId = Convert.ToInt32(reader["itinerary_id"]);
-                    details.LandmarkIdDetail = Convert.ToInt32(reader["landmark_id"]);
+                    details.LandmarkId = Convert.ToInt32(reader["landmark_id"]);
                     details.UserId = Convert.ToInt32(reader["user_id"]);
                     i.Add(details);
                 }
@@ -146,7 +144,35 @@ namespace Capstone.DAO
             return i;
         }
 
-        public bool AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId)
+        public Itinerary GetItinerary(int itineraryId)
+        {
+            Itinerary itinerary = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM itineraries WHERE itinerary_id = @itineraryId", conn);
+                    cmd.Parameters.AddWithValue("@landmarkId", itineraryId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        itinerary = GetItineraryFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return itinerary;
+        }
+
+        public bool AddLandmarkToItinerary(ItineraryDetails i)
         {
             try
             {
@@ -154,17 +180,29 @@ namespace Capstone.DAO
                 {
                     conn.Open();
                     SqlCommand cmd = new SqlCommand(sqlAddLandmarkToItinerary, conn);
-                    cmd.Parameters.AddWithValue("@itineraryId", itineraryId);
-                    cmd.Parameters.AddWithValue("@landmarkId", landmarkId);
-                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@itineraryId", i.ItineraryId);
+                    cmd.Parameters.AddWithValue("@landmarkId", i.LandmarkId);
+                    cmd.Parameters.AddWithValue("@userId", i.UserId);
                     cmd.ExecuteNonQuery();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 return false;
             }
             return true;
+        }
+
+        private Itinerary GetItineraryFromReader(SqlDataReader reader)
+        {
+            Itinerary i = new Itinerary()
+            {
+                ItineraryId = Convert.ToInt32(reader["itinerary_id"]),
+                UserId = Convert.ToInt32(reader["user_id"]),
+                ItineraryName = Convert.ToString(reader["itinerary_name"]),
+            };
+
+            return i;
         }
     }
 }

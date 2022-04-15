@@ -9,6 +9,7 @@ import Landmarks from '../views/Landmarks.vue'
 import Landmark from '../views/Landmark.vue'
 import AddLandmarkView from '../views/AddLandmarkView.vue'
 import NearMe from '../views/NearMe.vue'
+import ViewItinerary from '../views/ViewItinerary.vue'
 
 
 Vue.use(Router)
@@ -86,6 +87,14 @@ const router = new Router({
       path: '/nearMe',
       name: 'nearMe',
       component: NearMe,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/itinerary',
+      name: 'itinerary',
+      component: ViewItinerary,
       meta: {
         requiresAuth: false
       }

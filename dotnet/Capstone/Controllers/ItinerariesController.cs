@@ -19,7 +19,6 @@ namespace Capstone.Controllers
             itineraryDAO = _itineraryDAO;
         }
 
-
         //CREATE A NEW ITINERARY
         [HttpPost("add")]
         public IActionResult AddItinerary(Itinerary itinerary)
@@ -27,7 +26,7 @@ namespace Capstone.Controllers
             bool result = itineraryDAO.AddItinerary(itinerary);
             if (result == true)
             {
-                return Ok("itinerary added successfully");
+                return Ok("Itinerary added successfully");
             }
             else
             {
@@ -51,13 +50,13 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpPut("edit")]
-        public IActionResult EditItinerary(Itinerary itinerary)
+        [HttpDelete("deletelandmark")]
+        public IActionResult DeleteLandmarkFromItinerary(ItineraryDetails i)
         {
-            bool result = itineraryDAO.EditItinerary(itinerary);
+            bool result = itineraryDAO.DeleteLandmarkFromItinerary(i);
             if (result == true)
             {
-                return Ok("itinerary edited successfully");
+                return Ok("Itinerary edited successfully");
             }
             else
             {
@@ -82,10 +81,10 @@ namespace Capstone.Controllers
 
 
         //GET ITINERARY DETAILS (LANDMARK DATA)
-        [HttpGet("fetch/details/{userId}")]
-        public IActionResult ItineraryDetails(int userId)
+        [HttpGet("fetch/details/{itineraryId}")]
+        public IActionResult ItineraryDetails(int itineraryId)
         {
-            List<ItineraryDetails> result = itineraryDAO.GetItineraryDetails(userId);
+            List<ItineraryDetails> result = itineraryDAO.GetItineraryDetails(itineraryId);
             try
             { return Ok(result); }
             catch (Exception ex)
@@ -95,13 +94,13 @@ namespace Capstone.Controllers
 
         }
 
-        [HttpPut("addlandmark")]
-        public IActionResult AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId)
+        [HttpPost("addlandmark")]
+        public IActionResult AddLandmarkToItinerary(ItineraryDetails i)
         {
-            bool result = itineraryDAO.AddLandmarkToItinerary(itineraryId, landmarkId, userId);
+            bool result = itineraryDAO.AddLandmarkToItinerary(i);
             if (result == true)
             {
-                return Ok("itinerary added successfully");
+                return Ok("Landmarkd added to itenerary successfully");
             }
             else
             {

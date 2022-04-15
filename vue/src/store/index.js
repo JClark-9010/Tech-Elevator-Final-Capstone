@@ -22,9 +22,9 @@ export default new Vuex.Store({
     user: currentUser || {},
 
     landmarks: [],
-
+    itineraries: [],
+    itineraryDetails: [],
     distances: [],
-
   },
 
   mutations: {
@@ -53,6 +53,16 @@ export default new Vuex.Store({
     },
     ADD_LANDMARK(state,landmark){
       state.landmarks.push(landmark);
+    },
+
+    REPLACE_ITINERARIES(state, itineraries){
+      state.itineraries = itineraries;
+    },
+    SET_CURRENT_ITINERARY(state, data){
+      state.itinerary = data;
+    },
+    ADD_ITINERARY(state, itinerary, userId){
+      state.itineraries.push(itinerary, userId);
     },
   }
 })
