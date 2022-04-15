@@ -40,6 +40,7 @@ export default {
     },
     checkItinerary() {
       return this.$store.state.inItinerary;
+      
     }
   },
   created() {

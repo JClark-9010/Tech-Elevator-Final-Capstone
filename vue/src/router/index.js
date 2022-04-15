@@ -99,6 +99,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: '/itinerary/ChangeItinerary',
+      name: 'ChangeItinerary',
+      component: ViewItinerary,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 
