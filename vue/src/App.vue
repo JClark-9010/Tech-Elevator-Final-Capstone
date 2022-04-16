@@ -20,12 +20,15 @@
 </template>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 body{
-  background-color: rgb(226, 224, 224);
-  
+  background-color: #EAD6C7;
+  font-family: 'Poppins', sans-serif;
 }
 header{
-  background-color: #41cff7;
+  
+  background-color: #208B77;
   padding-top: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
@@ -33,32 +36,33 @@ header{
   display: grid;
   
   grid-template-areas: 
-  "h1 skyline"
-  "nav skyline";
+  "h1 nav";
 }
-
+h5{
+  font-style: bold;
+}
 h1{
-  font-family:Arial, Helvetica, sans-serif;
-  text-shadow: 1px 1px gray;
+  /* font-family:Arial, Helvetica, sans-serif; */
+  color: #EAD6C7;
   grid-area: h1;
 }
 #nav{
   grid-area: nav;
-  
+  padding-top: 15px;
 
 }
 #bar{
-  color: black;
+  color: #EAD6C7;
   padding-left: 5px;
   padding-right: 5px;
-  border: black;
-  border-style: solid;
+  /* border: black;
+  border-style: solid; */
   margin-right: 10px;
-  background-color: rgb(12, 204, 211);
+  /* background-color: rgb(12, 204, 211); */
   border-width: .5px;
   border-radius: 4px ;
   text-align: center;
-  box-shadow: 1.5px 1.5px 1.5px gray;
+  /* box-shadow: 1.5px 1.5px 1.5px gray; */
 }
 #skyline{
   grid-area: skyline;
