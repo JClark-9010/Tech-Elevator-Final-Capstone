@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -93,5 +93,9 @@ export default {
 <style scoped>
 input, #account{
   margin: 15px
+}
+#register{
+  margin-left: 35%;
+  margin-right: 35%;
 }
 </style>

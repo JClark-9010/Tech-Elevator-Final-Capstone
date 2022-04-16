@@ -1,8 +1,6 @@
 <template>
   <div>
-
     <h3>Submit New Landmark</h3>
-
     <add-landmark />
   </div>
 </template>

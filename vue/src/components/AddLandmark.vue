@@ -79,9 +79,7 @@ export default {
         .addLandmark(this.landmark)
         .then((response) => {
           console.log("promise was success", response);
-
           this.$router.push({ name: "nearMe" });
-
         })
         .catch((error) => {
           if (error.response) {

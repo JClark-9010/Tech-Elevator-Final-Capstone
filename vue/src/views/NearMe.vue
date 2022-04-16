@@ -53,5 +53,13 @@ h2{
   grid-area: title;
   padding-left: 10px;
 }
+@media all and (max-width: 800px) {
+  #body{
+    grid-template-areas: 
+    "title"
+    "nearMe"
+    "landmarks";
+  }
+}
 
 </style>
