@@ -12,7 +12,7 @@
       <router-link id="bar" v-bind:to="{ name: 'itinerary'}" v-if="$store.state.user.role == 'user'">Itinerary</router-link>
 
     </div>
-    <img id="skyline" src="https://www.columbusddc.com/assets/inc/timthumb.php?src=https://03f59d67b8953209fecb-2ffae5b4d8c8fad2d75b1377df2d5b7c.ssl.cf2.rackcdn.com/banner-Scioto-Mile-Banner-2.png&w=2000&h=560&zc=1" alt="">
+    <!-- <img id="skyline" src="https://www.columbusddc.com/assets/inc/timthumb.php?src=https://03f59d67b8953209fecb-2ffae5b4d8c8fad2d75b1377df2d5b7c.ssl.cf2.rackcdn.com/banner-Scioto-Mile-Banner-2.png&w=2000&h=560&zc=1" alt=""> -->
     </header>
     <router-view />
     <p>Built By DewelOn Llc.</p>
@@ -31,7 +31,7 @@ header{
   padding-bottom: 10px;
   padding-left: 10px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  
   grid-template-areas: 
   "h1 skyline"
   "nav skyline";
@@ -63,6 +63,12 @@ h1{
 #skyline{
   grid-area: skyline;
   max-height: 90px;
+}
+@media all and (max-width: 560px) {
+  #bar{
+    font-size: 10px;
+  }
+
 }
 
 

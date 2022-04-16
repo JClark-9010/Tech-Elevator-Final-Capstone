@@ -87,9 +87,6 @@ export default {
     margin-left: 20px;
     
   }
-  #createItinerary{
-    margin-right: 300px;
-  }
-
+ 
  
 </style>
