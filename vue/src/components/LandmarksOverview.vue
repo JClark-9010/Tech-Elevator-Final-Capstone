@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="overview">
     
         <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
           <h5>
@@ -7,9 +7,9 @@
           </h5>
           <!-- <td>{{ landmark.landmarkLat }}</td>
           <td>{{ landmark.landmarkLng }}</td> -->
-          <p>{{ landmark.description }}</p>
-          <img id="image" v-bind:src="landmark.landmarkImage" alt="">
-          <button v-on:click.prevent="addLandmarkToItinerary" v-if="timeToAdd">Add Landmark to Itinerary</button>
+          <!-- <p>{{ landmark.description }}</p> -->
+          <img id="detImage" v-bind:src="landmark.landmarkImage" alt="">
+          <button v-on:click.prevent="addLandmarkToItinerary" v-if="checkItinerary">Add Landmark to Itinerary</button>
         </div>
       
   </div>
@@ -55,18 +55,27 @@ export default {
 </script>
 
 <style>
+#overview{
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 25px;
+  
+}
 #landmarkCard{
   border-style: solid;
   border-color: black;
   padding-left: 20px;
+  padding-right:20px;
   border-radius: 20px;
   display: grid;
-  grid-template-columns: 255px auto;
-  grid-template-rows:100px 150px 100px;
+  flex-wrap: wrap;
+  
+  grid-template-columns: 250px;
+  grid-template-rows: 70px 175px 70px;
   grid-template-areas: 
-  "h5 img"
-  "para img"
-  "button img";
+  "h5"
+  "img"
+  "button";
   box-shadow: 3px 3px gray;
   margin: 20px;
   background-color: whitesmoke;
@@ -77,20 +86,20 @@ export default {
 }
 h5{
   grid-area: h5;
-  justify-content: center;
-  align-items: center;
-  padding-top: 40px;
+  text-align: center;
+  padding-top: 10px;
 }
 p{
   grid-area: para;
   font-size: 12px;
   
 }
-#image{
-  max-height: 275px;
+#detImage{
+  max-width: 250px;
+  max-height: 175px;
   grid-area: img;
-  padding-left: 100px;
-  padding-top: 50px;
+  
+  
 }
 button{
   background-color: rgb(12, 204, 211);

@@ -66,10 +66,10 @@ export default {
 </script>
 
 <style>
-#createItinerary {
-  margin-left: 20px;
-}
-#createItinerary {
-  margin-right: 300px;
-}
+  #createItinerary{
+    margin-left: 20px;
+    
+  }
+ 
+ 
 </style>

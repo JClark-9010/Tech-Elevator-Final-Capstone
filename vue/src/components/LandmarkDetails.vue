@@ -6,7 +6,7 @@
     
     <h2 id="name">{{ landmark.landmarkName }}</h2>
     <h4 id="description">{{ landmark.description }}</h4>
-    <img v-bind:src="landmark.landmarkImage" alt="">
+    <img id="image" v-bind:src="landmark.landmarkImage" alt="">
   </div>
 </template>
 
@@ -53,7 +53,7 @@ export default {
   
   
 }
-img{
+#image{
   max-width: 500px;
   grid-area: img;
   padding-left: 40px;
