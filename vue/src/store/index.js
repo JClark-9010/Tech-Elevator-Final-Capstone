@@ -20,11 +20,10 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    inItinerary: false,
+    timeToAdd: false,
     landmarks: [],
     itineraries: [],
-    itineraryDetails: [],
-    distances: [],
+    userItineraries: [],
   },
 
   mutations: {
@@ -45,6 +44,9 @@ export default new Vuex.Store({
       axios.defaults.headers.common = {};
     },
 
+    SET_ITINERARY_ID(state, itineraryID){
+      state.itineraryId = itineraryID
+    },
     REPLACE_LANDMARKS(state, landmarks) {
       state.landmarks = landmarks;
     },
@@ -58,14 +60,23 @@ export default new Vuex.Store({
     REPLACE_ITINERARIES(state, itineraries){
       state.itineraries = itineraries;
     },
+    REPLACE_USER_ITINERARIES(state, userItineraries){
+      state.userItineraries = userItineraries;
+    },
     SET_CURRENT_ITINERARY(state, data){
       state.itinerary = data;
     },
+
+    SET_CURRENT_ITINERARY_DETAILS(state, data){
+      state.itineraryDetails = data;
+    },
+
     ADD_ITINERARY(state, itinerary, userId){
       state.itineraries.push(itinerary, userId);
+      state.userItineraries.push(itinerary, userId);
     },
-    ADD_LANDMARK_TO_ITINERARY(state, itineraryId, landmarkId, userId){
-      state.itineraryDetails.push(itineraryId, landmarkId, userId)
+    ADD_LANDMARK_TO_ITINERARY(state, itineraryDetails){
+      state.itineraryDetails.push(itineraryDetails)
     }
   }
 })

@@ -9,7 +9,9 @@ import Landmarks from '../views/Landmarks.vue'
 import Landmark from '../views/Landmark.vue'
 import AddLandmarkView from '../views/AddLandmarkView.vue'
 import NearMe from '../views/NearMe.vue'
-import ViewItinerary from '../views/ViewItinerary.vue'
+import CreateAnItinerary from '../views/CreateAnItinerary.vue'
+import MyItineraries from '../views/MyItineraries.vue'
+import MyIten from '../views/MyIten.vue'
 
 
 Vue.use(Router)
@@ -92,21 +94,29 @@ const router = new Router({
       }
     },
     {
-      path: '/itinerary',
-      name: 'itinerary',
-      component: ViewItinerary,
+      path: '/create-itinerary',
+      name: 'create-itinerary',
+      component: CreateAnItinerary,
       meta: {
         requiresAuth: false
       }
     },
     {
-      path: '/itinerary/ChangeItinerary',
-      name: 'ChangeItinerary',
-      component: ViewItinerary,
+      path: '/my-itineraries',
+      name: 'my-itineraries',
+      component: MyItineraries,
       meta: {
         requiresAuth: false
       }
     },
+    {
+      path:'/my-itineraries/:itineraryId',
+      name: 'itinerary-details',
+      component: MyIten,
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 

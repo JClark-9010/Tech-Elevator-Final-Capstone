@@ -15,6 +15,9 @@ namespace Capstone.DAO
         {
             connectionString = dbConnectionString;
         }
+
+        public string sqlLandmarks = "SELECT landmark_id, landmark_name, landmark_lat, landmark_lng, description, landmark_image FROM landmarks";
+
         public List<Landmark> GetLandmarks()
         {
             List<Landmark> landmarks = new List<Landmark>();
@@ -25,7 +28,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM landmarks", conn);
+                    SqlCommand cmd = new SqlCommand(sqlLandmarks, conn);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -55,7 +58,7 @@ namespace Capstone.DAO
                 {
                     conn.Open();
 
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM landmarks WHERE landmark_id = @landmarkId", conn);
+                    SqlCommand cmd = new SqlCommand($"{sqlLandmarks} WHERE landmark_id = @landmarkId", conn);
                     cmd.Parameters.AddWithValue("@landmarkId", landmarkId);
                     SqlDataReader reader = cmd.ExecuteReader();
 
@@ -111,6 +114,28 @@ namespace Capstone.DAO
             };
 
             return l;
+        }
+
+        public bool UpdateLandmark(int itenAdd, int landmarkId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("UPDATE landmarks SET iten_add = @itenAdd WHERE landmark_id = @landmarkId", conn);
+                    cmd.Parameters.AddWithValue("@litenAdd", itenAdd);
+                    cmd.Parameters.AddWithValue("@landmarkId", landmarkId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                }
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }
