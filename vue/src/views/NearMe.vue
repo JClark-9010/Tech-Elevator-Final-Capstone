@@ -1,6 +1,6 @@
 <template>
   <body id="body">
-    <h2 id="title">This is our homepage</h2>
+    <h2 id="title">Columbus Ohio! Home of the Buckeyes, Blue Jackets, and Crew!</h2>
     <div id="landmarks">
       <landmarks-overview/>
     </div>
@@ -52,6 +52,8 @@ export default {
 h2{
   grid-area: title;
   padding-left: 10px;
+  padding-top: 15px;
+  font-size: 22px;
 }
 @media all and (max-width: 800px) {
   #body{

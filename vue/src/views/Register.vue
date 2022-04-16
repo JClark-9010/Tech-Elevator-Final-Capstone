@@ -33,7 +33,7 @@
         required
       />
       <router-link id="account" v-bind:to="{ name: 'Login' }">Have an account?</router-link>
-      <input type="submit" value ="Create Account" />
+      <input id="submit" type="submit" value ="Create Account" />
   
 
     </form>
@@ -97,5 +97,14 @@ input, #account{
 #register{
   margin-left: 35%;
   margin-right: 35%;
+}
+#submit{
+  background-color: #208B77;
+  border:black;
+  border-radius: 5px;
+  color:#EAD6C7;
+}
+#submit:hover{
+ text-decoration: underline;
 }
 </style>

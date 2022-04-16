@@ -85,9 +85,14 @@ export default {
 }
 #signIn{
   padding-right: 10px;
+  color: #1A5270;
+}
+h2{
+  color:#1A5270;
 }
 #buttons{
   padding-top: 10px;
+  
   
 }
 

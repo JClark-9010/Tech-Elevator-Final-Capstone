@@ -62,32 +62,35 @@ export default {
   
 }
 #landmarkCard{
-  border-style: solid;
+  /* border-style: solid; */
   border-color: black;
   padding-left: 20px;
   padding-right:20px;
   border-radius: 20px;
   display: grid;
   flex-wrap: wrap;
+  color: #EAD6C7;
   
   grid-template-columns: 250px;
-  grid-template-rows: 70px 175px 70px;
+  grid-template-rows: 175px 70px 70px;
   grid-template-areas: 
-  "h5"
   "img"
+  "h5"
   "button";
-  box-shadow: 3px 3px gray;
+ 
   margin: 20px;
-  background-color: whitesmoke;
+  background-color: #E57D6A;
 }
 #landmarkCard:hover{
-  background-color: white;
-  box-shadow: 5px 5px 5px 5px gray;
+  background-color: #1A5270;
+
+  
 }
 h5{
   grid-area: h5;
   text-align: center;
   padding-top: 10px;
+  
 }
 p{
   grid-area: para;
@@ -98,22 +101,25 @@ p{
   max-width: 250px;
   max-height: 175px;
   grid-area: img;
+  padding-top: 10px;
   
   
 }
 button{
-  background-color: rgb(12, 204, 211);
+  background-color: #208B77;
   height: 50px;
   justify-content: center;
   grid-area: button;
   border:black;
   border-radius: 5px;
-  
+  color:#EAD6C7;
   
   
   
 }
 button:hover{
-  box-shadow: 2px 2px 2px 2px gray;
+ border: #EAD6C7;
+ border-style: solid;
+ border-radius: 6px;
 }
 </style>
