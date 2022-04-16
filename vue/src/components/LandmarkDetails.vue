@@ -24,8 +24,7 @@ export default {
   methods: {
     retrieveLandmark() {
       landmarksService
-        .getLandmark(this.$route.params.landmarkId)
-        .then((response) => {
+        .getLandmark(this.$route.params.landmarkId).then((response) => {
           this.$store.commit("SET_CURRENT_LANDMARK", response.data);
           this.isLoading = false;
         });

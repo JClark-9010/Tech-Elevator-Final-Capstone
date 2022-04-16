@@ -15,7 +15,7 @@ namespace Capstone.DAO
             connectionString = dbConnectionString;
         }
 
-        public string sqlGetItineraries = "SELECT * FROM itineraries WHERE user_id = @userId";//tie this to token
+        public string sqlGetUserItineraries = "SELECT * FROM itineraries WHERE user_id = @userId";
 
         public string sqlAddItinerary = "INSERT INTO itineraries (user_id, itinerary_name) VALUES (@userId, @itineraryName)";
 
@@ -31,8 +31,11 @@ namespace Capstone.DAO
 
         public string sqlGetItinerary = "SELECT * FROM itinerary WHERE itinerary_id = @itineraryId";
 
+        public string sqlGetBigThree = "SELECT * FROM itineraries_landmarks_user WHERE itinerary_id = @itineraryId";
 
-        public List<Itinerary> RetrieveItineraries(int userId)
+
+        //GET ALL USER'S ITINERARIES
+        public List<Itinerary> RetrieveUserItineraries(int userId)
         {
             List<Itinerary> list = new List<Itinerary>();
 
@@ -40,7 +43,7 @@ namespace Capstone.DAO
             {
                 conn.Open();
 
-                SqlCommand cmd = new SqlCommand(sqlGetItineraries, conn);
+                SqlCommand cmd = new SqlCommand(sqlGetUserItineraries, conn);
                 cmd.Parameters.AddWithValue("@userId", userId);
 
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -58,6 +61,7 @@ namespace Capstone.DAO
             return list;
         }
 
+        //CREATE NEW ITINERARY
         public bool AddItinerary(Itinerary itinerary)
         {
             try
@@ -78,6 +82,7 @@ namespace Capstone.DAO
             return true;
         }
 
+        //DELETE ENTIRE ITINERARY
         public bool DeleteItinerary(int itineraryId)
         {
             try
@@ -98,6 +103,7 @@ namespace Capstone.DAO
             return true;
         }
 
+        //REMOVE A LANDMARK FROM ITINERARY
         public bool DeleteLandmarkFromItinerary(ItineraryDetails i)
         {
             try
@@ -119,6 +125,7 @@ namespace Capstone.DAO
             return true;
         }
 
+        //GET ITINERARY AND ALL LANDMARKS ON IT
         public List<ItineraryDetails> GetItineraryDetails(int itineraryId)
         {
             List<ItineraryDetails> i = new List<ItineraryDetails>();
@@ -147,34 +154,7 @@ namespace Capstone.DAO
             return i;
         }
 
-        public Itinerary GetItinerary(int itineraryId)
-        {
-            Itinerary itinerary = null;
-
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand("SELECT * FROM itineraries WHERE itinerary_id = @itineraryId", conn);
-                    cmd.Parameters.AddWithValue("@landmarkId", itineraryId);
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        itinerary = GetItineraryFromReader(reader);
-                    }
-                }
-            }
-            catch (SqlException)
-            {
-                throw;
-            }
-
-            return itinerary;
-        }
-
+        //ADD A LANDMARK TO ITINERARY
         public bool AddLandmarkToItinerary(ItineraryDetails i)
         {
             try
@@ -196,22 +176,39 @@ namespace Capstone.DAO
             return true;
         }
 
-        private Itinerary GetItineraryFromReader(SqlDataReader reader)
+        //GET/SET THE CURRENT ITINERARY
+        public Itinerary GetItinerary(int itineraryId)
         {
-            Itinerary i = new Itinerary()
-            {
-                ItineraryId = Convert.ToInt32(reader["itinerary_id"]),
-                UserId = Convert.ToInt32(reader["user_id"]),
-                ItineraryName = Convert.ToString(reader["itinerary_name"]),
-            };
+            Itinerary itinerary = null;
 
-            return i;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM itineraries WHERE itinerary_id = @itineraryId", conn);
+                    cmd.Parameters.AddWithValue("@itineraryId", itineraryId);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        itinerary = GetItineraryFromReader(reader);
+                    }
+                }
+            }
+            catch (SqlException)
+            {
+                throw;
+            }
+
+            return itinerary;
         }
 
+        //GET ALL ITINERARIES IN DATABASE
         public List <Itinerary> GetItineraries()
         {
             List <Itinerary> itineraries = new List<Itinerary>();
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -233,9 +230,21 @@ namespace Capstone.DAO
             {
                 throw;
             }
-
             return itineraries;
         }
+
+        private Itinerary GetItineraryFromReader(SqlDataReader reader)
+        {
+            Itinerary i = new Itinerary()
+            {
+                ItineraryId = Convert.ToInt32(reader["itinerary_id"]),
+                UserId = Convert.ToInt32(reader["user_id"]),
+                ItineraryName = Convert.ToString(reader["itinerary_name"]),
+            };
+
+            return i;
+        }
+
 
 
     }

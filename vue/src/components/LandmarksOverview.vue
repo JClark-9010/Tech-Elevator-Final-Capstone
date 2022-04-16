@@ -9,20 +9,22 @@
           <td>{{ landmark.landmarkLng }}</td> -->
           <p>{{ landmark.description }}</p>
           <img id="image" v-bind:src="landmark.landmarkImage" alt="">
-          <button v-on:click.prevent="addLandmarkToItinerary" v-if="checkItinerary">Add Landmark to Itinerary</button>
+          <button v-on:click.prevent="addLandmarkToItinerary" v-if="timeToAdd">Add Landmark to Itinerary</button>
         </div>
       
   </div>
 </template>
 
 <script>
-
 import landmarksService from "../services/LandmarksService.js";
 export default {
   name: "LandmarksOverview",
   data () {
     return {
-      userId: this.$store.state.user.userId
+      userId: this.$store.state.user.userId,
+      timeToAdd: this.$store.state.timeToAdd,
+      itineraryDetails: {},
+      itineraryId: this.$store.state.itineraryId
     }
   },
   methods: {
@@ -30,7 +32,8 @@ export default {
       this.$router.push(`/landmarks/${landmarkId}`);
     },
     addLandmarkToItinerary(){
-      this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itinerary.itineraryId, this.landmark.landmarkId, this.userId);
+      this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
+      landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
       this.$router.push({ name: "itinerary" });
     },
   },
@@ -40,7 +43,6 @@ export default {
     },
     checkItinerary() {
       return this.$store.state.inItinerary;
-      
     }
   },
   created() {
