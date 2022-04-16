@@ -38,7 +38,7 @@ namespace Capstone.Controllers
             }
         }
 
-        [HttpGet("{LandmarkId}")]
+        [HttpGet("{landmarkId}")]
         public ActionResult<Landmark> GetLandmark(int landmarkId) 
         {
             Landmark landmark = landmarksDao.GetLandmark(landmarkId);
@@ -49,6 +49,20 @@ namespace Capstone.Controllers
             else
             {
                 return Ok(landmark);
+            }
+        }
+
+        [HttpPut("update")]
+        public IActionResult UpdateLandmark(int itenAdd, int landmarkId)
+        {
+            bool result = landmarksDao.UpdateLandmark(itenAdd, landmarkId);
+            if (result == true)
+            {
+                return Ok("Landmark updated");
+            }
+            else
+            {
+                return BadRequest("There was a problem updating your Landmark.");
             }
         }
     }

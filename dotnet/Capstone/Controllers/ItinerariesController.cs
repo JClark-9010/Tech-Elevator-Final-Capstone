@@ -19,6 +19,20 @@ namespace Capstone.Controllers
             itineraryDAO = _itineraryDAO;
         }
 
+        //GET ALL USER'S ITINERARIES
+        [HttpGet("fetchuser/{userId}")]
+        public IActionResult GetUserItineraries(int userId)
+        {
+            List<Itinerary> result = itineraryDAO.RetrieveUserItineraries(userId);
+            try
+            { return Ok(result); }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
+            }
+
+        }
+
         //CREATE A NEW ITINERARY
         [HttpPost("add")]
         public IActionResult AddItinerary(Itinerary itinerary)
@@ -33,7 +47,6 @@ namespace Capstone.Controllers
                 return BadRequest("There was a problem adding that to your itinerary.");
             }
         }
-
 
         //DELETE ENTIRE ITINERARY
         [HttpDelete("delete/{itineraryId}")]
@@ -50,6 +63,7 @@ namespace Capstone.Controllers
             }
         }
 
+        //REMOVE A LANDMARK FROM ITINERARY
         [HttpDelete("deletelandmark")]
         public IActionResult DeleteLandmarkFromItinerary(ItineraryDetails i)
         {
@@ -64,23 +78,7 @@ namespace Capstone.Controllers
             }
         }
 
-
-        //GET ITINERARY
-        [HttpGet("fetch/{id}")]
-        public IActionResult GetItineraries(int id)
-        {
-            List<Itinerary> result = itineraryDAO.RetrieveItineraries(id);
-            try
-            { return Ok(result); }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
-            }
-
-        }
-
-
-        //GET ITINERARY DETAILS (LANDMARK DATA)
+        //GET ITINERARY AND ALL LANDMARKS ON IT
         [HttpGet("fetch/details/{itineraryId}")]
         public IActionResult ItineraryDetails(int itineraryId)
         {
@@ -94,6 +92,7 @@ namespace Capstone.Controllers
 
         }
 
+        //ADDS LANDMARK TO AN ITINERARY
         [HttpPost("addlandmark")]
         public IActionResult AddLandmarkToItinerary(ItineraryDetails i)
         {
@@ -108,6 +107,21 @@ namespace Capstone.Controllers
             }
         }
 
+        //GET/SET CURRENT ITINERARY
+        [HttpGet("fetch/{itineraryId}")]
+        public IActionResult GetSetItinerary(int itineraryId)
+        {
+            Itinerary result = itineraryDAO.GetItinerary(itineraryId);
+            try
+            { return Ok(result); }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Server error in GetItineraries - " + ex.Message });
+            }
+
+        }
+
+        //GETS ALL ITINERARIES IN DATABASE
         [HttpGet("fetch")]
         public ActionResult<Itinerary> GetItineraries()
         {

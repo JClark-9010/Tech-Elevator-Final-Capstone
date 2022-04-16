@@ -15,29 +15,20 @@
       <input type="submit" />
       <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>
-    <h1 v-if="successfullyAdded">Landmark added to your itinerary!</h1>
-    <h2 v-if="itineraryCreated">Add some landmarks to your itinerary</h2>
-    <landmarks-overview v-if="itineraryCreated" />
-    
   </div>
-
-
 </template>
 
 <script>
 import itineraryService from "../services/ItineraryService.js";
-import LandmarksOverview from "../components/LandmarksOverview.vue";
 
 export default {
   name: "create-itinerary",
-  components: { LandmarksOverview },
+
   data() {
     return {
-      successfullyAdded: false,
       itineraryCreated: false,
       itinerary: {
         userId: this.$store.state.user.userId,
-        itineraryId: this.$store.state.itineraries.itineraryId,
       },
     };
   },
@@ -60,25 +51,17 @@ export default {
             console.log("Network Error");
           }
         });
-      this.resetForm();
+      itineraryService.getItineraries().then((response) => {
+        this.$store.commit("REPLACE_ITINERARIES", response.data);
+      });
+      this.$router.push({ name:"my-itineraries"});
     },
   },
-
+  
   resetForm() {
     this.itinerary = {};
-    itineraryService.getItinerary(this.itinerary).then((response) => {
-      this.$store.commit("SET_CURRENT_ITINERARY", response.data);
-    });
-    itineraryService.getItineraries().then((response) => {
-      this.$store.commit("REPLACE_ITINERARIES", response.data);
-    });
   },
-
-  created() {
-    itineraryService.getItineraries().then((response) => {
-      this.$store.commit("REPLACE_ITINERARIES", response.data);
-    })
-  },
+  created() {},
 };
 </script>
 

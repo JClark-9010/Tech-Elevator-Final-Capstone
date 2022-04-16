@@ -1,8 +1,6 @@
 <template>
   <div>
      <create-itinerary /> 
-    
-
   </div>
 </template>
 
