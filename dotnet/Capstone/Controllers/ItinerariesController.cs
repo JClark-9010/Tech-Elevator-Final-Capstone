@@ -130,7 +130,7 @@ namespace Capstone.Controllers
             return Ok(itineraries);
 
         }
-        [HttpPost("addlandmark{itineraryId}/{landmarkId}/{userId}")]
+        [HttpPost("addlandmark/{itineraryId}/{landmarkId}/{userId}")]
         public IActionResult AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId)
         {
             bool result = itineraryDAO.AddLandmarkToItinerary(itineraryId, landmarkId, userId);
