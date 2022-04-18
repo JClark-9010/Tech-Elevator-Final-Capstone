@@ -34,5 +34,6 @@ export default {
 
   addLandmarkToItinerary(itineraryDetails) {
       return axios.post(path + '/addlandmark', itineraryDetails)
-  }
+  },
+  
 }

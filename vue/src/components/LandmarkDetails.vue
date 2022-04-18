@@ -66,14 +66,15 @@ export default {
 }
 #description{
   grid-area: description;
+   color: #EAD6C7;
   margin-bottom: 200px;
   margin-left: 20px;
   margin-right: 20px;
   padding: 7px;
   border-style: solid;
-  border-color: black;
+  
   border-radius: 10px;
-  background-color: whitesmoke;
+  background-color: #E57D6A;
 }
 
 </style>
