@@ -1,8 +1,8 @@
 <template>
   <div id="overview">
     
-        <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
-          <h5 v-on:click="viewLandmarkDetails(landmark.landmarkId)">
+        <div id="landmarkCard" v-for="landmark in sortLandmarks" v-bind:key="landmark.landmarkId">
+          <h5 id="landmarkName" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
             {{ landmark.landmarkName }}
           </h5>
           
@@ -113,7 +113,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   padding-left: 25px;
-  
+  align-content: center;
+  justify-content: center;
 }
 #landmarkCard{
   /* border-style: solid; */
@@ -123,14 +124,14 @@ export default {
   padding-top: 5px;
   border-radius: 20px;
   display: grid;
-  flex-wrap: wrap;
+  
   color: #EAD6C7;
   
   grid-template-columns: 240px;
   grid-template-rows: 175px 85px 70px;
   grid-template-areas: 
   "img"
-  "h5"
+  "landmarkName"
   "button";
  
   margin: 20px;
@@ -141,13 +142,13 @@ export default {
 
   
 }
-h5{
-  grid-area: h5;
+#landmarkName{
+  grid-area: landmarkName;
   text-align: center;
   margin-top: 15px;
   
 }
-h5:hover{
+#landmarkName:hover{
  border: #EAD6C7;
  border-style: solid;
  border-radius: 6px;

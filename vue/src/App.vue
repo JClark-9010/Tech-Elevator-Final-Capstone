@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>Tech Elevator City Tours</h1>
+      <img id="logo" src="@/assets/TechElLogo_150-01.png" alt="">
     <div id="nav">
       <router-link id="bar" v-bind:to="{ name: 'nearMe' }">Home</router-link>
       <!-- <router-link id="bar" v-bind:to="{ name: 'landmarks' }">Landmarks</router-link>  -->
@@ -37,15 +37,16 @@ header{
   display: grid;
   
   grid-template-areas: 
-  "h1 nav";
+  "logo nav";
 }
 h5{
   font-style: bold;
 }
-h1{
+#logo{
   /* font-family:Arial, Helvetica, sans-serif; */
   color: #EAD6C7;
-  grid-area: h1;
+  grid-area: logo;
+  width: 470px;
 }
 #nav{
   grid-area: nav;

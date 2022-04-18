@@ -58,6 +58,7 @@
       <input type="submit" />
       <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
     </form>
+    
   </div>
 </template>
 :c
