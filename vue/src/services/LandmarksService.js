@@ -16,7 +16,4 @@ export default {
     return axios.post(path, landmark)
   },
   
-  updateLandmark(itenAdd, landmarkId){
-    return axios.put(path + '/update', itenAdd, landmarkId)
-  }
 }

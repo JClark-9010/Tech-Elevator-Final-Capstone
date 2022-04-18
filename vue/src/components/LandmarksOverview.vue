@@ -45,9 +45,9 @@ export default {
     },
     addLandmarkToItinerary(){
       this.selected = false;
-      this.$router.push({name: 'my-itineraries'});
       console.log(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
+      location.reload();
       // .then((response)=>{
       //   this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
       // }); 

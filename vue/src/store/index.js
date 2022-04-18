@@ -79,8 +79,8 @@ export default new Vuex.Store({
       state.itinerary = data;
     },
 
-    SET_CURRENT_ITINERARY_DETAILS(state, itineraryId, landmarkId, userId){
-      state.itineraryDetails = itineraryId, landmarkId, userId;
+    SET_CURRENT_ITINERARY_DETAILS(state, data){
+      state.itineraryDetails = data;
     },
 
     ADD_ITINERARY(state, itinerary, userId){

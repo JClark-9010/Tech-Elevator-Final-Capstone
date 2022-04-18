@@ -28,8 +28,8 @@ export default {
       return axios.delete(path + '/delete/' + itineraryId)
   },
 
-  deleteLandmarkFromItinerary(itineraryDetails) {
-      return axios.delete(path + '/deletelandmark', itineraryDetails)
+  deleteLandmarkFromItinerary(itineraryId, landmarkId) {
+      return axios.delete(path + '/deletelandmark/' + itineraryId + '/' + landmarkId)
   },
 
   addLandmarkToItinerary(itineraryId, landmarkId, userId) {

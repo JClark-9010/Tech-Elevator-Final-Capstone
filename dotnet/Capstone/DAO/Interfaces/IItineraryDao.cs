@@ -15,17 +15,16 @@ namespace Capstone.DAO.Interfaces
         //DELETE ENTIRE ITINERARY
         bool DeleteItinerary(int itineraryId);
         //REMOVE A LANDMARK FROM ITINERARY
-        bool DeleteLandmarkFromItinerary(ItineraryDetails i);
+        bool DeleteLandmarkFromItinerary(int itineraryId, int landmarkId);
         //GET ITINERARY AND ALL LANDMARKS ON IT
         List<ItineraryDetails> GetItineraryDetails(int itineraryId);
         //ADD A LANDMARK TO ITINERARY
-       // bool AddLandmarkToItinerary(ItineraryDetails i);
+        bool AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId);
         //GET/SET THE CURRENT ITINERARY
         Itinerary GetItinerary(int itineraryId);
         //GET ALL ITINERARIES IN DATABASE
         List<Itinerary> GetItineraries();
 
-        bool AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId);
     }
 }
 
