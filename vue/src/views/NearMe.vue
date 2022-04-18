@@ -20,6 +20,9 @@ export default {
     Nearby,
     LandmarksOverview,
   },
+  created() {
+    this.$store.commit("USER_IN_ITINERARY")
+  }
 };
 </script>
 

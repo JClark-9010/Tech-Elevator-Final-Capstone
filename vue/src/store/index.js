@@ -24,9 +24,16 @@ export default new Vuex.Store({
     landmarks: [],
     itineraries: [],
     userItineraries: [],
+    inItinerary: false,
   },
 
   mutations: {
+    USER_IN_ITINERARY(state) {
+      state.inItinerary = !state.inItinerary;
+    },
+    
+    
+    
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
       localStorage.setItem('token', token);

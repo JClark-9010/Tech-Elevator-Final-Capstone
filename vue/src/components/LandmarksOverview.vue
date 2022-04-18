@@ -9,7 +9,8 @@
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="">
-          <button v-on:click.prevent="addLandmarkToItinerary" >Add Landmark to Itinerary</button>
+          <button v-on:click.prevent="addLandmarkToItinerary" v-if="inItinerary">Add Landmark to Itinerary</button>
+          <!-- <button v-else>Add Landmark to Itinerary></button> -->
         </div>
       
   </div>
@@ -41,7 +42,7 @@ export default {
     landmarks() {
       return this.$store.state.landmarks;
     },
-    checkItinerary() {
+    inItinerary() {
       return this.$store.state.inItinerary;
     }
   },
@@ -49,6 +50,7 @@ export default {
     landmarksService.getLandmarks().then((response) => {
       this.$store.commit("REPLACE_LANDMARKS", response.data);
     });
+    
     
   },
 };
