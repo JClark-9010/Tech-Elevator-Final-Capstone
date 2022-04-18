@@ -26,7 +26,13 @@ export default {
     return {
       userId: this.$store.state.user.userId,
       timeToAdd: this.$store.state.timeToAdd,
-      selected: false
+      selected: false,
+      itineraryDetails: {},
+      itineraryId: this.$store.state.itineraryId,
+      userCoordinates: {
+        lat: 0,
+        lng: 0,
+      },
     }
   },
   methods: {
@@ -49,6 +55,24 @@ export default {
       // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
       // this.$router.push({ name: "itinerary" });
     },
+    
+    distance(lat1, lng1, lat2, lng2) {
+      const R = 3958.8;
+      let dLat = this.deg2rad(lat2 - lat1);
+      let dLng = this.deg2rad(lng1 - lng2);
+      let a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(this.deg2rad(lat1)) *
+          Math.cos(this.deg2rad(lat2)) *
+          Math.sin(dLng / 2) *
+          Math.sin(dLng / 2);
+      let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+      let d = R * c;
+      return d;
+    },
+    deg2rad(deg) {
+      return deg * (Math.PI / 180);
+    },
   },
   computed: {
     landmarks() {
@@ -62,13 +86,23 @@ export default {
     // }
     storeLandmark() {
       return this.$store.state.storeLandmark;
-    }
+    },
+    sortLandmarks(){
+      let sortedLandmarks = this.$store.state.landmarks.slice();
+        return sortedLandmarks.sort((a, b) => {
+        return this.distance(this.userCoordinates.lat, this.userCoordinates.lng, a.landmarkLat, a.landmarkLng) -
+        this.distance(this.userCoordinates.lat, this.userCoordinates.lng, b.landmarkLat, b.landmarkLng)})
+    },
   },
   created() {
     landmarksService.getLandmarks().then((response) => {
       this.$store.commit("REPLACE_LANDMARKS", response.data);
     });
-    
+    this.$getLocation({})
+        .then((coordinates) => {
+          this.userCoordinates = coordinates;
+        })
+        .catch((error) => alert(error));
   },
 };
 </script>

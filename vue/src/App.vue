@@ -3,14 +3,14 @@
     <header>
       <h1>Tech Elevator City Tours</h1>
     <div id="nav">
-      <router-link id="bar" v-bind:to="{ name: 'home' }">Home</router-link>
-      <router-link id="bar" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
+      <router-link id="bar" v-bind:to="{ name: 'nearMe' }">Home</router-link>
       <!-- <router-link id="bar" v-bind:to="{ name: 'landmarks' }">Landmarks</router-link>  -->
       <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'admin'">Add Landmark</router-link>
-      <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'user'">Suggest Landmark</router-link> 
-      <router-link id="bar" v-bind:to="{ name: 'nearMe'}" >Landmarks Near Me</router-link> 
+     
       <router-link id="bar" v-bind:to="{ name: 'my-itineraries'}" v-if="$store.state.user.role == 'user'">My Itineraries</router-link>
       <router-link id="bar" v-bind:to="{ name: 'create-itinerary'}" v-if="$store.state.user.role == 'user'">Create New Itinerary</router-link>
+      <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'user'">Suggest Landmark</router-link> 
+      <router-link id="bar" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
 
     </div>
     <!-- <img id="skyline" src="https://www.columbusddc.com/assets/inc/timthumb.php?src=https://03f59d67b8953209fecb-2ffae5b4d8c8fad2d75b1377df2d5b7c.ssl.cf2.rackcdn.com/banner-Scioto-Mile-Banner-2.png&w=2000&h=560&zc=1" alt=""> -->
