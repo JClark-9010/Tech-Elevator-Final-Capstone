@@ -27,11 +27,13 @@ export default {
 <style>
 #body{
   display: grid;
-  grid-template-rows: 50px auto;
+  grid-template-rows: 50px 650px auto;
   grid-template-columns: 1fr 2fr;
+  
   grid-template-areas: 
   "title landmarks"
   "nearMe landmarks"
+  "landmarks landmarks"
   ;
  padding-top: 10px;
   padding-right: 10px;

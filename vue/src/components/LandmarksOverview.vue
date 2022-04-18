@@ -118,15 +118,16 @@ export default {
 #landmarkCard{
   /* border-style: solid; */
   border-color: black;
-  padding-left: 20px;
-  padding-right:20px;
+  padding-left: 25px;
+  padding-right:25px;
+  padding-top: 5px;
   border-radius: 20px;
   display: grid;
   flex-wrap: wrap;
   color: #EAD6C7;
   
-  grid-template-columns: 250px;
-  grid-template-rows: 175px 70px 70px;
+  grid-template-columns: 240px;
+  grid-template-rows: 175px 85px 70px;
   grid-template-areas: 
   "img"
   "h5"
@@ -143,8 +144,13 @@ export default {
 h5{
   grid-area: h5;
   text-align: center;
-  padding-top: 10px;
+  margin-top: 15px;
   
+}
+h5:hover{
+ border: #EAD6C7;
+ border-style: solid;
+ border-radius: 6px;
 }
 p{
   grid-area: para;
@@ -152,12 +158,17 @@ p{
   
 }
 #detImage{
-  max-width: 250px;
-  max-height: 175px;
+  width: 240px;
+  /* max-height: 175px; */
   grid-area: img;
-  padding-top: 10px;
+  margin-top: 10px;
   
   
+}
+#detImage:hover{
+ border: #EAD6C7;
+ border-style: solid;
+ border-radius: 6px;
 }
 button{
   background-color: #208B77;
