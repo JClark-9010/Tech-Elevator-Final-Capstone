@@ -9,7 +9,7 @@
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="">
-          <button v-on:click.prevent="addLandmarkToItinerary" v-if="checkItinerary">Add Landmark to Itinerary</button>
+          <button v-on:click.prevent="addLandmarkToItinerary" >Add Landmark to Itinerary</button>
         </div>
       
   </div>
