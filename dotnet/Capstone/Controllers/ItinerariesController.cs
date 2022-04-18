@@ -93,19 +93,19 @@ namespace Capstone.Controllers
         }
 
         //ADDS LANDMARK TO AN ITINERARY
-        [HttpPost("addlandmark")]
-        public IActionResult AddLandmarkToItinerary(ItineraryDetails i)
-        {
-            bool result = itineraryDAO.AddLandmarkToItinerary(i);
-            if (result == true)
-            {
-                return Ok("Landmarkd added to itenerary successfully");
-            }
-            else
-            {
-                return BadRequest("There was a problem adding that to your itinerary.");
-            }
-        }
+        //[HttpPost("addlandmark")]
+        // public IActionResult AddLandmarkToItinerary(ItineraryDetails i)
+        // {
+        //     bool result = itineraryDAO.AddLandmarkToItinerary(i);
+        //     if (result == true)
+        //     {
+        //         return Ok("Landmarkd added to itenerary successfully");
+        //     }
+        //     else
+        //     {
+        //         return BadRequest("There was a problem adding that to your itinerary.");
+        //     }
+        // } 
 
         //GET/SET CURRENT ITINERARY
         [HttpGet("fetch/{itineraryId}")]
@@ -125,10 +125,23 @@ namespace Capstone.Controllers
         [HttpGet("fetch")]
         public ActionResult<Itinerary> GetItineraries()
         {
-            List <Itinerary> itineraries = itineraryDAO.GetItineraries();
-            
-                return Ok(itineraries);
-            
+            List<Itinerary> itineraries = itineraryDAO.GetItineraries();
+
+            return Ok(itineraries);
+
+        }
+        [HttpPost("addlandmark{itineraryId}/{landmarkId}/{userId}")]
+        public IActionResult AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId)
+        {
+            bool result = itineraryDAO.AddLandmarkToItinerary(itineraryId, landmarkId, userId);
+            if (result == true)
+            {
+                return Ok("Landmarkd added to itenerary successfully");
+            }
+            else
+            {
+                return BadRequest("There was a problem adding that to your itinerary.");
+            }
         }
     }
 }

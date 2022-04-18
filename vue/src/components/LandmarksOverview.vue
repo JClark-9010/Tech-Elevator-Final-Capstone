@@ -9,8 +9,12 @@
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="">
+<<<<<<< HEAD
           <!-- <button v-on:click="viewLandmarkDetails(landmark.landmarkId)">View Details</button> -->
           <button v-on:click.prevent="addLandmarkToItinerary" v-if="inItinerary">Add Landmark to Itinerary</button>
+=======
+          <button v-on:click.prevent="addLandmarkToItinerary(landmark.landmarkId)"  v-if="inItinerary">Add Landmark to Itinerary</button>
+>>>>>>> 1aa9342b3ec39fe9e92dcd4a535d2ffcdf860bb7
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
         </div>
       
@@ -19,28 +23,40 @@
 
 <script>
 import landmarksService from "../services/LandmarksService.js";
+import itineraryService from "../services/ItineraryService.js";
 export default {
   name: "LandmarksOverview",
   data () {
     return {
       userId: this.$store.state.user.userId,
       timeToAdd: this.$store.state.timeToAdd,
+<<<<<<< HEAD
       itineraryDetails: {},
       itineraryId: this.$store.state.itineraryId,
       userCoordinates: {
         lat: 0,
         lng: 0,
       },
+=======
+      // itineraryDetails: {},
+      itineraryId: this.$store.state.itineraryId
+>>>>>>> 1aa9342b3ec39fe9e92dcd4a535d2ffcdf860bb7
     }
   },
   methods: {
     viewLandmarkDetails(landmarkId) {
       this.$router.push(`/landmarks/${landmarkId}`);
     },
-    addLandmarkToItinerary(){
-      this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
-      landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
-      this.$router.push({ name: "itinerary" });
+    addLandmarkToItinerary(landmarkId){
+      itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, landmarkId, this.$store.state.user.userId)
+      .then((response)=>{
+        this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
+
+
+      }); 
+      // this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
+      // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
+      // this.$router.push({ name: "itinerary" });
     },
     
     distance(lat1, lng1, lat2, lng2) {
@@ -68,11 +84,17 @@ export default {
     inItinerary() {
       return this.$store.state.inItinerary;
     },
+<<<<<<< HEAD
     sortLandmarks(landmarks){
       return landmarks.sort((a, b) => 
         a.distance(this.userCoordinates.lat, this.userCoordinates.lng, a.landmarkLat, a.landmark.Lng) -
         b.distance(this.userCoordinates.lat, this.userCoordinates.lng, b.landmarkLat, b.landmark.Lng))
     },
+=======
+    itineraryDetails() {
+      return this.$store.state.itineraryDetails;
+    }
+>>>>>>> 1aa9342b3ec39fe9e92dcd4a535d2ffcdf860bb7
   },
   created() {
     landmarksService.getLandmarks().then((response) => {

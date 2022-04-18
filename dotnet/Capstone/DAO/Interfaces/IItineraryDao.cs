@@ -19,11 +19,13 @@ namespace Capstone.DAO.Interfaces
         //GET ITINERARY AND ALL LANDMARKS ON IT
         List<ItineraryDetails> GetItineraryDetails(int itineraryId);
         //ADD A LANDMARK TO ITINERARY
-        bool AddLandmarkToItinerary(ItineraryDetails i);
+       // bool AddLandmarkToItinerary(ItineraryDetails i);
         //GET/SET THE CURRENT ITINERARY
         Itinerary GetItinerary(int itineraryId);
         //GET ALL ITINERARIES IN DATABASE
         List<Itinerary> GetItineraries();
+
+        bool AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId);
     }
 }
 
