@@ -1,17 +1,18 @@
 <template>
   <div id="overview">
     
-        <div id="landmarkCard" v-for="landmark in sortLandmarks" v-bind:key="landmark.landmarkId" >
-          <h5>
+        <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
+          <h5 v-on:click="viewLandmarkDetails(landmark.landmarkId)">
             {{ landmark.landmarkName }}
           </h5>
           {{distance( userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng)}}
           <!-- <td>{{ landmark.landmarkLat }}</td>
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
-          <img id="detImage" v-bind:src="landmark.landmarkImage" alt="">
-          <button v-on:click.prevent="addLandmarkToItinerary(landmark.landmarkId)"  v-if="inItinerary">Add Landmark to Itinerary</button>
+          <img id="detImage" v-bind:src="landmark.landmarkImage" alt="" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
+          <button v-on:click="promptAssurance(landmark.landmarkId)">Add Landmark to Itinerary</button>
+          <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
         </div>
       
   </div>
@@ -26,6 +27,7 @@ export default {
     return {
       userId: this.$store.state.user.userId,
       timeToAdd: this.$store.state.timeToAdd,
+      selected: false,
       itineraryDetails: {},
       itineraryId: this.$store.state.itineraryId,
       userCoordinates: {
@@ -38,13 +40,18 @@ export default {
     viewLandmarkDetails(landmarkId) {
       this.$router.push(`/landmarks/${landmarkId}`);
     },
-    addLandmarkToItinerary(landmarkId){
-      itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, landmarkId, this.$store.state.user.userId)
-      .then((response)=>{
-        this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
-
-
-      }); 
+    promptAssurance(landmarkId){
+      this.selected = true;
+      this.$store.commit("SET_STORE_LANDMARK", landmarkId);
+    },
+    addLandmarkToItinerary(){
+      this.selected = false;
+      this.$router.push({name: 'my-itineraries'});
+      console.log(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
+      itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
+      // .then((response)=>{
+      //   this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
+      // }); 
       // this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
       // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
       // this.$router.push({ name: "itinerary" });
@@ -74,6 +81,12 @@ export default {
     },
     inItinerary() {
       return this.$store.state.inItinerary;
+    },
+    // itineraryDetails() {
+    //   return this.$store.state.itineraryDetails;
+    // }
+    storeLandmark() {
+      return this.$store.state.storeLandmark;
     },
     sortLandmarks(){
       let sortedLandmarks = this.$store.state.landmarks.slice();
