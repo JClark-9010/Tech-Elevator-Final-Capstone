@@ -9,12 +9,7 @@
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="">
-<<<<<<< HEAD
-          <!-- <button v-on:click="viewLandmarkDetails(landmark.landmarkId)">View Details</button> -->
-          <button v-on:click.prevent="addLandmarkToItinerary" v-if="inItinerary">Add Landmark to Itinerary</button>
-=======
           <button v-on:click.prevent="addLandmarkToItinerary(landmark.landmarkId)"  v-if="inItinerary">Add Landmark to Itinerary</button>
->>>>>>> 1aa9342b3ec39fe9e92dcd4a535d2ffcdf860bb7
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
         </div>
       
@@ -30,17 +25,12 @@ export default {
     return {
       userId: this.$store.state.user.userId,
       timeToAdd: this.$store.state.timeToAdd,
-<<<<<<< HEAD
       itineraryDetails: {},
       itineraryId: this.$store.state.itineraryId,
       userCoordinates: {
         lat: 0,
         lng: 0,
       },
-=======
-      // itineraryDetails: {},
-      itineraryId: this.$store.state.itineraryId
->>>>>>> 1aa9342b3ec39fe9e92dcd4a535d2ffcdf860bb7
     }
   },
   methods: {
@@ -84,17 +74,12 @@ export default {
     inItinerary() {
       return this.$store.state.inItinerary;
     },
-<<<<<<< HEAD
-    sortLandmarks(landmarks){
-      return landmarks.sort((a, b) => 
-        a.distance(this.userCoordinates.lat, this.userCoordinates.lng, a.landmarkLat, a.landmark.Lng) -
-        b.distance(this.userCoordinates.lat, this.userCoordinates.lng, b.landmarkLat, b.landmark.Lng))
-    },
-=======
-    itineraryDetails() {
-      return this.$store.state.itineraryDetails;
-    }
->>>>>>> 1aa9342b3ec39fe9e92dcd4a535d2ffcdf860bb7
+    // sortLandmarks(){
+    //   const sortedLandmarks = this.$store.state.landmarks.slice();
+    //     return sortedLandmarks.sort((a, b) => {
+    //     return this.distance(this.userCoordinates.lat, this.userCoordinates.lng, a.landmarkLat, a.landmarkLng) -
+    //     this.distance(this.userCoordinates.lat, this.userCoordinates.lng, b.landmarkLat, b.landmarkLng)})
+    // },
   },
   created() {
     landmarksService.getLandmarks().then((response) => {
