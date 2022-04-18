@@ -5,6 +5,7 @@
           <h5 v-on:click="viewLandmarkDetails(landmark.landmarkId)">
             {{ landmark.landmarkName }}
           </h5>
+          
           <!-- <td>{{ landmark.landmarkLat }}</td>
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
