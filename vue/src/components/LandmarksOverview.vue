@@ -9,7 +9,7 @@
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="">
-          <button v-on:click.prevent="addLandmarkToItinerary" v-if="inItinerary">Add Landmark to Itinerary</button>
+          <button v-on:click.prevent="addLandmarkToItinerary(landmark.landmarkId)"  v-if="inItinerary">Add Landmark to Itinerary</button>
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
         </div>
       
@@ -18,13 +18,14 @@
 
 <script>
 import landmarksService from "../services/LandmarksService.js";
+import itineraryService from "../services/ItineraryService.js";
 export default {
   name: "LandmarksOverview",
   data () {
     return {
       userId: this.$store.state.user.userId,
       timeToAdd: this.$store.state.timeToAdd,
-      itineraryDetails: {},
+      // itineraryDetails: {},
       itineraryId: this.$store.state.itineraryId
     }
   },
@@ -32,10 +33,16 @@ export default {
     viewLandmarkDetails(landmarkId) {
       this.$router.push(`/landmarks/${landmarkId}`);
     },
-    addLandmarkToItinerary(){
-      this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
-      landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
-      this.$router.push({ name: "itinerary" });
+    addLandmarkToItinerary(landmarkId){
+      itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, landmarkId, this.$store.state.user.userId)
+      .then((response)=>{
+        this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
+
+
+      }); 
+      // this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
+      // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
+      // this.$router.push({ name: "itinerary" });
     },
   },
   computed: {
@@ -44,6 +51,9 @@ export default {
     },
     inItinerary() {
       return this.$store.state.inItinerary;
+    },
+    itineraryDetails() {
+      return this.$store.state.itineraryDetails;
     }
   },
   created() {

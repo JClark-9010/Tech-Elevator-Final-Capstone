@@ -32,7 +32,7 @@ export default {
       return axios.delete(path + '/deletelandmark', itineraryDetails)
   },
 
-  addLandmarkToItinerary(itineraryDetails) {
-      return axios.post(path + '/addlandmark', itineraryDetails)
+  addLandmarkToItinerary(itineraryId, landmarkId, userId) {
+      return axios.post(path + '/addlandmark', itineraryId, landmarkId, userId)
   }
 }

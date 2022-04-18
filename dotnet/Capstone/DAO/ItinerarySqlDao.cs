@@ -155,26 +155,26 @@ namespace Capstone.DAO
         }
 
         //ADD A LANDMARK TO ITINERARY
-        public bool AddLandmarkToItinerary(ItineraryDetails i)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand(sqlAddLandmarkToItinerary, conn);
-                    cmd.Parameters.AddWithValue("@itineraryId", i.ItineraryId);
-                    cmd.Parameters.AddWithValue("@landmarkId", i.LandmarkId);
-                    cmd.Parameters.AddWithValue("@userId", i.UserId);
-                    cmd.ExecuteNonQuery();
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            return true;
-        }
+        //public bool AddLandmarkToItinerary(ItineraryDetails i)
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection conn = new SqlConnection(connectionString))
+        //        {
+        //            conn.Open();
+        //            SqlCommand cmd = new SqlCommand(sqlAddLandmarkToItinerary, conn);
+        //            cmd.Parameters.AddWithValue("@itineraryId", i.ItineraryId);
+        //            cmd.Parameters.AddWithValue("@landmarkId", i.LandmarkId);
+        //            cmd.Parameters.AddWithValue("@userId", i.UserId);
+        //            cmd.ExecuteNonQuery();
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return false;
+        //    }
+        //    return true;
+        //}
 
         //GET/SET THE CURRENT ITINERARY
         public Itinerary GetItinerary(int itineraryId)
@@ -245,7 +245,25 @@ namespace Capstone.DAO
             return i;
         }
 
+        public bool AddLandmarkToItinerary(int itineraryId, int landmarkId, int userId)
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand(sqlAddLandmarkToItinerary, conn);
+                    cmd.Parameters.AddWithValue("@itineraryId", itineraryId);
+                    cmd.Parameters.AddWithValue("@landmarkId", landmarkId);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
 
-
-    }
-}
+        }
+}}
