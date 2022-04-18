@@ -1,7 +1,7 @@
 <template>
   <div id="overview">
     
-        <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId" >
+        <div id="landmarkCard" v-for="landmark in sortLandmarks" v-bind:key="landmark.landmarkId" >
           <h5>
             {{ landmark.landmarkName }}
           </h5>
@@ -74,12 +74,12 @@ export default {
     inItinerary() {
       return this.$store.state.inItinerary;
     },
-    // sortLandmarks(){
-    //   const sortedLandmarks = this.$store.state.landmarks.slice();
-    //     return sortedLandmarks.sort((a, b) => {
-    //     return this.distance(this.userCoordinates.lat, this.userCoordinates.lng, a.landmarkLat, a.landmarkLng) -
-    //     this.distance(this.userCoordinates.lat, this.userCoordinates.lng, b.landmarkLat, b.landmarkLng)})
-    // },
+    sortLandmarks(){
+      let sortedLandmarks = this.$store.state.landmarks.slice();
+        return sortedLandmarks.sort((a, b) => {
+        return this.distance(this.userCoordinates.lat, this.userCoordinates.lng, a.landmarkLat, a.landmarkLng) -
+        this.distance(this.userCoordinates.lat, this.userCoordinates.lng, b.landmarkLat, b.landmarkLng)})
+    },
   },
   created() {
     landmarksService.getLandmarks().then((response) => {
