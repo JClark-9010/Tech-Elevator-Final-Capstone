@@ -32,6 +32,7 @@ export default {
   },
   created() {
     this.retrieveLandmark();
+    this.$store.commit("USER_NOT_IN_ITINERARY");
   },
 
   computed: {

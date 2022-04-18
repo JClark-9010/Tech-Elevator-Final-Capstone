@@ -51,7 +51,6 @@ export default {
       this.$store.commit("REPLACE_LANDMARKS", response.data);
     });
     
-    
   },
 };
 </script>

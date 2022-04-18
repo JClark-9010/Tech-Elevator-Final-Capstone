@@ -112,7 +112,7 @@ export default {
       this.zoom = parseInt(localStorage.zoom);
     }
     });
-  
+    this.$store.commit("USER_NOT_IN_ITINERARY");
   },
 };
 </script>

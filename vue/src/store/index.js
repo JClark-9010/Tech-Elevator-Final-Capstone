@@ -29,9 +29,11 @@ export default new Vuex.Store({
 
   mutations: {
     USER_IN_ITINERARY(state) {
-      state.inItinerary = !state.inItinerary;
+      state.inItinerary = true;
     },
-    
+    USER_NOT_IN_ITINERARY(state) {
+      state.inItinerary = false;
+    },
     
     
     SET_AUTH_TOKEN(state, token) {

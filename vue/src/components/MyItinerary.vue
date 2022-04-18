@@ -4,9 +4,8 @@
   </div>
   <div v-else>
     <h2>{{ itinerary.itineraryName }}</h2>
-    
-      <landmarks-overview />
-    
+
+    <landmarks-overview />
   </div>
 </template>
 
@@ -19,7 +18,6 @@ export default {
   data() {
     return {
       isLoading: true,
-      inItinerary: true,
     };
   },
 
@@ -35,19 +33,15 @@ export default {
   },
   created() {
     this.getUserItinerary();
-    this.$store.commit("USER_IN_ITINERARY")
+    this.$store.commit("USER_IN_ITINERARY");
   },
 
- 
 
   computed: {
     itinerary() {
       return this.$store.state.itinerary;
     },
-   },
-   unmounted () {
-     this.$store.commit("USER_IN_ITINERARY")
-   }
+  },
 };
 </script>
 
