@@ -1,7 +1,7 @@
 <template>
   <div>
     <Map /> 
-    <div id="closest">
+    <!-- <div id="closest">
 
       <h4>The Closest Landmark to You is..</h4>
         <h3>{{closest(landmarks, userCoordinates)}}</h3>
@@ -17,7 +17,7 @@
           <td>{{distance( userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng)}}</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
     
  </div>
   

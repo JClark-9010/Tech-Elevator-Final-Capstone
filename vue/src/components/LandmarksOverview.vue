@@ -5,6 +5,7 @@
           <h5>
             {{ landmark.landmarkName }}
           </h5>
+          {{distance( userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng)}}
           <!-- <td>{{ landmark.landmarkLat }}</td>
           <td>{{ landmark.landmarkLng }}</td> -->
           <!-- <p>{{ landmark.description }}</p> -->
