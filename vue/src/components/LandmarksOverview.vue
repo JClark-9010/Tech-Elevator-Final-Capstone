@@ -38,8 +38,7 @@ export default {
       console.log(this.itineraryId, landmarkId, this.$store.state.user.userId)
       itineraryService.addLandmarkToItinerary(this.itineraryId, landmarkId, this.$store.state.user.userId);
       itineraryService.getItinerary(this.itineraryId).then((response) => {
-      this.$store.commit("SET_CURRENT_ITINERARY", response.data)});
-      this.$router.push(`/landmarks/${landmarkId}`);
+      this.$store.commit("SET_CURRENT_ITINERARY", response.data)}).then((newResult) => location.reload(newResult));
     },
     
     distance(lat1, lng1, lat2, lng2) {

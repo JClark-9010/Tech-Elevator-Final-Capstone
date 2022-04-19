@@ -3,13 +3,13 @@
     <img src="../assets/ping_pong_loader.gif" />
   </div>
   <div v-else>
+    <!-- <h2>{{itinerary.itineraryName}}</h2> -->
     <div id="itineraryOverview">
       <!-- <h2 id="itineraryNameView">{{ itinerary.itineraryName }}</h2> -->
       <div
         id="itineraryCard"
         v-for="addedLandmark in itineraryDetails"
-        v-bind:key="addedLandmark.landmarkId"
-      >
+        v-bind:key="addedLandmark.landmarkId">
         <h5 id="addedName">
           {{ addedLandmark.landmarkName }}
         </h5>
@@ -62,10 +62,12 @@ export default {
           this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
         })
         .then((newResult) => location.reload(newResult));
-        this.$store.commit("SET_CURRENT_ITINERARY", this.$route.params.itineraryId);
     },
   },
   created() {
+    itineraryService.getItinerary(this.$route.params.itineraryId).then((response) => {
+      this.$store.commit("SET_CURRENT_ITINERARY", response.data);
+    })
     this.getDetails();
     this.$store.commit("USER_IN_ITINERARY");
   },
@@ -75,6 +77,9 @@ export default {
     itineraryDetails() {
       return this.$store.state.itineraryDetails;
     },
+    itinerary() {
+      return this.$store.state.itinerary;
+    }
   },
 };
 </script>
