@@ -53,6 +53,7 @@ export default {
           this.isLoading = false;
         });
     },
+
    
     deleteLandmark(itineraryId, landmarkId) {
       itineraryService
@@ -61,8 +62,7 @@ export default {
           this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
         })
         .then((newResult) => location.reload(newResult));
-
-      return false;
+        this.$store.commit("SET_CURRENT_ITINERARY", this.$route.params.itineraryId);
     },
   },
   created() {
