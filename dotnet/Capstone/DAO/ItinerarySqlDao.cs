@@ -19,7 +19,7 @@ namespace Capstone.DAO
 
         public string sqlAddItinerary = "INSERT INTO itineraries (user_id, itinerary_name) VALUES (@userId, @itineraryName)";
 
-        public string sqlDeleteItinerary = "DELETE FROM itineraries WHERE itinerary_id = @itineraryId";
+        public string sqlDeleteItinerary = "DELETE FROM itineraries_landmarks_user WHERE itinerary_id = @itineraryId DELETE FROM itineraries WHERE itinerary_id = @itineraryId";
 
         public string sqlDeleteLandmarkFromItinerary = "DELETE FROM itineraries_landmarks_user WHERE landmark_id = @landmarkId AND itinerary_id = @itineraryId";
 

@@ -2,13 +2,11 @@
   <div>
     <h1 v-if="successfullyAdded">Landmark added to your itinerary!</h1>
     <div
-      id="itineraryCard"
       v-for="itinerary in userItineraries"
       v-bind:key="itinerary.itineraryId"
-      v-on:click="getUserItinerary(itinerary.itineraryId)"
     >
-      <h5>{{ itinerary.itineraryName }}</h5>
-    <h2 v-if="itinerarySelected">Add some landmarks to your itinerary</h2>
+      <h5 v-on:click="getUserItinerary(itinerary.itineraryId)" id="itineraryName">{{ itinerary.itineraryName }}</h5>
+      <button v-on:click="deleteItinerary(itinerary.itineraryId)" > Delete Itinerary </button>
     
     <landmarks-overview v-if="itinerarySelected" />
     </div>
@@ -42,11 +40,22 @@ export default {
     getUserItinerary(itineraryId) {
       this.$router.push({name: 'itinerary-details', params: {itineraryId: itineraryId}});
       this.itinerarySelected = true;
+<<<<<<< HEAD
      
+=======
+>>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
     },
     viewItineraryDetails(itineraryId) {
       this.$router.push(`/my-itineraries/${itineraryId}`);
-    }
+    },
+    deleteItinerary(itineraryId) {
+      console.log(itineraryId);
+      itineraryService.deleteItinerary(itineraryId);
+      itineraryService.getUserItineraries(this.userId).then((response) => {
+      this.$store.commit("REPLACE_USER_ITINERARIES", response.data);
+    });
+      location.reload();
+    },
   },
   created() {
     itineraryService.getUserItineraries(this.userId).then((response) => {
@@ -55,7 +64,10 @@ export default {
     itineraryService.getItineraries().then((response) => {
       this.$store.commit("REPLACE_ITINERARIES", response.data);
     });
+<<<<<<< HEAD
     
+=======
+>>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
   },
   computed: {
     userItineraries() {
@@ -73,4 +85,16 @@ export default {
 </script>
 
 <style>
+#itineraryName{
+  margin: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #E57D6A;
+  margin-right: 800px;
+  color: #EAD6C7;
+}
+#itineraryName:hover{
+  background-color: #1A5270;
+}
+
 </style>
