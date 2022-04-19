@@ -49,12 +49,17 @@ export default {
       console.log(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       location.reload();
+<<<<<<< HEAD
       // .then((response)=>{
       //   this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
       // }); 
       // this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
       // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
       // this.$router.push({ name: "itinerary" });
+=======
+      
+     
+>>>>>>> 80cfbbcf4c9f2217ae6189d64091f452b3e4feb8
     },
     
     distance(lat1, lng1, lat2, lng2) {

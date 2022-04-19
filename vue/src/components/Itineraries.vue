@@ -1,12 +1,12 @@
 <template>
   <div>
     <h1 v-if="successfullyAdded">Landmark added to your itinerary!</h1>
-    <div
+    <div id="itinerariesGrid"
       v-for="itinerary in userItineraries"
       v-bind:key="itinerary.itineraryId"
     >
       <h5 v-on:click="getUserItinerary(itinerary.itineraryId)" id="itineraryName">{{ itinerary.itineraryName }}</h5>
-      <button v-on:click="deleteItinerary(itinerary.itineraryId)" > Delete Itinerary </button>
+      <button id="deleteEntire" v-on:click="deleteItinerary(itinerary.itineraryId)" > Delete Itinerary </button>
     
     <landmarks-overview v-if="itinerarySelected" />
     </div>
@@ -67,12 +67,17 @@ export default {
 </script>
 
 <style>
+#itinerariesGrid{
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
 #itineraryName{
   margin: 20px;
   padding: 5px;
   border-radius: 5px;
   background-color: #E57D6A;
-  margin-right: 800px;
+ 
   color: #EAD6C7;
 }
 #itineraryName:hover{
