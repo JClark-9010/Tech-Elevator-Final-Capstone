@@ -32,8 +32,10 @@ export default {
         .getItinerary(this.$route.params.itineraryId)
         .then((response) => {
           this.$store.commit("SET_CURRENT_ITINERARY", response.data);
-          this.isLoading = false;
         });
+          
+          
+           
     },
     getDetails(){
       itineraryService
@@ -41,6 +43,8 @@ export default {
         .then((response) => {
         this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
         this.isLoading = false;
+         
+
       });
     },
     deleteLandmark(itineraryId, landmarkId){
@@ -56,6 +60,9 @@ export default {
     this.getUserItinerary();
     this.getDetails();
     this.$store.commit("USER_IN_ITINERARY");
+  },
+  mounted() {
+        location.commit();
   },
 
 

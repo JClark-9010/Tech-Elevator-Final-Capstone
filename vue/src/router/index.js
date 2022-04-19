@@ -114,7 +114,8 @@ const router = new Router({
       name: 'itinerary-details',
       component: MyIten,
       meta: {
-        requiresAuth: false
+        requiresAuth: false,
+       refresh: 2,
       }
     }
   ]

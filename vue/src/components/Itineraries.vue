@@ -42,7 +42,7 @@ export default {
     getUserItinerary(itineraryId) {
       this.$router.push({name: 'itinerary-details', params: {itineraryId: itineraryId}});
       this.itinerarySelected = true;
-      this.timeToAdd = true;
+     
     },
     viewItineraryDetails(itineraryId) {
       this.$router.push(`/my-itineraries/${itineraryId}`);
@@ -55,7 +55,7 @@ export default {
     itineraryService.getItineraries().then((response) => {
       this.$store.commit("REPLACE_ITINERARIES", response.data);
     });
-    this.$store.state.timeToAdd = true;
+    
   },
   computed: {
     userItineraries() {

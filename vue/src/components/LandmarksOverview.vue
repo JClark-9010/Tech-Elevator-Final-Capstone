@@ -11,7 +11,7 @@
           <!-- <p>{{ landmark.description }}</p> -->
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
-          <button v-on:click="promptAssurance(landmark.landmarkId)">Add Landmark to Itinerary</button>
+          <button v-if="inItinerary" v-on:click="promptAssurance(landmark.landmarkId)">Add Landmark to Itinerary</button>
           <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
         </div>
       
@@ -26,7 +26,7 @@ export default {
   data () {
     return {
       userId: this.$store.state.user.userId,
-      timeToAdd: this.$store.state.timeToAdd,
+     
       selected: false,
       itineraryDetails: {},
       itineraryId: this.$store.state.itineraryId,

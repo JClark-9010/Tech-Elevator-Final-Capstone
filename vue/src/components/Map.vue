@@ -40,6 +40,7 @@
         }"
         :clickable="true"
         :draggable="false"
+        :icon="markerOptions"
       ></gmap-marker>
     </GmapMap>
   </div>
