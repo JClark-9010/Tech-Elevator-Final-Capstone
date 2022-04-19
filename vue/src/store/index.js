@@ -20,7 +20,6 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    timeToAdd: false,
     landmarks: [],
     itineraries: [],
     userItineraries: [],
