@@ -11,9 +11,8 @@
           <!-- <p>{{ landmark.description }}</p> -->
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
-          <button v-if="inItinerary" v-on:click="promptAssurance(landmark.landmarkId)">Add Landmark to Itinerary</button>
+          <button v-if="inItinerary" v-on:click="addLandmarkToItinerary(landmark.landmarkId)">Add Landmark to Itinerary</button>
         </div>
-          <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
       
   </div>
 </template>
@@ -25,11 +24,14 @@ export default {
   name: "LandmarksOverview",
   data () {
     return {
+<<<<<<< HEAD
       userId: this.$store.state.user.userId,
      
       selected: false,
       itineraryDetails: {},
       itineraryId: this.$store.state.itineraryId,
+=======
+>>>>>>> cfd82fbae4d74ff7b43f168571ca911c7ed084d2
       userCoordinates: {
         lat: 0,
         lng: 0,
@@ -40,6 +42,7 @@ export default {
     viewLandmarkDetails(landmarkId) {
       this.$router.push(`/landmarks/${landmarkId}`);
     },
+<<<<<<< HEAD
     promptAssurance(landmarkId){
       this.selected = true;
       this.$store.commit("SET_STORE_LANDMARK", landmarkId);
@@ -60,6 +63,14 @@ export default {
       
      
 >>>>>>> 80cfbbcf4c9f2217ae6189d64091f452b3e4feb8
+=======
+    addLandmarkToItinerary(landmarkId){
+      console.log(this.itineraryId, landmarkId, this.$store.state.user.userId)
+      itineraryService.addLandmarkToItinerary(this.itineraryId, landmarkId, this.$store.state.user.userId);
+      itineraryService.getItinerary(this.itineraryId).then((response) => {
+      this.$store.commit("SET_CURRENT_ITINERARY", response.data)});
+      this.$router.push(`/landmarks/${landmarkId}`);
+>>>>>>> cfd82fbae4d74ff7b43f168571ca911c7ed084d2
     },
     
     distance(lat1, lng1, lat2, lng2) {
@@ -87,17 +98,17 @@ export default {
     inItinerary() {
       return this.$store.state.inItinerary;
     },
-    // itineraryDetails() {
-    //   return this.$store.state.itineraryDetails;
-    // }
-    storeLandmark() {
-      return this.$store.state.storeLandmark;
+    itineraryDetails() {
+      return this.$store.state.itineraryDetails;
     },
     sortLandmarks(){
       let sortedLandmarks = this.$store.state.landmarks.slice();
         return sortedLandmarks.sort((a, b) => {
         return this.distance(this.userCoordinates.lat, this.userCoordinates.lng, a.landmarkLat, a.landmarkLng) -
         this.distance(this.userCoordinates.lat, this.userCoordinates.lng, b.landmarkLat, b.landmarkLng)})
+    },
+    itineraryId(){
+      return this.$store.state.itinerary.itineraryId
     },
   },
   created() {

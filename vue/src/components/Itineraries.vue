@@ -1,67 +1,57 @@
 <template>
   <div>
-    <h1 v-if="successfullyAdded">Landmark added to your itinerary!</h1>
-    <div id="itinerariesGrid"
-      v-for="itinerary in userItineraries"
-      v-bind:key="itinerary.itineraryId"
-    >
+    <div id="itinerariesGrid" v-for="itinerary in userItineraries" v-bind:key="itinerary.itineraryId">
       <h5 v-on:click="getUserItinerary(itinerary.itineraryId)" id="itineraryName">{{ itinerary.itineraryName }}</h5>
       <button id="deleteEntire" v-on:click="deleteItinerary(itinerary.itineraryId)" > Delete Itinerary </button>
-    
-    <landmarks-overview v-if="itinerarySelected" />
     </div>
   </div>
 </template>
 
 <script>
-import LandmarksOverview from "../components/LandmarksOverview.vue";
 import itineraryService from "../services/ItineraryService.js";
 export default {
   name: "my-itineraries",
-  components: { LandmarksOverview },
+  components: { },
   data() {
     return {
-      successfullyAdded: false,
-      itinerarySelected: false,
       userId: this.$store.state.user.userId,
     };
   },
   methods: {
     getUserItinerary(itineraryId) {
-      this.$router.push({name: 'itinerary-details', params: {itineraryId: itineraryId}});
-      this.itinerarySelected = true;
-    },
-    viewItineraryDetails(itineraryId) {
+      itineraryService.getItinerary(itineraryId).then((response) => {
+      this.$store.commit("SET_CURRENT_ITINERARY", response.data);
+    })
       this.$router.push(`/my-itineraries/${itineraryId}`);
+    },
+    promptAssurance(itineraryId){
+      this.selected = true;
+      this.$store.commit("SET_STORE_ITINERARY", itineraryId);
+      console.log(this.storeItinerary)
     },
     deleteItinerary(itineraryId) {
       console.log(itineraryId);
       itineraryService.deleteItinerary(itineraryId);
       itineraryService.getUserItineraries(this.userId).then((response) => {
       this.$store.commit("REPLACE_USER_ITINERARIES", response.data);
-    });
-      location.reload();
-    },
+    })},
   },
   created() {
     itineraryService.getUserItineraries(this.userId).then((response) => {
       this.$store.commit("REPLACE_USER_ITINERARIES", response.data);
     });
-    itineraryService.getItineraries().then((response) => {
-      this.$store.commit("REPLACE_ITINERARIES", response.data);
-    });
+
   },
   computed: {
     userItineraries() {
       return this.$store.state.userItineraries;
     },
-    itineraries() {
-      return this.$store.state.itineraries;
-    },
     itinerary() {
       return this.$store.state.itinerary;
     },
-    
+  },
+  mounted() {
+
   },
 };
 </script>
@@ -69,15 +59,25 @@ export default {
 <style>
 #itinerariesGrid{
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 250px 100px;
+  grid-template-rows: 80px;
+  grid-template-areas: 
+  "itinName delete";
+}
+#deleteEntire{
+  grid-area: delete;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
 }
 
 #itineraryName{
-  margin: 20px;
+  grid-area: itinName;
+  margin: 15px;
   padding: 5px;
   border-radius: 5px;
   background-color: #E57D6A;
- 
+ text-align: center;
   color: #EAD6C7;
 }
 #itineraryName:hover{
