@@ -19,6 +19,9 @@ export default {
   },
   methods: {
     getUserItinerary(itineraryId) {
+      itineraryService.getItinerary(itineraryId).then((response) => {
+      this.$store.commit("SET_CURRENT_ITINERARY", response.data);
+    })
       this.$router.push(`/my-itineraries/${itineraryId}`);
     },
     promptAssurance(itineraryId){
@@ -37,6 +40,7 @@ export default {
     itineraryService.getUserItineraries(this.userId).then((response) => {
       this.$store.commit("REPLACE_USER_ITINERARIES", response.data);
     });
+
   },
   computed: {
     userItineraries() {
@@ -45,6 +49,9 @@ export default {
     itinerary() {
       return this.$store.state.itinerary;
     },
+  },
+  mounted() {
+
   },
 };
 </script>
