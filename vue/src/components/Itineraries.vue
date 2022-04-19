@@ -2,13 +2,11 @@
   <div>
     <h1 v-if="successfullyAdded">Landmark added to your itinerary!</h1>
     <div
-      
       v-for="itinerary in userItineraries"
       v-bind:key="itinerary.itineraryId"
-      v-on:click="getUserItinerary(itinerary.itineraryId)"
     >
-      <h5 id="itineraryName">{{ itinerary.itineraryName }}</h5>
-    <h2 v-if="itinerarySelected">Add some landmarks to your itinerary</h2>
+      <h5 v-on:click="getUserItinerary(itinerary.itineraryId)" id="itineraryName">{{ itinerary.itineraryName }}</h5>
+      <button v-on:click="deleteItinerary(itinerary.itineraryId)" > Delete Itinerary </button>
     
     <landmarks-overview v-if="itinerarySelected" />
     </div>
@@ -45,7 +43,15 @@ export default {
     },
     viewItineraryDetails(itineraryId) {
       this.$router.push(`/my-itineraries/${itineraryId}`);
-    }
+    },
+    deleteItinerary(itineraryId) {
+      console.log(itineraryId);
+      itineraryService.deleteItinerary(itineraryId);
+      itineraryService.getUserItineraries(this.userId).then((response) => {
+      this.$store.commit("REPLACE_USER_ITINERARIES", response.data);
+    });
+      location.reload();
+    },
   },
   created() {
     itineraryService.getUserItineraries(this.userId).then((response) => {
