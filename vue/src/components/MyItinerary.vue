@@ -106,7 +106,7 @@ h3 {
     "deleteAdded";
 
   margin: 20px;
-  background-color: #e57d6a;
+  background-color: #1a5270;
 }
 #addedName {
   grid-area: addedName;
