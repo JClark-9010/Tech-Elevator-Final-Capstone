@@ -63,6 +63,8 @@ export default {
         .then((response) => {
         this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
       });
+      location.reload();
+      return false;
     }
   },
   created() {

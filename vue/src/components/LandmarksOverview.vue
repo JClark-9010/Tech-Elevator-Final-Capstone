@@ -12,8 +12,8 @@
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
           <button v-if="inItinerary" v-on:click="promptAssurance(landmark.landmarkId)">Add Landmark to Itinerary</button>
-          <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
         </div>
+          <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
       
   </div>
 </template>
@@ -45,15 +45,9 @@ export default {
     },
     addLandmarkToItinerary(){
       this.selected = false;
-      console.log(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       location.reload();
-      // .then((response)=>{
-      //   this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
-      // }); 
-      // this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
-      // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
-      // this.$router.push({ name: "itinerary" });
+     
     },
     
     distance(lat1, lng1, lat2, lng2) {
