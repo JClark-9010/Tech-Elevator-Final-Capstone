@@ -12,6 +12,7 @@ import NearMe from '../views/NearMe.vue'
 import CreateAnItinerary from '../views/CreateAnItinerary.vue'
 import MyItineraries from '../views/MyItineraries.vue'
 import MyIten from '../views/MyIten.vue'
+import AboutUs from '../views/AboutUs.vue'
 
 
 Vue.use(Router)
@@ -116,7 +117,15 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+    {
+      path:'aboutUs',
+      name: 'aboutUs',
+      component: AboutUs,
+      meta: {
+        requiresAuth: false
     }
+  }
   ]
 })
 
