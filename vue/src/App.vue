@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <img id="logo" src="@/assets/TechElLogo_150-01.png" alt="">
+      <img id="logo" src="@/assets/TechElLogo-01.png" alt="">
     <div id="nav">
       <router-link id="bar" v-bind:to="{ name: 'nearMe' }">Home</router-link>
       <!-- <router-link id="bar" v-bind:to="{ name: 'landmarks' }">Landmarks</router-link>  -->
