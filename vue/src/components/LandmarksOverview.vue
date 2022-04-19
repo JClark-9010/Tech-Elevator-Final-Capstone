@@ -12,8 +12,8 @@
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
           <button v-if="inItinerary" v-on:click="promptAssurance(landmark.landmarkId)">Add Landmark to Itinerary</button>
-          <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
         </div>
+          <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
       
   </div>
 </template>
