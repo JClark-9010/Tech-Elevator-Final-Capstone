@@ -2,7 +2,7 @@
   <div id="createItinerary">
     <form v-on:submit.prevent="onSubmit">
       <div>
-        <label for="name">Name: </label>
+        <label for="name">Type in a name for your itinerary: </label>
         <input
           required
           type="text"
