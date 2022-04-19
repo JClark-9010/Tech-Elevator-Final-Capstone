@@ -141,11 +141,7 @@ export default {
   margin-top: 15px;
   
 }
-#landmarkName:hover{
- border: #EAD6C7;
- border-style: solid;
- border-radius: 6px;
-}
+
 p{
   grid-area: para;
   font-size: 12px;
