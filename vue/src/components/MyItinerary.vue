@@ -43,10 +43,7 @@ export default {
         .getItinerary(this.$route.params.itineraryId)
         .then((response) => {
           this.$store.commit("SET_CURRENT_ITINERARY", response.data);
-<<<<<<< HEAD
-=======
           
->>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
         });
           
           
@@ -81,14 +78,8 @@ export default {
     this.$store.commit("USER_IN_ITINERARY");
   },
   mounted() {
-<<<<<<< HEAD
-        location.commit();
-  },
-
-=======
     location.commit();
   },
->>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
 
   computed: {
     itinerary() {

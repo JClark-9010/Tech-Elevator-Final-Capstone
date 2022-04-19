@@ -1,8 +1,8 @@
 <template>
   <div id="overview">
     
-        <div id="landmarkCard" v-for="landmark in sortLandmarks" v-bind:key="landmark.landmarkId">
-          <h5 id="landmarkName" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
+        <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
+          <h5 v-on:click="viewLandmarkDetails(landmark.landmarkId)">
             {{ landmark.landmarkName }}
           </h5>
           
@@ -12,10 +12,6 @@
           <img id="detImage" v-bind:src="landmark.landmarkImage" alt="" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
           <!-- <button v-else>Add Landmark to Itinerary></button> -->
           <button v-if="inItinerary" v-on:click="promptAssurance(landmark.landmarkId)">Add Landmark to Itinerary</button>
-<<<<<<< HEAD
-          <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
-=======
->>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
         </div>
           <button v-if="selected" v-on:click="addLandmarkToItinerary()"> Are you sure you want to add this?</button>
       
@@ -30,10 +26,7 @@ export default {
   data () {
     return {
       userId: this.$store.state.user.userId,
-<<<<<<< HEAD
      
-=======
->>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
       selected: false,
       itineraryDetails: {},
       itineraryId: this.$store.state.itineraryId,
@@ -53,9 +46,15 @@ export default {
     },
     addLandmarkToItinerary(){
       this.selected = false;
+      console.log(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       location.reload();
-     
+      // .then((response)=>{
+      //   this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
+      // }); 
+      // this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
+      // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
+      // this.$router.push({ name: "itinerary" });
     },
     
     distance(lat1, lng1, lat2, lng2) {
@@ -114,8 +113,7 @@ export default {
   display: flex;
   flex-wrap: wrap;
   padding-left: 25px;
-  align-content: center;
-  justify-content: center;
+  
 }
 #landmarkCard{
   /* border-style: solid; */
@@ -125,14 +123,14 @@ export default {
   padding-top: 5px;
   border-radius: 20px;
   display: grid;
-  
+  flex-wrap: wrap;
   color: #EAD6C7;
   
   grid-template-columns: 240px;
   grid-template-rows: 175px 85px 70px;
   grid-template-areas: 
   "img"
-  "landmarkName"
+  "h5"
   "button";
  
   margin: 20px;
@@ -143,13 +141,13 @@ export default {
 
   
 }
-#landmarkName{
-  grid-area: landmarkName;
+h5{
+  grid-area: h5;
   text-align: center;
   margin-top: 15px;
   
 }
-#landmarkName:hover{
+h5:hover{
  border: #EAD6C7;
  border-style: solid;
  border-radius: 6px;

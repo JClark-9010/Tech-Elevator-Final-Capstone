@@ -40,10 +40,6 @@ export default {
     getUserItinerary(itineraryId) {
       this.$router.push({name: 'itinerary-details', params: {itineraryId: itineraryId}});
       this.itinerarySelected = true;
-<<<<<<< HEAD
-     
-=======
->>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
     },
     viewItineraryDetails(itineraryId) {
       this.$router.push(`/my-itineraries/${itineraryId}`);
@@ -64,10 +60,6 @@ export default {
     itineraryService.getItineraries().then((response) => {
       this.$store.commit("REPLACE_ITINERARIES", response.data);
     });
-<<<<<<< HEAD
-    
-=======
->>>>>>> a0764bbe0f2ff76005e60728554e7657048fd3fa
   },
   computed: {
     userItineraries() {
