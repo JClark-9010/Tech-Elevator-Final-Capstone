@@ -75,15 +75,25 @@ export default {
 <style>
 #itinerariesGrid{
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 250px 100px;
+  grid-template-rows: 80px;
+  grid-template-areas: 
+  "itinName delete";
+}
+#deleteEntire{
+  grid-area: delete;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
 }
 
 #itineraryName{
-  margin: 20px;
+  grid-area: itinName;
+  margin: 15px;
   padding: 5px;
   border-radius: 5px;
   background-color: #E57D6A;
- 
+ text-align: center;
   color: #EAD6C7;
 }
 #itineraryName:hover{
