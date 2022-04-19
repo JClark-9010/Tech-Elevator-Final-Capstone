@@ -24,8 +24,9 @@ namespace Capstone.DAO
         public string sqlDeleteLandmarkFromItinerary = "DELETE FROM itineraries_landmarks_user WHERE landmark_id = @landmarkId AND itinerary_id = @itineraryId";
 
         public string sqlGetItineraryDetails = "SELECT landmark_name, landmark_lat, landmark_lng, description, landmark_image, itineraries_landmarks_user.itinerary_id," +
-                                               " itineraries_landmarks_user.landmark_id, itineraries_landmarks_user.user_id FROM landmarks JOIN itineraries_landmarks_user" +
-                                               " ON itineraries_landmarks_user.landmark_id = landmarks.landmark_id WHERE itineraries_landmarks_user.itinerary_id = @itineraryId";
+                                               " itineraries_landmarks_user.landmark_id, itineraries_landmarks_user.user_id, itineraries.itinerary_name FROM landmarks" +
+                                               " JOIN itineraries_landmarks_user ON itineraries_landmarks_user.landmark_id = landmarks.landmark_id" +
+                                               " JOIN itineraries ON itineraries_landmarks_user.itinerary_id = itineraries.itinerary_id WHERE itineraries_landmarks_user.itinerary_id = @itineraryId";
 
         public string sqlAddLandmarkToItinerary = "INSERT INTO itineraries_landmarks_user (itinerary_id, landmark_id, user_id) VALUES (@itineraryId, @landmarkId, @userId)";
 
@@ -148,6 +149,7 @@ namespace Capstone.DAO
                     details.ItineraryId = Convert.ToInt32(reader["itinerary_id"]);
                     details.LandmarkId = Convert.ToInt32(reader["landmark_id"]);
                     details.UserId = Convert.ToInt32(reader["user_id"]);
+                    details.ItineraryName = Convert.ToString(reader["itinerary_name"]);
                     i.Add(details);
                 }
             }

@@ -34,7 +34,7 @@ export default {
       itineraryService.deleteItinerary(itineraryId);
       itineraryService.getUserItineraries(this.userId).then((response) => {
       this.$store.commit("REPLACE_USER_ITINERARIES", response.data);
-    })},
+    }).then((newResult) => location.reload(newResult));},
   },
   created() {
     itineraryService.getUserItineraries(this.userId).then((response) => {

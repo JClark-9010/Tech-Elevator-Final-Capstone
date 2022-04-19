@@ -22,6 +22,7 @@ namespace Capstone.Models
         public int LandmarkId { get; set; }
         public int ItineraryId { get; set; }
         public int UserId { get; set; }
+        public string ItineraryName { get; set; }
 
     }
 }
