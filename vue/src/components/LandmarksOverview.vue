@@ -147,11 +147,15 @@ h5{
   margin-top: 15px;
   
 }
+<<<<<<< HEAD
 h5:hover{
  border: #EAD6C7;
  border-style: solid;
  border-radius: 6px;
 }
+=======
+
+>>>>>>> 2d3870962e10486221713788c248ba0b5404a94d
 p{
   grid-area: para;
   font-size: 12px;
