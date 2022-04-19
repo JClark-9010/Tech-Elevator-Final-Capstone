@@ -28,9 +28,15 @@ export default {
   },
   methods: {
     getUserItinerary(itineraryId) {
-      this.$router.push({name: 'itinerary-details', params: {itineraryId: itineraryId}});
-      this.itinerarySelected = true;
+      itineraryService
+        .getItinerary(itineraryId)
+        .then((response) => {
+          this.$store.commit("SET_CURRENT_ITINERARY", response.data);
+          
+        }).then( this.$router.push({name: 'itinerary-details', params: {itineraryId: itineraryId}}));
     },
+    
+    
     viewItineraryDetails(itineraryId) {
       this.$router.push(`/my-itineraries/${itineraryId}`);
     },
