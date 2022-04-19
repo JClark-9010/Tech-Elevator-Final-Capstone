@@ -24,6 +24,7 @@ export default new Vuex.Store({
     itineraries: [],
     userItineraries: [],
     inItinerary: false,
+    pageLoading: false
   },
 
   mutations: {
@@ -33,7 +34,12 @@ export default new Vuex.Store({
     USER_NOT_IN_ITINERARY(state) {
       state.inItinerary = false;
     },
-    
+    PAGE_LOADING(state) {
+      state.pageLoading = true;
+    },
+    PAGE_FINISHED_LOADING(state) {
+      state.pageLoading = false;
+    },
     
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -67,7 +73,9 @@ export default new Vuex.Store({
     SET_STORE_LANDMARK(state, landmarkId){
       state.storeLandmark = landmarkId;
     },
-
+    SET_STORE_ITINERARY(state, itineraryId){
+      state.storeItinerary = itineraryId
+    },
     REPLACE_ITINERARIES(state, itineraries){
       state.itineraries = itineraries;
     },
