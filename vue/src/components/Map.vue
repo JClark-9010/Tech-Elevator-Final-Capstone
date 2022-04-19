@@ -58,6 +58,7 @@ export default {
       zoom: 7,
       lat: [],
       lng: [],
+      routingService: {},
     };
   },
   created() {
@@ -76,6 +77,7 @@ export default {
     if (localStorage.zoom) {
       this.zoom = parseInt(localStorage.zoom);
     }
+    this.routingService = this.platform.getRoutingService();
   },
 
   mounted() {
@@ -93,6 +95,32 @@ export default {
       localStorage.center = JSON.stringify(center);
       localStorage.zoom = zoom;
     },
+    displayRoute(userCoordinates, mapCoordinates) {
+      this.routingService.calculateRoute (
+          {
+                "mode": "fastest;car;traffic:enabled",
+                "waypoint1": `${userCoordinates.lat},${userCoordinates.lng}`,
+                 "waypoint2": `${mapCoordinates.lat},${mapCoordinates.lng}`,
+                 "representation": "display",
+
+          },
+          data => {
+            console.log(data);
+          },
+          error => {
+            console.error(error);
+          }
+          
+      );
+    }
+    
+
+
+
+
+
+
+
   },
   computed: {
     mapCoordinates() {

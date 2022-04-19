@@ -6,10 +6,10 @@
       <router-link id="bar" v-bind:to="{ name: 'nearMe' }">Home</router-link>
       <!-- <router-link id="bar" v-bind:to="{ name: 'landmarks' }">Landmarks</router-link>  -->
       <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'admin'">Add Landmark</router-link>
-     
       <router-link id="bar" v-bind:to="{ name: 'my-itineraries'}" v-if="$store.state.user.role == 'user'">My Itineraries</router-link>
       <router-link id="bar" v-bind:to="{ name: 'create-itinerary'}" v-if="$store.state.user.role == 'user'">Create New Itinerary</router-link>
       <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'user'">Suggest Landmark</router-link> 
+      <!-- <router-link id="bar" v-bind:to="{ name: 'gernerate-routes'}" v-if="$store.state.user.role == 'user'">Generate Route</router-link>  -->
       <router-link id="bar" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
 
     </div>

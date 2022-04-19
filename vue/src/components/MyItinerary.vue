@@ -45,42 +45,9 @@ export default {
     };
   },
 
-  methods: {
+   methods: {
     getDetails() {
       itineraryService
-<<<<<<< HEAD
-        .getItinerary(this.$route.params.itineraryId)
-        .then((response) => {
-          this.$store.commit("SET_CURRENT_ITINERARY", response.data);
-          
-<<<<<<< HEAD
-        });
-          
-          
-           
-=======
-        }).then(newResult => (this.getDetails(newResult))).then(this.isLoading = false)
->>>>>>> 80cfbbcf4c9f2217ae6189d64091f452b3e4feb8
-    },
-    getDetails(){
-      itineraryService
-        .getItineraryDetails(this.$route.params.itineraryId)
-        .then((response) => {
-        this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
-<<<<<<< HEAD
-        this.isLoading = false;
-         
-
-=======
-        
->>>>>>> 80cfbbcf4c9f2217ae6189d64091f452b3e4feb8
-      });
-    },
-    reload(){
-          location.reload();
-    },
-    deleteLandmark(itineraryId, landmarkId){
-=======
         .getItineraryDetails(this.$route.params.itineraryId).then((response) => {
           this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
           this.isLoading = false;
@@ -89,16 +56,15 @@ export default {
 
    
     deleteLandmark(itineraryId, landmarkId) {
->>>>>>> cfd82fbae4d74ff7b43f168571ca911c7ed084d2
       itineraryService
         .deleteLandmarkFromItinerary(itineraryId, landmarkId)
         .then((response) => {
           this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
         })
         .then((newResult) => location.reload(newResult));
-        this.$store.commit("SET_CURRENT_ITINERARY", this.$route.params.itineraryId);
     },
   },
+
   created() {
     this.getDetails();
     this.$store.commit("USER_IN_ITINERARY");

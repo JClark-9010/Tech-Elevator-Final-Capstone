@@ -117,7 +117,15 @@ const router = new Router({
         requiresAuth: false,
        refresh: 2,
       }
-    }
+    },
+    // {
+    //   path:'/my-itineraries/:itineraryId',
+    //   name: 'generate-route',
+    //   component: GenerateRoute,
+    //   meta: {
+    //     requiresAuth: false,
+    //   }
+    // }  
   ]
 })
 

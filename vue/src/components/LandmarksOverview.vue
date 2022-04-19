@@ -24,14 +24,6 @@ export default {
   name: "LandmarksOverview",
   data () {
     return {
-<<<<<<< HEAD
-      userId: this.$store.state.user.userId,
-     
-      selected: false,
-      itineraryDetails: {},
-      itineraryId: this.$store.state.itineraryId,
-=======
->>>>>>> cfd82fbae4d74ff7b43f168571ca911c7ed084d2
       userCoordinates: {
         lat: 0,
         lng: 0,
@@ -42,35 +34,14 @@ export default {
     viewLandmarkDetails(landmarkId) {
       this.$router.push(`/landmarks/${landmarkId}`);
     },
-<<<<<<< HEAD
-    promptAssurance(landmarkId){
-      this.selected = true;
-      this.$store.commit("SET_STORE_LANDMARK", landmarkId);
-    },
-    addLandmarkToItinerary(){
-      this.selected = false;
-      console.log(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
-      itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
-      location.reload();
-<<<<<<< HEAD
-      // .then((response)=>{
-      //   this.$store.commit("SET_CURRENT_ITINERARY_DETAILS", response.data);
-      // }); 
-      // this.$store.commit("ADD_LANDMARK_TO_ITINERARY", this.itineraryDetails);
-      // landmarksService.updateLandmark(this.itineraryId, this.landmarkId);
-      // this.$router.push({ name: "itinerary" });
-=======
       
      
->>>>>>> 80cfbbcf4c9f2217ae6189d64091f452b3e4feb8
-=======
     addLandmarkToItinerary(landmarkId){
       console.log(this.itineraryId, landmarkId, this.$store.state.user.userId)
       itineraryService.addLandmarkToItinerary(this.itineraryId, landmarkId, this.$store.state.user.userId);
       itineraryService.getItinerary(this.itineraryId).then((response) => {
       this.$store.commit("SET_CURRENT_ITINERARY", response.data)});
       this.$router.push(`/landmarks/${landmarkId}`);
->>>>>>> cfd82fbae4d74ff7b43f168571ca911c7ed084d2
     },
     
     distance(lat1, lng1, lat2, lng2) {
@@ -163,15 +134,6 @@ h5{
   margin-top: 15px;
   
 }
-<<<<<<< HEAD
-h5:hover{
- border: #EAD6C7;
- border-style: solid;
- border-radius: 6px;
-}
-=======
-
->>>>>>> 2d3870962e10486221713788c248ba0b5404a94d
 p{
   grid-area: para;
   font-size: 12px;
