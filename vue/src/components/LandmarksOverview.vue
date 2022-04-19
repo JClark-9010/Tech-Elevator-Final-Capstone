@@ -1,8 +1,8 @@
 <template>
   <div id="overview">
     
-        <div id="landmarkCard" v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
-          <h5 v-on:click="viewLandmarkDetails(landmark.landmarkId)">
+        <div id="landmarkCard" v-for="landmark in sortLandmarks" v-bind:key="landmark.landmarkId">
+          <h5 id="landmarkName" v-on:click="viewLandmarkDetails(landmark.landmarkId)">
             {{ landmark.landmarkName }}
           </h5>
           
@@ -112,23 +112,25 @@ export default {
   display: flex;
   flex-wrap: wrap;
   padding-left: 25px;
-  
+  align-content: center;
+  justify-content: center;
 }
 #landmarkCard{
   /* border-style: solid; */
   border-color: black;
-  padding-left: 20px;
-  padding-right:20px;
+  padding-left: 25px;
+  padding-right:25px;
+  padding-top: 5px;
   border-radius: 20px;
   display: grid;
-  flex-wrap: wrap;
+  
   color: #EAD6C7;
   
-  grid-template-columns: 250px;
-  grid-template-rows: 175px 70px 70px;
+  grid-template-columns: 240px;
+  grid-template-rows: 175px 85px 70px;
   grid-template-areas: 
   "img"
-  "h5"
+  "landmarkName"
   "button";
  
   margin: 20px;
@@ -139,11 +141,16 @@ export default {
 
   
 }
-h5{
-  grid-area: h5;
+#landmarkName{
+  grid-area: landmarkName;
   text-align: center;
-  padding-top: 10px;
+  margin-top: 15px;
   
+}
+#landmarkName:hover{
+ border: #EAD6C7;
+ border-style: solid;
+ border-radius: 6px;
 }
 p{
   grid-area: para;
@@ -151,12 +158,17 @@ p{
   
 }
 #detImage{
-  max-width: 250px;
-  max-height: 175px;
+  width: 240px;
+  /* max-height: 175px; */
   grid-area: img;
-  padding-top: 10px;
+  margin-top: 10px;
   
   
+}
+#detImage:hover{
+ border: #EAD6C7;
+ border-style: solid;
+ border-radius: 6px;
 }
 button{
   background-color: #208B77;

@@ -1,6 +1,6 @@
 <template>
   <body id="body">
-    <h2 id="title">Columbus Ohio! Home of the Buckeyes, Blue Jackets, and Crew!</h2>
+    <h2 id="title">Thank you for using Tech Elevator City Tours! Check out our local Landmarks and plan your tour!</h2>
     <div id="landmarks">
       <landmarks-overview/>
     </div>
@@ -27,16 +27,20 @@ export default {
 <style>
 #body{
   display: grid;
-  grid-template-rows: 50px auto;
-  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 50px 300px auto;
+  grid-template-columns: 1fr;
+  
   grid-template-areas: 
-  "title landmarks"
-  "nearMe landmarks"
+  "title"
+  "nearMe"
+  "landmarks"
   ;
+  
  padding-top: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
   padding-left: 10px;
+  
 
 }
 #nearMe{
@@ -44,7 +48,8 @@ export default {
   grid-area: nearMe;
   grid-row-gap: 10px;
   grid-column-gap: 40px;
-  justify-content: center;
+  margin-left: 200px;
+  margin-right:200px;
 }
 #landmarks{
   
@@ -62,6 +67,10 @@ h2{
     "title"
     "nearMe"
     "landmarks";
+  }
+  nearMe{
+    margin-left: 10px;
+    margin-right: 10px;
   }
 }
 

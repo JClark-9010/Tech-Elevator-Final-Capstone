@@ -2,12 +2,12 @@
   <div>
     <h1 v-if="successfullyAdded">Landmark added to your itinerary!</h1>
     <div
-      id="itineraryCard"
+      
       v-for="itinerary in userItineraries"
       v-bind:key="itinerary.itineraryId"
       v-on:click="getUserItinerary(itinerary.itineraryId)"
     >
-      <h5>{{ itinerary.itineraryName }}</h5>
+      <h5 id="itineraryName">{{ itinerary.itineraryName }}</h5>
     <h2 v-if="itinerarySelected">Add some landmarks to your itinerary</h2>
     
     <landmarks-overview v-if="itinerarySelected" />
@@ -71,4 +71,16 @@ export default {
 </script>
 
 <style>
+#itineraryName{
+  margin: 20px;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: #E57D6A;
+  margin-right: 800px;
+  color: #EAD6C7;
+}
+#itineraryName:hover{
+  background-color: #1A5270;
+}
+
 </style>

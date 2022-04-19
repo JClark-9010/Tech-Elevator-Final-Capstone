@@ -54,6 +54,9 @@ export default {
   
   
 }
+h2{
+  font-style: bold;
+}
 #image{
   max-width: 500px;
   grid-area: img;
@@ -70,11 +73,11 @@ export default {
   margin-bottom: 200px;
   margin-left: 20px;
   margin-right: 20px;
-  padding: 7px;
+  padding: 15px;
   border-style: solid;
-  
+  font-size: 22px;
   border-radius: 10px;
-  background-color: #E57D6A;
+  background-color: #1A5270;
 }
 
 </style>
