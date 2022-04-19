@@ -47,6 +47,7 @@ export default {
       this.selected = false;
       itineraryService.addLandmarkToItinerary(this.$store.state.itinerary.itineraryId, this.storeLandmark, this.$store.state.user.userId);
       location.reload();
+      
      
     },
     
