@@ -11,16 +11,6 @@
     <landmarks-overview v-if="itinerarySelected" />
     </div>
   </div>
-    <!-- <div v-else>
-       <div
-        id="itineraryCard"
-        v-for="itinerary in itineraries"
-        v-bind:key="itinerary.itineraryId"
-        v-on:click="viewItineraryDetails(itineraryId)"
-      >
-      <h5>{{ itinerary.itineraryName }}</h5>
-    </div>
-    </div> -->
 </template>
 
 <script>
