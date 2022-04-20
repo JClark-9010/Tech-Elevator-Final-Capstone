@@ -2,18 +2,19 @@
   <div id="createItinerary">
     <form v-on:submit.prevent="onSubmit">
       <div>
-        <label for="name">Type in a name for your itinerary: </label>
+        <label id="typeName" for="name">Type in a name for your itinerary: </label>
         <input
           required
           type="text"
-          id="name"
+          id="inputName"
           name="name"
           class="form-control"
           v-model="itinerary.itineraryName"
         />
       </div>
-      <input type="submit" />
-      <input type="button" v-on:click.prevent="resetForm" value="Cancel" />
+      <div id="spacer"></div>
+      <input type="submit" id="submit"/>
+      <input type="button" v-on:click.prevent="resetForm" value="Cancel" id="cancel" />
     </form>
   </div>
 </template>
@@ -67,6 +68,14 @@ export default {
     margin-left: 20px;
     
   }
- 
+  #typeName{
+    font-size: 20px;
+    padding-left: 0px;
+    padding-top: 10px;
+  }
+ #inputName{
+   width: 835px;
+   margin-bottom: 10px;
+ }
  
 </style>

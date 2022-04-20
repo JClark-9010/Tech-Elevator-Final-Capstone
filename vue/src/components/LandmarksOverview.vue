@@ -229,7 +229,7 @@ p {
   border-radius: 6px;
 }
 button {
-  background-color: #208b77;
+  background-color: #208B77;
   height: 50px;
   justify-content: center;
   grid-area: button;
