@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <header>
-      <img id="logo" src="@/assets/TechElLogo-01.png" alt="">
+      <router-link id="bar" v-bind:to="{ name: 'home' }">
+        <img id="logo" src="@/assets/TechElLogo-01.png" alt="">
+      </router-link>
     <div id="nav">
-      <router-link id="bar" v-bind:to="{ name: 'nearMe' }">Home</router-link>
+      <router-link id="bar" v-bind:to="{ name: 'nearMe' }">Landmarks</router-link>
       <!-- <router-link id="bar" v-bind:to="{ name: 'landmarks' }">Landmarks</router-link>  -->
       <router-link id="bar" v-bind:to="{ name: 'addLandmark'}" v-if="$store.state.user.role == 'admin'">Add Landmark</router-link>
       <router-link id="bar" v-bind:to="{ name: 'my-itineraries'}" v-if="$store.state.user.role == 'user'">My Itineraries</router-link>

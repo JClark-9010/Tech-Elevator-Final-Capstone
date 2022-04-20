@@ -87,7 +87,7 @@ const router = new Router({
       }
     },
     {
-      path: '/nearMe',
+      path: '/landmarks',
       name: 'nearMe',
       component: NearMe,
       meta: {

@@ -28,7 +28,7 @@
       :center="userCoordinates"
       :zoom="zoom"
       style="width: 700px; height: 250px; margin: 32px auto; border-color: #208B77; border-style: solid;
-   box-shadow: 2px 2px gray;"
+   box-shadow: 2px 2px gray; justify-content: center;"
       ref="mapRef"
       @dragend="handleDrag"
     >

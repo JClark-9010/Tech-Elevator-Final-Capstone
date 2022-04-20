@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="PatCard" v-on:mouseover="patSip = patProfile">
-      <img :src="patSip">
+      <img id="pat" :src="patSip">
       
       <h4>Patrick</h4>
     </div>
     <div class="JasonCard" v-on:mouseover="jasonSip = jasonProfile">
-      <img :src="jasonSip" >
+      <img id="jason" :src="jasonSip" >
       <h1>other card</h1>
     </div>
   </div>
@@ -33,7 +33,7 @@ export default {
   background-color: #e57d6a;
   border-radius: 10px;
 }
-img{
+#pat{
   width: 150px;
   margin: 7px;
 }
@@ -42,6 +42,10 @@ img{
   background-color: #e57d6a;
   border-radius: 10px;
 }
+  #jason{
+    width: 150px;
+    margin: 7px;
+  }
 
 
 
