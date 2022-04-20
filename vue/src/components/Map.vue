@@ -24,6 +24,7 @@
       </div> -->
     </div>
     <GmapMap
+      
       :center="userCoordinates"
       :zoom="zoom"
       style="width: 700px; height: 250px; margin: 32px auto; border-color: #208B77; border-style: solid;
@@ -41,12 +42,16 @@
         :clickable="true"
         :draggable="false"
       ></gmap-marker>
+
     </GmapMap>
   </div>
 </template>
 
 <script>
+
+
 export default {
+ 
   data() {
     return {
       map: null,

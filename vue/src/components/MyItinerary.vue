@@ -29,6 +29,7 @@
     <h3>Want to add some places to visit?</h3>
     <div>
       <landmarks-overview />
+      <generate-route />
     </div>
   </div>
 </template>
@@ -36,9 +37,11 @@
 <script>
 import itineraryService from "../services/ItineraryService.js";
 import LandmarksOverview from "../components/LandmarksOverview.vue";
+import GenerateRoute from "../components/GenerateRoute.vue"
+
 
 export default {
-  components: { LandmarksOverview },
+  components: { LandmarksOverview, GenerateRoute },
   data() {
     return {
       isLoading: true,
@@ -104,7 +107,7 @@ h3 {
 
   color: #ead6c7;
 
-  grid-template-columns: 240px;
+  grid-template-columns: 210px;
   grid-template-rows: 175px 85px 70px;
   grid-template-areas:
     "addedImage"
@@ -120,7 +123,7 @@ h3 {
   margin-top: 15px;
 }
 #addedImage {
-  width: 240px;
+  width: 210px;
   /* max-height: 175px; */
   grid-area: addedImage;
   margin-top: 10px;
