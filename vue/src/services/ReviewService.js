@@ -12,8 +12,8 @@ export default {
     return axios.get(path +'/' + reviewId)
   },
 
-  addReview(landmarkId, description) {
-    return axios.post(path + 'new-review', landmarkId, description)
+  addReview(newReview) {
+    return axios.post(path + '/new-review', newReview)
   },
   
 }
