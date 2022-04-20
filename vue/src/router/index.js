@@ -13,7 +13,6 @@ import CreateAnItinerary from '../views/CreateAnItinerary.vue'
 import MyItineraries from '../views/MyItineraries.vue'
 import MyIten from '../views/MyIten.vue'
 import AboutUs from '../views/AboutUs.vue'
-import GenerateRoutes from '../views/GenerateRoutes.vue'
 
 
 Vue.use(Router)
@@ -128,14 +127,6 @@ const router = new Router({
         requiresAuth: false
     },
   },
-    {
-      path:'route',
-      name: 'route',
-      component: GenerateRoutes,
-      meta: {
-        requiresAuth: false
-    }
-  }
   ]
 })
 
