@@ -29,7 +29,6 @@
     <h3>Want to add some places to visit?</h3>
     <div>
       <landmarks-overview />
-      <generate-route />
     </div>
   </div>
 </template>
@@ -37,11 +36,10 @@
 <script>
 import itineraryService from "../services/ItineraryService.js";
 import LandmarksOverview from "../components/LandmarksOverview.vue";
-import GenerateRoute from "../components/GenerateRoute.vue"
 
 
 export default {
-  components: { LandmarksOverview, GenerateRoute },
+  components: { LandmarksOverview},
   data() {
     return {
       isLoading: true,
