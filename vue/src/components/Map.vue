@@ -35,10 +35,12 @@
       <gmap-marker
         :key="index"
         v-for="(landmark, index) in landmarks"
+        
         :position="{
           lat: parseFloat(landmark.landmarkLat),
           lng: parseFloat(landmark.landmarkLng),
         }"
+        
         :clickable="true"
         :draggable="false"
       ></gmap-marker>

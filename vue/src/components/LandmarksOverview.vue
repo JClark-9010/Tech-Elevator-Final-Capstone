@@ -4,6 +4,8 @@
 
     <select v-model="radius" name="radius" id="radius">
       <option value="1000" selected>Show All</option>
+      <option value="1">1mile</option>
+      <option value="2">2miles</option>
       <option value="5">5miles</option>
       <option value="10">10miles</option>
       <option value="20">20miles</option>
