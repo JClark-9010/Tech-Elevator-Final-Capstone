@@ -1,8 +1,13 @@
 <template>
   <div>
-    <div class="card">
-      <img id="profile" src="@/assets/patrick_sip.jpg" alt="Card Back" />
-      <img id="profile" src="@/assets/patrick_profile.jpg" class="img-top" alt="Card Front" />
+    <div class="PatCard" v-on:mouseover="patSip = patProfile">
+      <img :src="patSip">
+      
+      <h4>Patrick</h4>
+    </div>
+    <div class="JasonCard" v-on:mouseover="jasonSip = jasonProfile">
+      <img :src="jasonSip" >
+      <h1>other card</h1>
     </div>
   </div>
 </template>
@@ -10,28 +15,34 @@
 <script>
 export default {
   name: "aboutUs",
+  data(){
+    return {
+      patSip: require("@/assets/patrick_sip.jpg"),
+      patProfile: require("@/assets/patrick_profile.jpg"),
+      jasonSip: require("@/assets/jason_sip.jpg"),
+      jasonProfile: require("@/assets/jason_profile.jpg")
+
+    }
+  }
 };
 </script>
 
 <style>
-.card {
-  width: 130px;
-  height: 195px;
-  position: relative;
-  display: inline-block;
-  background-color: #1A5270;
+.PatCard{
+  margin: 20px;
+  background-color: #e57d6a;
+  border-radius: 10px;
 }
-#profile{
-    width: 150px;
+img{
+  width: 150px;
+  margin: 7px;
 }
-.card .img-top {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 99;
+.JasonCard{
+  margin: 20px;
+  background-color: #e57d6a;
+  border-radius: 10px;
 }
-.card:hover .img-top {
-  display: inline;
-}
+
+
+
 </style>
