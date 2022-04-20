@@ -11,12 +11,17 @@ Vue.config.productionTip = false
 Vue.use(VueGeolocation)
 
 import * as VueGoogleMaps from 'vue2-google-maps'
-Vue.use(VueGoogleMaps,  {
+Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyCkWf-D9gucrZJ0RQKcH49mm6fJHnCtzr0',
+<<<<<<< HEAD
     libraries: 'places',
+=======
+>>>>>>> c4c45df3ce9be00dca42e1083cc4028b098416d9
   },
 })
+
+
 
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
@@ -27,6 +32,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
+<<<<<<< HEAD
 
 import { MapElementFactory } from "vue2-google-maps";
 Vue.use(MapElementFactory, {
@@ -35,3 +41,5 @@ Vue.use(MapElementFactory, {
     libraries: 'places',
   },
 })
+=======
+>>>>>>> c4c45df3ce9be00dca42e1083cc4028b098416d9

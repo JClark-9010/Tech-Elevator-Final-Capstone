@@ -13,8 +13,8 @@
         <tr v-for="landmark in landmarks" v-bind:key="landmark.landmarkId">
           <td >
             {{ landmark.landmarkName }}
-          </td>
-          <td>{{distance( userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng)}}</td>
+          </td>{{distance( userCoordinates.lat, userCoordinates.lng, landmark.landmarkLat, landmark.landmarkLng)}}
+          <td></td>
         </tr>
       </tbody>
     </table> -->

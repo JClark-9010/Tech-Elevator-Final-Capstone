@@ -1,12 +1,13 @@
 <template>
   <div class="loading" v-if="isLoading">
-    <img src="../assets/ping_pong_loader.gif" />
+    <img src="../assets/globe.gif" />
   </div>
   <div id="details" v-else>
     
     <h2 id="name">{{ landmark.landmarkName }}</h2>
     <h4 id="description">{{ landmark.description }}</h4>
     <img id="image" v-bind:src="landmark.landmarkImage" alt="">
+  
   </div>
 </template>
 

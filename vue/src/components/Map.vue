@@ -41,7 +41,6 @@
         }"
         :clickable="true"
         :draggable="false"
-        :icon="markerOptions"
       ></gmap-marker>
 
     </GmapMap>
@@ -82,7 +81,6 @@ export default {
     if (localStorage.zoom) {
       this.zoom = parseInt(localStorage.zoom);
     }
-    this.routingService = this.platform.getRoutingService();
   },
 
   mounted() {
@@ -100,7 +98,28 @@ export default {
       localStorage.center = JSON.stringify(center);
       localStorage.zoom = zoom;
     },
+<<<<<<< HEAD
    
+=======
+    displayRoute(userCoordinates, mapCoordinates) {
+      this.routingService.calculateRoute (
+          {
+                "mode": "fastest;car;traffic:enabled",
+                "waypoint1": `${userCoordinates.lat},${userCoordinates.lng}`,
+                 "waypoint2": `${mapCoordinates.lat},${mapCoordinates.lng}`,
+                 "representation": "display",
+
+          },
+          data => {
+            console.log(data);
+          },
+          error => {
+            console.error(error);
+          }
+          
+      );
+    }
+>>>>>>> c4c45df3ce9be00dca42e1083cc4028b098416d9
   },
   computed: {
     mapCoordinates() {

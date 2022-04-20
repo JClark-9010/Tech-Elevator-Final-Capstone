@@ -125,8 +125,8 @@ const router = new Router({
       component: AboutUs,
       meta: {
         requiresAuth: false
-    }
-  }
+    },
+  },
   ]
 })
 
