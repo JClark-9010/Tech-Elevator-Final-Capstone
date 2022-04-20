@@ -14,10 +14,6 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyCkWf-D9gucrZJ0RQKcH49mm6fJHnCtzr0',
-<<<<<<< HEAD
-    libraries: 'places',
-=======
->>>>>>> c4c45df3ce9be00dca42e1083cc4028b098416d9
   },
 })
 
@@ -32,14 +28,3 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-<<<<<<< HEAD
-
-import { MapElementFactory } from "vue2-google-maps";
-Vue.use(MapElementFactory, {
-  load: {
-    key: 'AIzaSyCkWf-D9gucrZJ0RQKcH49mm6fJHnCtzr0',
-    libraries: 'places',
-  },
-})
-=======
->>>>>>> c4c45df3ce9be00dca42e1083cc4028b098416d9

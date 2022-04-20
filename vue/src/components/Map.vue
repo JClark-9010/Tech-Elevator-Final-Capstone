@@ -98,9 +98,6 @@ export default {
       localStorage.center = JSON.stringify(center);
       localStorage.zoom = zoom;
     },
-<<<<<<< HEAD
-   
-=======
     displayRoute(userCoordinates, mapCoordinates) {
       this.routingService.calculateRoute (
           {
@@ -119,7 +116,6 @@ export default {
           
       );
     }
->>>>>>> c4c45df3ce9be00dca42e1083cc4028b098416d9
   },
   computed: {
     mapCoordinates() {
