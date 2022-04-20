@@ -12,10 +12,7 @@
 import Itineraries from "../components/Itineraries.vue";
 export default {
   components: { Itineraries},
-  data() {
-    return
-    
-  },
+  
 };
 </script>
 
