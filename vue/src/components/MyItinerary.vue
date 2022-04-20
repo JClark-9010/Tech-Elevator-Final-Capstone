@@ -104,7 +104,7 @@ h3 {
 
   color: #ead6c7;
 
-  grid-template-columns: 240px;
+  grid-template-columns: 210px;
   grid-template-rows: 175px 85px 70px;
   grid-template-areas:
     "addedImage"
@@ -120,7 +120,7 @@ h3 {
   margin-top: 15px;
 }
 #addedImage {
-  width: 240px;
+  width: 210px;
   /* max-height: 175px; */
   grid-area: addedImage;
   margin-top: 10px;
