@@ -3,10 +3,9 @@
     <img src="../assets/globe.gif" />
   </div>
   <div id="details" v-else>
-    
     <h2 id="name">{{ landmark.landmarkName }}</h2>
     <h4 id="description">{{ landmark.description }}</h4>
-    <img id="image" v-bind:src="landmark.landmarkImage" alt="">
+    <img id="image" v-bind:src="landmark.landmarkImage" alt="" />
 
     <h1>Visitor Reviews</h1>
     <div id="review" v-for="review in reviews" v-bind:key="review.review">
@@ -42,14 +41,12 @@
         />
       </form>
     </div>
-
   </div>
 </template>
 
 <script>
 import landmarksService from "../services/LandmarksService";
 import reviewService from "../services/ReviewService";
-
 
 export default {
   name: "landmark-detail",
@@ -58,27 +55,29 @@ export default {
       isLoading: true,
       isFormShown: false,
       newReview: {
-        landmarkId: this.$store.state.landmark.landmarkId
-      }
-      
+        landmarkId: parseInt(this.$route.params.landmarkId),
+      },
     };
   },
   methods: {
     retrieveLandmark() {
       landmarksService
-        .getLandmark(this.$route.params.landmarkId).then((response) => {
+        .getLandmark(this.$route.params.landmarkId)
+        .then((response) => {
           this.$store.commit("SET_CURRENT_LANDMARK", response.data);
           this.isLoading = false;
         });
     },
-    onSubmit(){
-          console.log(this.newReview.landmarkId, this.newReview.description)
-          reviewService.addReview(this.newReview)
-          .then((result) => {
-            this.$store.commit("ADD_REVIEW", result.data);
-          })
-          .then((newResult) => location.reload(newResult));
-        }
+    onSubmit() {
+      console.log(this.newReview.landmarkId, this.newReview.description);
+      reviewService.addReview(this.newReview).then((response) => {
+        this.$store.commit("ADD_REVIEW", response.data)
+      });
+      this.resetForm();
+    },
+    resetForm() {
+      this.newReview = {};
+    },
   },
   created() {
     this.retrieveLandmark();
@@ -97,32 +96,30 @@ export default {
 </script>
 
 <style>
-#details{
+#details {
   display: grid;
-  grid-template-rows: 1fr 9fr ;
+  grid-template-rows: 1fr 9fr;
   grid-template-columns: 1fr 2fr;
-  grid-template-areas: 
-  "name name"
-  "img description" ;
-  
-  
+  grid-template-areas:
+    "name name"
+    "img description";
 }
-h2{
+h2 {
   font-style: bold;
 }
-#image{
+#image {
   max-width: 500px;
   grid-area: img;
   padding-left: 40px;
 }
-#name{
+#name {
   padding-left: 40px;
   grid-area: name;
   justify-content: center;
 }
-#description{
+#description {
   grid-area: description;
-   color: #EAD6C7;
+  color: #ead6c7;
   margin-bottom: 200px;
   margin-left: 20px;
   margin-right: 20px;
@@ -130,7 +127,6 @@ h2{
   border-style: solid;
   font-size: 22px;
   border-radius: 10px;
-  background-color: #1A5270;
+  background-color: #1a5270;
 }
-
 </style>
