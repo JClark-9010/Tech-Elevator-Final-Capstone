@@ -26,7 +26,7 @@ export default {
 
   data() {
     return {
-      itineraryCreated: false,
+      
       itinerary: {
         userId: this.$store.state.user.userId,
       },
@@ -35,13 +35,11 @@ export default {
 
   methods: {
     onSubmit() {
-      this.$store.commit("ADD_ITINERARY", this.itinerary, this.userId);
-      this.itineraryCreated = true;
       this.$store.state.inItinerary = true;
       itineraryService
         .addItinerary(this.itinerary, this.userId)
-        .then((response) => {
-          console.log("promise was success", response);
+        .then((response)  =>  {
+           this.$store.commit("ADD_ITINERARY", response.data)
         })
         .catch((error) => {
           if (error.response) {
@@ -51,9 +49,8 @@ export default {
             console.log("Network Error");
           }
         });
-      itineraryService.getItineraries().then((response) => {
-        this.$store.commit("REPLACE_ITINERARIES", response.data);
-      });
+      
+      
       this.$router.push({ name:"my-itineraries"});
     },
   },

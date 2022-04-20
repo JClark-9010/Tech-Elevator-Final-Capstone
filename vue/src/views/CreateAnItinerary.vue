@@ -8,10 +8,7 @@
 import CreateItinerary from '../components/CreateItinerary.vue'
 export default {
   components: { CreateItinerary},
-  data() {
-    return {
-    }
-  }
+  
 
 }
 </script>
