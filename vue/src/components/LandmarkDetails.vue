@@ -7,12 +7,48 @@
     <h2 id="name">{{ landmark.landmarkName }}</h2>
     <h4 id="description">{{ landmark.description }}</h4>
     <img id="image" v-bind:src="landmark.landmarkImage" alt="">
-  
+
+    <h1>Visitor Reviews</h1>
+    <div id="review" v-for="review in reviews" v-bind:key="review.review">
+      <h4>Review Number: {{ review.reviewId }} --- {{ review.description }}</h4>
+    </div>
+
+    <div class="container">
+      <a
+        v-on:click="isFormShown = true"
+        v-if="!isFormShown"
+        class="btn btn-success"
+        >Leave A Review</a
+      >
+
+      <form v-on:submit.prevent="onSubmit" v-if="isFormShown">
+        <div class="form-group">
+          <label for="description">Review: </label>
+          <input
+            required
+            type="textarea"
+            id="description"
+            name="description"
+            class="form-control"
+            v-model="newReview.description"
+          />
+        </div>
+        <input type="submit" class="btn btn-success" />
+        <input
+          type="button"
+          v-on:click.prevent="resetForm"
+          class="btn btn-success"
+          value="Cancel"
+        />
+      </form>
+    </div>
+
   </div>
 </template>
 
 <script>
 import landmarksService from "../services/LandmarksService";
+import reviewService from "../services/ReviewService";
 
 
 export default {
@@ -20,6 +56,11 @@ export default {
   data() {
     return {
       isLoading: true,
+      isFormShown: false,
+      newReview: {
+        landmarkId: this.$store.state.landmark.landmarkId
+      }
+      
     };
   },
   methods: {
@@ -30,6 +71,14 @@ export default {
           this.isLoading = false;
         });
     },
+    onSubmit(){
+          console.log(this.newReview.landmarkId, this.newReview.description)
+          reviewService.addReview(this.newReview)
+          .then((result) => {
+            this.$store.commit("ADD_REVIEW", result.data);
+          })
+          .then((newResult) => location.reload(newResult));
+        }
   },
   created() {
     this.retrieveLandmark();
@@ -39,6 +88,9 @@ export default {
   computed: {
     landmark() {
       return this.$store.state.landmark;
+    },
+    reviews() {
+      return this.$store.state.reviews;
     },
   },
 };
