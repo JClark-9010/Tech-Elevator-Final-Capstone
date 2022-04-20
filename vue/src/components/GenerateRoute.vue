@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="genRoute">
     <h2>Routes Google Maps</h2>
     <div>
       <table>
@@ -120,7 +120,7 @@ export default {
 };
 </script>
 <style>
-#app {
+#genRoute {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
