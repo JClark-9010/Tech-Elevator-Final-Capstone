@@ -24,6 +24,7 @@
       </div> -->
     </div>
     <GmapMap
+      
       :center="userCoordinates"
       :zoom="zoom"
       style="width: 700px; height: 250px; margin: 32px auto; border-color: #208B77; border-style: solid;
@@ -42,12 +43,16 @@
         :draggable="false"
         :icon="markerOptions"
       ></gmap-marker>
+
     </GmapMap>
   </div>
 </template>
 
 <script>
+
+
 export default {
+ 
   data() {
     return {
       map: null,
@@ -95,32 +100,7 @@ export default {
       localStorage.center = JSON.stringify(center);
       localStorage.zoom = zoom;
     },
-    displayRoute(userCoordinates, mapCoordinates) {
-      this.routingService.calculateRoute (
-          {
-                "mode": "fastest;car;traffic:enabled",
-                "waypoint1": `${userCoordinates.lat},${userCoordinates.lng}`,
-                 "waypoint2": `${mapCoordinates.lat},${mapCoordinates.lng}`,
-                 "representation": "display",
-
-          },
-          data => {
-            console.log(data);
-          },
-          error => {
-            console.error(error);
-          }
-          
-      );
-    }
-    
-
-
-
-
-
-
-
+   
   },
   computed: {
     mapCoordinates() {
