@@ -37,11 +37,18 @@
 <script>
 import itineraryService from "../services/ItineraryService.js";
 import LandmarksOverview from "../components/LandmarksOverview.vue";
+<<<<<<< HEAD
 
 
 
 export default {
   components: { LandmarksOverview },
+=======
+
+
+export default {
+  components: { LandmarksOverview},
+>>>>>>> 01df1a9da0ca6b3d0ea21514d42c763b1e94c248
   data() {
     return {
       isLoading: true,
@@ -107,7 +114,7 @@ h3 {
 
   color: #ead6c7;
 
-  grid-template-columns: 240px;
+  grid-template-columns: 210px;
   grid-template-rows: 175px 85px 70px;
   grid-template-areas:
     "addedImage"
@@ -123,7 +130,7 @@ h3 {
   margin-top: 15px;
 }
 #addedImage {
-  width: 240px;
+  width: 210px;
   /* max-height: 175px; */
   grid-area: addedImage;
   margin-top: 10px;
