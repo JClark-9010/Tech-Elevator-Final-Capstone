@@ -24,7 +24,8 @@ export default new Vuex.Store({
     itineraries: [],
     userItineraries: [],
     inItinerary: false,
-    pageLoading: false
+    pageLoading: false,
+    reviews: [],
   },
 
   mutations: {
@@ -96,6 +97,9 @@ export default new Vuex.Store({
     },
     ADD_LANDMARK_TO_ITINERARY(state, data){
       state.itineraryDetails = data;
-    }
+    },
+    GET_REVIEWS(state, data){
+      state.reviews = data;
+    },
   }
 })

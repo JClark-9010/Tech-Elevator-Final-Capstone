@@ -1,11 +1,16 @@
 <template>
   <body id="body">
-    <h2 id="title">Thank you for using Tech Elevator City Tours! Check out our local Landmarks and plan your tour!</h2>
+    <h2 id="title">Thank you for checking out Tech Elevator City Tours! Check out our local Landmarks and plan your tour!</h2>
+    <h4>Have you been wanting to see some of the great landmarks in Columbus, Ohio? Well, you've come to the right place.
+      Tech Elevator City Tours will help guide you through the great sight-seeing locations in Ohio's capital city. From the amazing animals
+      at the world famous Columbus Zoo to the great tastes in the North Market, we want you to see everything Columbus has to offer. Our services 
+      are free of charge, just sign up for your personalized account and get started with your itinerary. If you need any assistance, just get with
+      one of our travel agents. Enjoy your tour!</h4>
     <div id="landmarks">
       <landmarks-overview/>
     </div>
     <div id="nearMe">
-      
+      <h3>Check out the places closest to you right now!</h3>
       <Nearby />
     </div>
   </body>

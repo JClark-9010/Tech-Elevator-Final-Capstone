@@ -50,6 +50,7 @@
 <script>
 import landmarksService from "../services/LandmarksService.js";
 import itineraryService from "../services/ItineraryService.js";
+import reviewService from "../services/ReviewService.js";
 export default {
   name: "LandmarksOverview",
   data() {
@@ -63,6 +64,9 @@ export default {
   },
   methods: {
     viewLandmarkDetails(landmarkId) {
+      reviewService.getReviews(landmarkId).then((response) => {
+        this.$store.commit("GET_REVIEWS", response.data);
+      })
       this.$router.push(`/landmarks/${landmarkId}`);
     },
 
@@ -98,6 +102,7 @@ export default {
     deg2rad(deg) {
       return deg * (Math.PI / 180);
     },
+    
   },
   computed: {
     landmarks() {

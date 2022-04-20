@@ -7,6 +7,7 @@
     <h2 id="name">{{ landmark.landmarkName }}</h2>
     <h4 id="description">{{ landmark.description }}</h4>
     <img id="image" v-bind:src="landmark.landmarkImage" alt="">
+  
   </div>
 </template>
 

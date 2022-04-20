@@ -40,7 +40,6 @@
         }"
         :clickable="true"
         :draggable="false"
-        :icon="markerOptions"
       ></gmap-marker>
     </GmapMap>
   </div>
@@ -77,7 +76,6 @@ export default {
     if (localStorage.zoom) {
       this.zoom = parseInt(localStorage.zoom);
     }
-    this.routingService = this.platform.getRoutingService();
   },
 
   mounted() {
@@ -113,14 +111,6 @@ export default {
           
       );
     }
-    
-
-
-
-
-
-
-
   },
   computed: {
     mapCoordinates() {
