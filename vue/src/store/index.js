@@ -101,5 +101,8 @@ export default new Vuex.Store({
     GET_REVIEWS(state, data){
       state.reviews = data;
     },
+    ADD_REVIEW(state,review){
+      state.reviews.push(review);
+    },
   }
 })
