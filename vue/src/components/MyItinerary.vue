@@ -40,7 +40,7 @@ import LandmarksOverview from "../components/LandmarksOverview.vue";
 
 
 export default {
-  components: { LandmarksOverview },
+  components: { LandmarksOverview},
   data() {
     return {
       isLoading: true,
