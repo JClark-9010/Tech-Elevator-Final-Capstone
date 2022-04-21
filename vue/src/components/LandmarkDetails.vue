@@ -102,7 +102,7 @@ export default {
 <style>
 #details {
   display: grid;
-  grid-template-rows: 80px 300px;
+  grid-template-rows: 80px 350px;
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
     "name name"

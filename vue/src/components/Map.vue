@@ -30,10 +30,13 @@
         width: 700px;
         height: 250px;
         margin: 32px auto;
+        margin-top: 10px;
+        margin-bottom: 0px;
         border-color: #208b77;
         border-style: solid;
         box-shadow: 2px 2px gray;
         justify-content: center;
+        align-items: center;
       "
       ref="mapRef"
       @dragend="handleDrag"
@@ -50,9 +53,10 @@
         :clickable="true"
         :draggable="false"
         @mouseover="toggleLandmarkName(landmark)"
+        @click="goToLandmark(landmark)"
       ></gmap-marker>
     </GmapMap>
-      <h2>{{this.name}}</h2>
+      <h2 id="locationName">This Pin is.. {{this.name}}</h2>
   </div>
 </template>
 
@@ -108,6 +112,9 @@ export default {
     toggleLandmarkName(landmark) {
       this.name = landmark.landmarkName;
     },
+    goToLandmark(landmark){
+      this.$router.push( `/landmarks/${landmark.landmarkId}`)
+    }
   },
   computed: {
     mapCoordinates() {
@@ -131,4 +138,8 @@ export default {
 </script>
 
 <style>
+#locationName{
+  padding-bottom: 10px;
+  text-align: center;
+}
 </style>
