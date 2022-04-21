@@ -1,6 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <section class="vh-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-11">
@@ -35,83 +33,7 @@
                         />
                       </div>
                     </div>
-=======
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h2 class="h3 mb-3 font-weight-normal">Create Account</h2>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
-      </div>
-      <label for="username" class="sr-only">Username</label>
-      <input
-        type="text"
-        id="username"
-        class="form-control"
-        placeholder="Username"
-        v-model="user.username"
-        required
-        autofocus
-      />
-      <label for="password" class="sr-only">Password</label>
-      <input
-        type="password"
-        id="password"
-        class="form-control"
-        placeholder="Password"
-        v-model="user.password"
-        required
-      />
-      <input
-        type="password"
-        id="confirmPassword"
-        class="form-control"
-        placeholder="Confirm Password"
-        v-model="user.confirmPassword"
-        required
-      />
-      <router-link id="account" v-bind:to="{ name: 'login' }">Have an account?</router-link>
-      <input id="submit" type="submit" value ="Create Account" />
-  
->>>>>>> 917c86d617bef8f1348f5ff10416b8a589d684f9
 
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <label for="password" class="sr-only">Password</label>
-                        <input
-                          type="password"
-                          id="password"
-                          class="form-control"
-                          placeholder="Password"
-                          v-model="user.password"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div class="d-flex flex-row align-items-center mb-4">
-                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
-                      <div class="form-outline flex-fill mb-0">
-                        <label for="password" class="sr-only">Password</label>
-                        <input
-                          type="password"
-                          id="confirmPassword"
-                          class="form-control"
-                          placeholder="Confirm Password"
-                          v-model="user.confirmPassword"
-                          required
-                        />
-                      </div>
-                    </div>
-
-                    <div
-                      class="d-flex justify-content-center mx-4 mb-3 mb-lg-4"
-                    >
-                      <router-link id="account" v-bind:to="{ name: 'login' }"
-                        >Have an account?</router-link
-                      >
-                      <input id="submit" type="submit" value="Create Account" />
-                    </div>
                   </form>
                 </div>
                 <div
