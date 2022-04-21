@@ -6,9 +6,10 @@ import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
 import VueGeolocation from 'vue-browser-geolocation'
+import GmapCustomMarker from 'vue2-gmap-custom-marker'
 
 Vue.config.productionTip = false
-Vue.use(VueGeolocation)
+Vue.use(VueGeolocation, GmapCustomMarker)
 
 import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
@@ -16,8 +17,6 @@ Vue.use(VueGoogleMaps, {
     key: 'AIzaSyCkWf-D9gucrZJ0RQKcH49mm6fJHnCtzr0',
   },
 })
-
-
 
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;

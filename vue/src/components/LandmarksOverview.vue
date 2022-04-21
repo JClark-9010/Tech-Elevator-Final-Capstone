@@ -4,10 +4,13 @@
 
     <select v-model="radius" name="radius" id="radius">
       <option value="1000" selected>Show All</option>
+      <option value="1">1mile</option>
+      <option value="2">2miles</option>
       <option value="5">5miles</option>
       <option value="10">10miles</option>
       <option value="20">20miles</option>
     </select>
+    
     <div id="overview">
       <div
         id="landmarkCard"
@@ -127,7 +130,9 @@ export default {
       );
     },
     sortLandmarks() {
+      
       let sortedLandmarks = this.filterLandmarks;
+      
       return sortedLandmarks.sort((a, b) => {
         return (
           this.distance(
@@ -148,13 +153,16 @@ export default {
     itineraryId() {
       return this.$store.state.itinerary.itineraryId;
     },
+   
   },
   created() {
     landmarksService.getLandmarks().then((response) => {
+      
       this.$store.commit("REPLACE_LANDMARKS", response.data);
     });
     this.$getLocation({})
       .then((coordinates) => {
+       
         this.userCoordinates = coordinates;
       })
       .catch((error) => alert(error));
@@ -229,7 +237,7 @@ p {
   border-radius: 6px;
 }
 button {
-  background-color: #208b77;
+  background-color: #208B77;
   height: 50px;
   justify-content: center;
   grid-area: button;

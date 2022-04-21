@@ -1,23 +1,27 @@
 <template>
+<div>
+
   <div class="loading" v-if="isLoading">
     <img src="../assets/globe.gif" />
   </div>
   <div id="details" v-else>
-    <h2 id="name">{{ landmark.landmarkName }}</h2>
+    <h1 id="name">{{ landmark.landmarkName }}</h1>
     <h4 id="description">{{ landmark.description }}</h4>
     <img id="image" v-bind:src="landmark.landmarkImage" alt="" />
+  </div>
 
-    <h1>Visitor Reviews</h1>
-    <div id="review" v-for="review in reviews" v-bind:key="review.review">
-      <h4>Review Number: {{ review.reviewId }} --- {{ review.description }}</h4>
+    <h2 id="revHeader">Visitor Reviews</h2>
+    <div id="reviews" v-for="review in reviews" v-bind:key="review.review">
+      <h5 id="reviewNum">Review Number: {{ review.reviewId }}</h5>
+      <h5 id="review">{{ review.description }}</h5>
     </div>
 
-    <div class="container">
-      <a
+    <div class="reviewForm">
+      <button id="leaveReview"
         v-on:click="isFormShown = true"
         v-if="!isFormShown"
-        class="btn btn-success"
-        >Leave A Review</a
+       
+        >Leave A Review</button
       >
 
       <form v-on:submit.prevent="onSubmit" v-if="isFormShown">
@@ -26,22 +30,22 @@
           <input
             required
             type="textarea"
-            id="description"
+            id="inputReview"
             name="description"
             class="form-control"
             v-model="newReview.description"
           />
         </div>
-        <input type="submit" class="btn btn-success" />
+        <input type="submit" id="submit" />
         <input
           type="button"
           v-on:click.prevent="resetForm"
-          class="btn btn-success"
+          id="cancel"
           value="Cancel"
         />
       </form>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -98,14 +102,16 @@ export default {
 <style>
 #details {
   display: grid;
-  grid-template-rows: 1fr 9fr;
+  grid-template-rows: 80px 350px;
   grid-template-columns: 1fr 2fr;
   grid-template-areas:
     "name name"
     "img description";
 }
-h2 {
+h1 {
+  padding-top: 10px;
   font-style: bold;
+  color: #1a5270;
 }
 #image {
   max-width: 500px;
@@ -120,7 +126,7 @@ h2 {
 #description {
   grid-area: description;
   color: #ead6c7;
-  margin-bottom: 200px;
+  
   margin-left: 20px;
   margin-right: 20px;
   padding: 15px;
@@ -129,4 +135,76 @@ h2 {
   border-radius: 10px;
   background-color: #1a5270;
 }
+#revHeader{
+  margin-left: 29px;
+  margin-top: 10px;
+}
+#reviews{
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 800px;
+  grid-template-rows: 47px auto;
+  grid-template-areas: 
+  "num "
+  "review";
+  background-color: #e57d6a;
+  
+  border-radius: 5px;
+  
+  margin-right: 380px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+}
+#reviewNum{
+  grid-area: num;
+  text-align: left;
+  color:#1a5270;
+  font-size: 23px;
+}
+#review{
+  color:#1a5270;
+  grid-area: review;
+  text-align: left;
+  padding-left: 8px;
+}
+#leaveReview{
+  margin-left: 29px;
+  background-color: #208B77;
+  height: 50px;
+  justify-content: center;
+  grid-area: button;
+  border: black;
+  border-radius: 5px;
+  color: #ead6c7;
+  }
+#leaveReview:hover{
+  border: #ead6c7;
+  border-style: solid;
+  border-radius: 6px;
+}
+#inputReview{
+  width: 835px;
+  
+  margin-left: 50px;
+}
+#submit{
+  margin-left:29px;
+}
+#submit, #cancel{
+  margin-right: 4px;
+  background-color: #208B77;
+  height: 40px;
+  justify-content: center;
+  grid-area: button;
+  border: black;
+  border-radius: 5px;
+  color: #ead6c7;
+}
+#submit:hover, #cancel:hover {
+  border: #ead6c7;
+  border-style: solid;
+  border-radius: 6px;
+ 
+}
+
 </style>
