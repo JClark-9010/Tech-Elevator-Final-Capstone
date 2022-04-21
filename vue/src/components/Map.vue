@@ -24,11 +24,17 @@
       </div> -->
     </div>
     <GmapMap
-      
       :center="userCoordinates"
       :zoom="zoom"
-      style="width: 700px; height: 250px; margin: 32px auto; border-color: #208B77; border-style: solid;
-   box-shadow: 2px 2px gray; justify-content: center;"
+      style="
+        width: 700px;
+        height: 250px;
+        margin: 32px auto;
+        border-color: #208b77;
+        border-style: solid;
+        box-shadow: 2px 2px gray;
+        justify-content: center;
+      "
       ref="mapRef"
       @dragend="handleDrag"
     >
@@ -41,17 +47,15 @@
         }"
         :clickable="true"
         :draggable="false"
+        @mouseover="toggleLandmarkName(landmark)"
       ></gmap-marker>
-
     </GmapMap>
+      <h2>{{this.name}}</h2>
   </div>
 </template>
 
 <script>
-
-
 export default {
- 
   data() {
     return {
       map: null,
@@ -63,6 +67,7 @@ export default {
       lat: [],
       lng: [],
       routingService: {},
+      name: '',
     };
   },
   created() {
@@ -98,24 +103,9 @@ export default {
       localStorage.center = JSON.stringify(center);
       localStorage.zoom = zoom;
     },
-    displayRoute(userCoordinates, mapCoordinates) {
-      this.routingService.calculateRoute (
-          {
-                "mode": "fastest;car;traffic:enabled",
-                "waypoint1": `${userCoordinates.lat},${userCoordinates.lng}`,
-                 "waypoint2": `${mapCoordinates.lat},${mapCoordinates.lng}`,
-                 "representation": "display",
-
-          },
-          data => {
-            console.log(data);
-          },
-          error => {
-            console.error(error);
-          }
-          
-      );
-    }
+    toggleLandmarkName(landmark) {
+      this.name = landmark.landmarkName;
+    },
   },
   computed: {
     mapCoordinates() {
@@ -133,10 +123,10 @@ export default {
     landmarks() {
       return this.$store.state.landmarks;
     },
+    
   },
 };
 </script>
 
 <style>
-
 </style>
