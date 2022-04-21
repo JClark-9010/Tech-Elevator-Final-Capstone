@@ -1,4 +1,5 @@
 <template>
+  <section class="vh-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-lg-12 col-xl-11">
@@ -30,6 +31,36 @@
                           v-model="user.username"
                           required
                           autofocus
+                        />
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label for="password" class="sr-only">Password</label>
+                        <input
+                          type="password"
+                          id="password"
+                          class="form-control"
+                          placeholder="Password"
+                          v-model="user.password"
+                          required
+                        />
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <label for="password" class="sr-only">Password</label>
+                        <input
+                          type="password"
+                          id="confirmPassword"
+                          class="form-control"
+                          placeholder="Confirm Password"
+                          v-model="user.confirmPassword"
+                          required
                         />
                       </div>
                     </div>
