@@ -49,7 +49,9 @@ export default {
           } else {
             console.log("Network Error");
           }
-        });
+        }).then(itineraryService.getUserItineraries(this.userId).then((response) => {
+      this.$store.commit("REPLACE_USER_ITINERARIES", response.data);
+    }))
       
       
       this.$router.push({ name:"my-itineraries"});

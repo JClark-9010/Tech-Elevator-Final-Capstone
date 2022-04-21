@@ -12,7 +12,7 @@
 
     <h2 id="revHeader">Visitor Reviews</h2>
     <div id="reviews" v-for="review in reviews" v-bind:key="review.review">
-      <h5 id="reviewNum">Review Number: {{ review.reviewId }}</h5>
+      <h5 id="reviewNum">User Review: </h5>
       <h5 id="review">{{ review.description }}</h5>
     </div>
 
