@@ -82,7 +82,8 @@ export default {
     },
     itinerary() {
       return this.$store.state.itinerary;
-    }
+    },
+    
   },
 };
 </script>
