@@ -1,5 +1,3 @@
 # Final Capstone
 
-This directory contains all of the starter projects for the final capstone. The Vue starter project works with both the Java and .NET backend projects with a single configuration update that you can read about in the README.
-
-Each project contains instructions that provides information about the starting code and explains how to get started with the final capstone project.
+My final Capstone Project at TE. Great experience! I wish we could've done more but I am happy with what we accomplished. I worked with a team of 2 others. We worked in an Agile environment, had daily scrum meetings, worked in 3 day sprints, completed work using MOB, pair, and individual programming. 
