@@ -32,7 +32,7 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link id="account" v-bind:to="{ name: 'Login' }">Have an account?</router-link>
+      <router-link id="account" v-bind:to="{ name: 'login' }">Have an account?</router-link>
       <input id="submit" type="submit" value ="Create Account" />
   
 

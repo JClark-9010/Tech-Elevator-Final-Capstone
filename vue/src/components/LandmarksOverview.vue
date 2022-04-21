@@ -10,6 +10,7 @@
       <option value="10">10miles</option>
       <option value="20">20miles</option>
     </select>
+    
     <div id="overview">
       <div
         id="landmarkCard"
@@ -129,7 +130,9 @@ export default {
       );
     },
     sortLandmarks() {
+      
       let sortedLandmarks = this.filterLandmarks;
+      
       return sortedLandmarks.sort((a, b) => {
         return (
           this.distance(
@@ -150,13 +153,16 @@ export default {
     itineraryId() {
       return this.$store.state.itinerary.itineraryId;
     },
+   
   },
   created() {
     landmarksService.getLandmarks().then((response) => {
+      
       this.$store.commit("REPLACE_LANDMARKS", response.data);
     });
     this.$getLocation({})
       .then((coordinates) => {
+       
         this.userCoordinates = coordinates;
       })
       .catch((error) => alert(error));

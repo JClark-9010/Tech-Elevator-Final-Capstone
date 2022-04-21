@@ -134,8 +134,8 @@ export default {
     },
     landmarks() {
       return this.$store.state.landmarks;
-    },
-  },
+    }
+  }
 };
 </script>
 
